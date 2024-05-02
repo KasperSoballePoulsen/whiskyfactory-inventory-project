@@ -17,12 +17,15 @@ public class Fad {
     private Batch batch;
     private Medarbejder[] medarbejderer;
 
+
     public Fad(int nummer, String type, int stoerrelse, String lager, String leverandoer) {
         this.nummer = nummer;
         this.type = type;
         this.stoerrelse = stoerrelse;
         this.lager = lager;
+
         this.leverandoer = leverandoer;
+
         medarbejderer = new Medarbejder[2];
     }
 
@@ -46,8 +49,10 @@ public class Fad {
         return antalLiterPaafyldt;
     }
 
+
     public String getLeverandoer() {
         return leverandoer;
+
     }
 
     public LocalDate getStartDato() {
