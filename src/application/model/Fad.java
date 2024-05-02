@@ -88,7 +88,7 @@ public class Fad {
             medarbejderer[1] = medarbejder;
             this.slutDato = slutDato;
             for (int i = 0; i < antalLiterPaafyldt; i++) {
-                Flaske flaske = new Flaske(1, flaskeNavn);
+                Flaske flaske = new Flaske(1, flaskeNavn, this);
                 flasker.add(flaske);
             }
             this.antalLiterPaafyldt = 0;
