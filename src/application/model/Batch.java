@@ -10,7 +10,18 @@ public class Batch {
     private String maltBatch;
     private int mængdeVæskeILiter;
     private double alkoholProcent;
+    private Medarbejder medarbejder;
 
+    public Batch(String navn, String kornsort, LocalDate startDato, LocalDate slutDato, String maltBatch, int mængdeVæskeILiter, double alkoholProcent, Medarbejder medarbejder) {
+        this.navn = navn;
+        this.kornsort = kornsort;
+        this.startDato = startDato;
+        this.slutDato = slutDato;
+        this.maltBatch = maltBatch;
+        this.mængdeVæskeILiter = mængdeVæskeILiter;
+        this.alkoholProcent = alkoholProcent;
+        this.medarbejder = medarbejder;
+    }
 
     public String getNavn() {
         return navn;
