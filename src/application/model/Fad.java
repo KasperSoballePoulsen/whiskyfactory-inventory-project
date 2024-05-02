@@ -10,19 +10,22 @@ public class Fad {
     private int stoerrelse;
     private String lager;
     private int antalLiterPaafyldt;
-    private String leverandør;
+    private String leverandoer;
     private LocalDate startDato;
     private LocalDate slutDato;
 
     private Batch batch;
     private Medarbejder[] medarbejderer;
 
-    public Fad(int nummer, String type, int stoerrelse, String lager, String leverandør) {
+
+    public Fad(int nummer, String type, int stoerrelse, String lager, String leverandoer) {
         this.nummer = nummer;
         this.type = type;
         this.stoerrelse = stoerrelse;
         this.lager = lager;
-        this.leverandør = leverandør;
+
+        this.leverandoer = leverandoer;
+
         medarbejderer = new Medarbejder[2];
     }
 
@@ -46,8 +49,10 @@ public class Fad {
         return antalLiterPaafyldt;
     }
 
-    public String getLeverandør() {
-        return leverandør;
+
+    public String getLeverandoer() {
+        return leverandoer;
+
     }
 
     public LocalDate getStartDato() {
