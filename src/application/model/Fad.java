@@ -1,7 +1,9 @@
 package application.model;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Fad {
@@ -71,26 +73,34 @@ public class Fad {
     public Medarbejder getPaafylder() {
         return medarbejderer[0];
     }
+
     public Medarbejder getAftapper() {
         return medarbejderer[1];
     }
 
-    public void paafyld(Medarbejder medarbejder,Batch batch, LocalDate startDato, int antalLiterPaafyldt){
-        if (this.batch == null){
+    public void paafyld(Medarbejder medarbejder, Batch batch, LocalDate startDato, int antalLiterPaafyldt) {
+        if (this.batch == null) {
             medarbejderer[0] = medarbejder;
             this.batch = batch;
             this.startDato = startDato;
             this.antalLiterPaafyldt = antalLiterPaafyldt;
         }
     }
-    public Set<Flaske> aftap(Medarbejder medarbejder, LocalDate slutDato, String flaskeNavn){
-        if (this.batch != null){
-            Set<Flaske> flasker = new HashSet<>();
+
+    public Map<String, Integer> aftap(Medarbejder medarbejder, LocalDate slutDato, String flaskeNavn) {
+        if (this.batch != null) {
+            Map<String, Integer> flasker = new HashMap<>();
             medarbejderer[1] = medarbejder;
             this.slutDato = slutDato;
+
             for (int i = 0; i < antalLiterPaafyldt; i++) {
                 Flaske flaske = new Flaske(1, flaskeNavn, this);
-                flasker.add(flaske);
+
+                if (!flasker.keySet().contains(flaskeNavn)) {
+                    flasker.put(flaskeNavn, 1);
+                } else {
+                    flasker.put(flaskeNavn, flasker.get(flaskeNavn) + 1);
+                }
             }
             this.antalLiterPaafyldt = 0;
             this.batch = null;
