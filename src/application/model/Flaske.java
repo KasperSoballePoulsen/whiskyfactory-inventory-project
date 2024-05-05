@@ -23,7 +23,7 @@ public class Flaske {
         return navn;
     }
 
-    public String historik(){
+    public String historik() {
         String res = "";
         res += "Batch: " + fad.getBatch().getNavn() + "\n";
         res += "Korn sort: " + fad.getBatch().getKornsort() + "\n";
@@ -37,11 +37,11 @@ public class Flaske {
         return res;
     }
 
-    public void historikPaaFil(String filename){
+    public void historikPaaFil(String filename) {
         try {
             PrintWriter printWriter = new PrintWriter(filename);
             printWriter.println(historik());
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
