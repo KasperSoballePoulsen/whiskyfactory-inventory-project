@@ -19,6 +19,7 @@ public class Fad {
 
 
     public Fad(int nummer, String type, int stoerrelse, String lager, String leverandoer) {
+        batch = null;
         this.nummer = nummer;
         this.type = type;
         this.stoerrelse = stoerrelse;
@@ -75,7 +76,7 @@ public class Fad {
     }
 
     public void paafyld(Medarbejder medarbejder,Batch batch, LocalDate startDato, int antalLiterPaafyldt){
-        if (this.batch.equals(null)){
+        if (this.batch == null){
             medarbejderer[0] = medarbejder;
             this.batch = batch;
             this.startDato = startDato;
@@ -83,7 +84,7 @@ public class Fad {
         }
     }
     public Set<Flaske> aftap(Medarbejder medarbejder, LocalDate slutDato, String flaskeNavn){
-        if (!this.batch.equals(null)){
+        if (this.batch != null){
             Set<Flaske> flasker = new HashSet<>();
             medarbejderer[1] = medarbejder;
             this.slutDato = slutDato;
