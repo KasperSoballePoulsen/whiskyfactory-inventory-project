@@ -42,7 +42,7 @@ public class Fad {
         return stoerrelse;
     }
 
-    public String getLager() {
+    public Lager getLager() {
         return lager;
     }
 
