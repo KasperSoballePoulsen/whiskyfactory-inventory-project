@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 public class Flaske {
     private int liter;
     private String navn;
-
     private Fad fad;
 
     public Flaske(int liter, String navn, Fad fad) {
@@ -28,12 +27,12 @@ public class Flaske {
         res += "Batch: " + fad.getBatch().getNavn() + "\n";
         res += "Korn sort: " + fad.getBatch().getKornsort() + "\n";
         res += "Malt batch: " + fad.getBatch().getMaltBatch() + "\n";
-        res += "Startede destillation: " + fad.getBatch().getStartDato() + " og sluttede: " + fad.getBatch().getSlutDato() + "\n";
+        res += "Startede destillation: " + fad.getBatch().getStartdato() + " og sluttede: " + fad.getBatch().getSlutdato() + "\n";
         res += "fad: " + fad.getNummer() + "\n";
         res += "type: " + fad.getType() + "\n";
         res += "leverandør: " + fad.getLeverandoer() + "\n";
         res += "lå på lager: " + fad.getLager() + "\n";
-        res += "lagt på fad: " + fad.getStartDato() + " og blev tappet " + fad.getSlutDato() + "\n";
+        res += "lagt på fad: " + fad.getStartdato() + " og blev tappet " + fad.getSlutdato() + "\n";
         return res;
     }
 

@@ -13,10 +13,10 @@ public class BatchTest {
         Batch batchTest = new Batch("testNavn", "testKorn", LocalDate.of(2024, 05, 02), LocalDate.of(2024, 05, 04), "testMalt", 10, 50.2, new Medarbejder("testMNavn"));
         assertEquals("testNavn", batchTest.getNavn());
         assertEquals("testKorn", batchTest.getKornsort());
-        assertEquals(LocalDate.of(2024, 05, 02), batchTest.getStartDato());
-        assertEquals(LocalDate.of(2024, 05, 04), batchTest.getSlutDato());
+        assertEquals(LocalDate.of(2024, 05, 02), batchTest.getStartdato());
+        assertEquals(LocalDate.of(2024, 05, 04), batchTest.getSlutdato());
         assertEquals("testMalt", batchTest.getMaltBatch());
         assertEquals(10, batchTest.getMængdeVæskeILiter());
-        assertEquals(50.2, batchTest.getAlkoholProcent());
+        assertEquals(50.2, batchTest.getAlkoholprocent());
     }
 }
