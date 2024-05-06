@@ -14,12 +14,12 @@ public class Fad {
     private LocalDate startdato;
     private LocalDate slutdato;
 
-    private Batch batch;
+    private Destilat destilat;
     private Medarbejder[] medarbejderer;
 
 
     public Fad(int nummer, String type, int stoerrelse, String lager, String leverandoer) {
-        batch = null;
+        destilat = null;
         this.nummer = nummer;
         this.type = type;
         this.stoerrelse = stoerrelse;
@@ -64,8 +64,8 @@ public class Fad {
         return slutdato;
     }
 
-    public Batch getBatch() {
-        return batch;
+    public Destilat getDestilat() {
+        return destilat;
     }
 
     public Medarbejder getPaafylder() {
@@ -76,20 +76,20 @@ public class Fad {
         return medarbejderer[1];
     }
 
-    public void paafyld(Medarbejder medarbejder, Batch batch, LocalDate startDato, int antalLiterPaafyldt) {
-        if (this.batch == null) {
+    public void paafyld(Medarbejder medarbejder, Destilat destilat, LocalDate startdato, int antalLiterPaafyldt) {
+        if (this.destilat == null) {
             medarbejderer[0] = medarbejder;
-            this.batch = batch;
-            this.startdato = startDato;
+            this.destilat = destilat;
+            this.startdato = startdato;
             this.antalLiterPaafyldt = antalLiterPaafyldt;
         }
     }
 
-    public Map<String, Integer> aftap(Medarbejder medarbejder, LocalDate slutDato, String flaskeNavn) {
-        if (this.batch != null) {
+    public Map<String, Integer> aftap(Medarbejder medarbejder, LocalDate slutdato, String flaskeNavn) {
+        if (this.destilat != null) {
             Map<String, Integer> flasker = new HashMap<>();
             medarbejderer[1] = medarbejder;
-            this.slutdato = slutDato;
+            this.slutdato = slutdato;
 
             for (int i = 0; i < antalLiterPaafyldt; i++) {
                 Flaske flaske = new Flaske(1, flaskeNavn, this);
@@ -101,7 +101,7 @@ public class Fad {
                 }
             }
             this.antalLiterPaafyldt = 0;
-            this.batch = null;
+            this.destilat = null;
             return flasker;
         } else return null;
 
