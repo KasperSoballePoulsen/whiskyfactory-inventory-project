@@ -7,18 +7,18 @@ public class Destilat {
     private String kornsort;
     private LocalDate startdato;
     private LocalDate slutdato;
-    private String maltDestilat;
-    private int mængdeVæskeILiter;
+    private String maltdestilat;
+    private int maengdeVaeskeILiter;
     private double alkoholprocent;
     private Medarbejder medarbejder;
 
-    public Destilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltDestilat, int mængdeVæskeILiter, double alkoholprocent, Medarbejder medarbejder) {
+    public Destilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, Medarbejder medarbejder) {
         this.navn = navn;
         this.kornsort = kornsort;
         this.startdato = startdato;
         this.slutdato = slutdato;
-        this.maltDestilat = maltDestilat;
-        this.mængdeVæskeILiter = mængdeVæskeILiter;
+        this.maltdestilat = maltdestilat;
+        this.maengdeVaeskeILiter = maengdeVaeskeILiter;
         this.alkoholprocent = alkoholprocent;
         this.medarbejder = medarbejder;
     }
@@ -39,12 +39,12 @@ public class Destilat {
         return slutdato;
     }
 
-    public String getMaltDestilat() {
-        return maltDestilat;
+    public String getMaltdestilat() {
+        return maltdestilat;
     }
 
-    public int getMængdeVæskeILiter() {
-        return mængdeVæskeILiter;
+    public int getMaengdeVaeskeILiter() {
+        return maengdeVaeskeILiter;
     }
 
     public double getAlkoholprocent() {

@@ -26,7 +26,7 @@ public class Flaske {
         String res = "";
         res += "Batch: " + fad.getDestilat().getNavn() + "\n";
         res += "Korn sort: " + fad.getDestilat().getKornsort() + "\n";
-        res += "Malt batch: " + fad.getDestilat().getMaltDestilat() + "\n";
+        res += "Malt batch: " + fad.getDestilat().getMaltdestilat() + "\n";
         res += "Startede destillation: " + fad.getDestilat().getStartdato() + " og sluttede: " + fad.getDestilat().getSlutdato() + "\n";
         res += "fad: " + fad.getNummer() + "\n";
         res += "type: " + fad.getType() + "\n";
