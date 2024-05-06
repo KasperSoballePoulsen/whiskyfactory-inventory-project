@@ -43,4 +43,13 @@ public class Lager {
          throw new IndexOutOfBoundsException("lager er fyldt");
         }
     }
+    public int antalLedigePladser(){
+        int k = 0;
+        for (int i = 0; i < pladser.length; i++) {
+            if (pladser[i] == null){
+                k++;
+            }
+        }
+        return k;
+    }
 }
