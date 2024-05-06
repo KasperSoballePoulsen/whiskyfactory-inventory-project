@@ -5,21 +5,21 @@ import java.time.LocalDate;
 public class Batch {
     private String navn;
     private String kornsort;
-    private LocalDate startDato;
-    private LocalDate slutDato;
+    private LocalDate startdato;
+    private LocalDate slutdato;
     private String maltBatch;
     private int mængdeVæskeILiter;
-    private double alkoholProcent;
+    private double alkoholprocent;
     private Medarbejder medarbejder;
 
     public Batch(String navn, String kornsort, LocalDate startDato, LocalDate slutDato, String maltBatch, int mængdeVæskeILiter, double alkoholProcent, Medarbejder medarbejder) {
         this.navn = navn;
         this.kornsort = kornsort;
-        this.startDato = startDato;
-        this.slutDato = slutDato;
+        this.startdato = startDato;
+        this.slutdato = slutDato;
         this.maltBatch = maltBatch;
         this.mængdeVæskeILiter = mængdeVæskeILiter;
-        this.alkoholProcent = alkoholProcent;
+        this.alkoholprocent = alkoholProcent;
         this.medarbejder = medarbejder;
     }
 
@@ -31,12 +31,12 @@ public class Batch {
         return kornsort;
     }
 
-    public LocalDate getStartDato() {
-        return startDato;
+    public LocalDate getStartdato() {
+        return startdato;
     }
 
-    public LocalDate getSlutDato() {
-        return slutDato;
+    public LocalDate getSlutdato() {
+        return slutdato;
     }
 
     public String getMaltBatch() {
@@ -47,7 +47,7 @@ public class Batch {
         return mængdeVæskeILiter;
     }
 
-    public double getAlkoholProcent() {
-        return alkoholProcent;
+    public double getAlkoholprocent() {
+        return alkoholprocent;
     }
 }

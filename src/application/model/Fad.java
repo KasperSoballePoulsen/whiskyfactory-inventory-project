@@ -2,9 +2,7 @@ package application.model;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class Fad {
     private int nummer;
@@ -13,8 +11,8 @@ public class Fad {
     private String lager;
     private int antalLiterPaafyldt;
     private String leverandoer;
-    private LocalDate startDato;
-    private LocalDate slutDato;
+    private LocalDate startdato;
+    private LocalDate slutdato;
 
     private Batch batch;
     private Medarbejder[] medarbejderer;
@@ -58,12 +56,12 @@ public class Fad {
 
     }
 
-    public LocalDate getStartDato() {
-        return startDato;
+    public LocalDate getStartdato() {
+        return startdato;
     }
 
-    public LocalDate getSlutDato() {
-        return slutDato;
+    public LocalDate getSlutdato() {
+        return slutdato;
     }
 
     public Batch getBatch() {
@@ -82,7 +80,7 @@ public class Fad {
         if (this.batch == null) {
             medarbejderer[0] = medarbejder;
             this.batch = batch;
-            this.startDato = startDato;
+            this.startdato = startDato;
             this.antalLiterPaafyldt = antalLiterPaafyldt;
         }
     }
@@ -91,7 +89,7 @@ public class Fad {
         if (this.batch != null) {
             Map<String, Integer> flasker = new HashMap<>();
             medarbejderer[1] = medarbejder;
-            this.slutDato = slutDato;
+            this.slutdato = slutDato;
 
             for (int i = 0; i < antalLiterPaafyldt; i++) {
                 Flaske flaske = new Flaske(1, flaskeNavn, this);
