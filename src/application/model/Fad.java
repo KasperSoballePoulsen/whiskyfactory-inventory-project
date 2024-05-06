@@ -8,7 +8,7 @@ public class Fad {
     private int nummer;
     private String type;
     private int stoerrelse;
-    private String lager;
+    private Lager lager;
     private int antalLiterPaafyldt;
     private String leverandoer;
     private LocalDate startdato;
@@ -18,7 +18,7 @@ public class Fad {
     private Medarbejder[] medarbejderer;
 
 
-    public Fad(int nummer, String type, int stoerrelse, String lager, String leverandoer) {
+    public Fad(int nummer, String type, int stoerrelse, Lager lager, String leverandoer) {
         destilat = null;
         this.nummer = nummer;
         this.type = type;
