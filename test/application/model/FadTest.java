@@ -12,27 +12,30 @@ class FadTest {
     private Medarbejder medarbejder;
     private Destilat destilat;
 
+    private Lager lager;
+
 
     @BeforeEach
     void setup() {
         medarbejder = new Medarbejder("Rasmus");
         destilat = new Destilat("Destilat1", "Byg", LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 02), "1", 37, 50.50, medarbejder);
+        lager = new Lager("Sall", 10);
     }
 
 
     @Test
     void testAtAlleVaerdierBliverOprettet() {
-        Fad fad = new Fad(1, "Bourbon", 37, "Sall", "USA");
+        Fad fad = new Fad(1, "Bourbon", 37, lager, "USA");
         assertEquals(1, fad.getNummer());
         assertEquals("Bourbon", fad.getType());
         assertEquals(37, fad.getStoerrelse());
-        assertEquals("Sall", fad.getLager());
+        assertEquals("Sall", fad.getLager().getNavn());
         assertEquals("USA", fad.getLeverandoer());
     }
 
     @Test
     void testAtFadetFaarSineVaerdierPaafyld() {
-        Fad fad = new Fad(1, "Bourbon", 37, "Sall", "USA");
+        Fad fad = new Fad(1, "Bourbon", 37, lager, "USA");
         assertEquals(null, fad.getDestilat());
         assertEquals(0, fad.getAntalLiterPaafyldt());
         assertEquals(null, fad.getPaafylder());
@@ -45,7 +48,7 @@ class FadTest {
 
     @Test
     void testAtFadIkkeKanOverfyldes() {
-        Fad fad = new Fad(1, "Bourbon", 37, "Sall", "USA");
+        Fad fad = new Fad(1, "Bourbon", 37, lager, "USA");
         assertThrows(IllegalArgumentException.class, () -> fad.paafyld(medarbejder, destilat, LocalDate.of(2024, 01, 03), 38));
     }
 }
