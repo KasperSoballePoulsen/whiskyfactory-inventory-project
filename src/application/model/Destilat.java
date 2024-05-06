@@ -2,24 +2,24 @@ package application.model;
 
 import java.time.LocalDate;
 
-public class Batch {
+public class Destilat {
     private String navn;
     private String kornsort;
     private LocalDate startdato;
     private LocalDate slutdato;
-    private String maltBatch;
+    private String maltDestilat;
     private int mængdeVæskeILiter;
     private double alkoholprocent;
     private Medarbejder medarbejder;
 
-    public Batch(String navn, String kornsort, LocalDate startDato, LocalDate slutDato, String maltBatch, int mængdeVæskeILiter, double alkoholProcent, Medarbejder medarbejder) {
+    public Destilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltDestilat, int mængdeVæskeILiter, double alkoholprocent, Medarbejder medarbejder) {
         this.navn = navn;
         this.kornsort = kornsort;
-        this.startdato = startDato;
-        this.slutdato = slutDato;
-        this.maltBatch = maltBatch;
+        this.startdato = startdato;
+        this.slutdato = slutdato;
+        this.maltDestilat = maltDestilat;
         this.mængdeVæskeILiter = mængdeVæskeILiter;
-        this.alkoholprocent = alkoholProcent;
+        this.alkoholprocent = alkoholprocent;
         this.medarbejder = medarbejder;
     }
 
@@ -39,8 +39,8 @@ public class Batch {
         return slutdato;
     }
 
-    public String getMaltBatch() {
-        return maltBatch;
+    public String getMaltDestilat() {
+        return maltDestilat;
     }
 
     public int getMængdeVæskeILiter() {

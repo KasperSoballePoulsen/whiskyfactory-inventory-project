@@ -24,10 +24,10 @@ public class Flaske {
 
     public String historik() {
         String res = "";
-        res += "Batch: " + fad.getBatch().getNavn() + "\n";
-        res += "Korn sort: " + fad.getBatch().getKornsort() + "\n";
-        res += "Malt batch: " + fad.getBatch().getMaltBatch() + "\n";
-        res += "Startede destillation: " + fad.getBatch().getStartdato() + " og sluttede: " + fad.getBatch().getSlutdato() + "\n";
+        res += "Batch: " + fad.getDestilat().getNavn() + "\n";
+        res += "Korn sort: " + fad.getDestilat().getKornsort() + "\n";
+        res += "Malt batch: " + fad.getDestilat().getMaltDestilat() + "\n";
+        res += "Startede destillation: " + fad.getDestilat().getStartdato() + " og sluttede: " + fad.getDestilat().getSlutdato() + "\n";
         res += "fad: " + fad.getNummer() + "\n";
         res += "type: " + fad.getType() + "\n";
         res += "leverandør: " + fad.getLeverandoer() + "\n";
@@ -36,9 +36,9 @@ public class Flaske {
         return res;
     }
 
-    public void historikPaaFil(String filename) {
+    public void historikPaaFil(String filnavn) {
         try {
-            PrintWriter printWriter = new PrintWriter(filename);
+            PrintWriter printWriter = new PrintWriter(filnavn);
             printWriter.println(historik());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
