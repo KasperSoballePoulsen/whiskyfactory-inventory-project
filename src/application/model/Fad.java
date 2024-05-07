@@ -15,7 +15,6 @@ public class Fad {
     private LocalDate startdato;
     private LocalDate slutdato;
 
-    private List<Destilat> destilater;
     private Medarbejder paafylder;
 
     private final List<Tapning> tapningList = new ArrayList<>();
@@ -27,7 +26,6 @@ public class Fad {
         this.type = type;
         this.stoerrelse = stoerrelse;
         this.lager = lager;
-        destilater = new ArrayList<>();
         this.leverandoer = leverandoer;
 
         nummerCount++;
@@ -65,10 +63,6 @@ public class Fad {
 
     public LocalDate getSlutdato() {
         return slutdato;
-    }
-
-    public Destilat getDestilat() {
-        return destilat;
     }
 
     public Medarbejder getPaafylder() {
