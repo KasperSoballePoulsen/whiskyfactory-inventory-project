@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Fad {
+    private static int nummerCount;
     private int nummer;
     private String type;
     private int stoerrelse;
@@ -15,21 +16,23 @@ public class Fad {
     private String leverandoer;
     private LocalDate startdato;
     private LocalDate slutdato;
-
     private Destilat destilat;
     private List<Medarbejder> medarbejderer;
 
 
-    public Fad(int nummer, String type, int stoerrelse, Lager lager, String leverandoer) {
+    public Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
         destilat = null;
-        this.nummer = nummer;
+        this.nummer = nummerCount + 1;
         this.type = type;
         this.stoerrelse = stoerrelse;
         this.lager = lager;
 
         this.leverandoer = leverandoer;
 
-        medarbejderer = new ArrayList<>();
+
+        medarbejderer = new Medarbejder[2];
+        nummerCount++;
+
     }
 
     public int getNummer() {
