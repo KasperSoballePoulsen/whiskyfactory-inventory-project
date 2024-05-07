@@ -2,23 +2,20 @@ package application.model;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Flaske {
     private int liter;
     private String navn;
-    private PaaFyldning paaFyldning;
+    private Tapning tapning;
 
     private double alkoholprocent;
 
-    public Flaske(String navn, double alkoholprocent, PaaFyldning paaFyldning) {
+    public Flaske(String navn, double alkoholprocent, Tapning tapning) {
         liter = 1;
         this.navn = navn;
         this.alkoholprocent = alkoholprocent;
-        this.paaFyldning = paaFyldning;
-        paaFyldning.addFlaske(this);
+        this.tapning = tapning;
+        tapning.addFlaske(this);
     }
 
     public int getLiter() {
@@ -34,7 +31,7 @@ public class Flaske {
 
     public String historik() {
         String res = "";
-        for (Fad fad : paaFyldning.getFade()) {
+        for (Fad fad : tapning.getFade()) {
             res += "Destilat: " + fad.getDestilat().getNavn() + "\n";
             res += "Korn sort: " + fad.getDestilat().getKornsort() + "\n";
             res += "Malt destilat: " + fad.getDestilat().getMaltdestilat() + "\n";
@@ -48,8 +45,8 @@ public class Flaske {
         return res;
     }
 
-    public PaaFyldning getPaaFyldning() {
-        return paaFyldning;
+    public Tapning getPaaFyldning() {
+        return tapning;
     }
 
     public void historikPaaFil(String filnavn) {

@@ -4,12 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaaFyldning {
+public class Tapning {
 
     private final List <Fad> fade = new ArrayList<>();
 
     private final List <Flaske> flasker = new ArrayList<>();
 
+    private LocalDate dato;
+
+
+    public Tapning(){
+        dato = LocalDate.now();
+    }
 
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);

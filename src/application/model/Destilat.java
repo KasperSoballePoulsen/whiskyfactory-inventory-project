@@ -12,6 +12,7 @@ public class Destilat {
     private double alkoholprocent;
     private Medarbejder medarbejder;
 
+
     public Destilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, Medarbejder medarbejder) {
         this.navn = navn;
         this.kornsort = kornsort;

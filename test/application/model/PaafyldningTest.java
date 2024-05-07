@@ -34,13 +34,13 @@ public class PaafyldningTest {
         List<Integer> mængdeTappet = new ArrayList<>();
         mængdeTappet.add(10);
         mængdeTappet.add(10);
-        PaaFyldning paaFyldning = new PaaFyldning();
-        paaFyldning.addFad(fad1);
-        paaFyldning.addFad(fad2);
-       List<Flaske> flaskeList = paaFyldning.fyldPaaFlasker(mængdeTappet,0,medarbejder,"Ralle Juice",50);
+        Tapning tapning = new Tapning();
+        tapning.addFad(fad1);
+        tapning.addFad(fad2);
+       List<Flaske> flaskeList = tapning.fyldPaaFlasker(mængdeTappet,0,medarbejder,"Ralle Juice",50);
         assertEquals(27,fad1.getAntalLiterPaafyldt());
         assertEquals(20,fad2.getAntalLiterPaafyldt());
-        assertEquals(paaFyldning,flaskeList.get(1).getPaaFyldning());
+        assertEquals(tapning,flaskeList.get(1).getPaaFyldning());
 
 
 

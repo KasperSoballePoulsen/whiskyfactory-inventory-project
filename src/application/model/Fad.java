@@ -18,7 +18,7 @@ public class Fad {
     private Destilat destilat;
     private Medarbejder paafylder;
 
-    private final List<PaaFyldning> paaFyldningList = new ArrayList<>();
+    private final List<Tapning> tapningList = new ArrayList<>();
 
 
     public Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
@@ -92,21 +92,21 @@ public class Fad {
         }
     }
 
-    public ArrayList<PaaFyldning> getPaaFyldninger() {
-        return new ArrayList<>(paaFyldningList);
+    public ArrayList<Tapning> getPaaFyldninger() {
+        return new ArrayList<>(tapningList);
     }
 
-    public void addPaaFyldning(PaaFyldning paaFyldning) {
-        if (!paaFyldningList.contains(paaFyldning)) {
-            paaFyldningList.add(paaFyldning);
-            paaFyldning.addFad(this);
+    public void addPaaFyldning(Tapning tapning) {
+        if (!tapningList.contains(tapning)) {
+            tapningList.add(tapning);
+            tapning.addFad(this);
         }
     }
 
-    public void removePaaFyldning(PaaFyldning paaFyldning) {
-        if (paaFyldningList.contains(paaFyldning)) {
-            paaFyldningList.remove(paaFyldning);
-            paaFyldning.removeFad(this);
+    public void removePaaFyldning(Tapning tapning) {
+        if (tapningList.contains(tapning)) {
+            tapningList.remove(tapning);
+            tapning.removeFad(this);
         }
     }
 
