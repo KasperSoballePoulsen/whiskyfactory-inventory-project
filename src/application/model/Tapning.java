@@ -13,10 +13,6 @@ public class Tapning {
     private LocalDate dato;
 
 
-    public Tapning(){
-        dato = LocalDate.now();
-    }
-
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);
     }
@@ -46,6 +42,7 @@ public class Tapning {
     }
 
     public List<Flaske> fyldPaaFlasker(List<Integer> literTapet, int Vand, Medarbejder medarbejder, String flaskeNavn, double alkoholprocent){
+        dato = LocalDate.now();
         List<Flaske> flasker = new ArrayList<>();
         int vaeske = Vand;
         for (int i = 0; i < fade.size(); i++) {

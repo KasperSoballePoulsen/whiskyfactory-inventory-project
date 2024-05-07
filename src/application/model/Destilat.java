@@ -1,6 +1,8 @@
 package application.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Destilat {
     private String navn;
@@ -11,6 +13,7 @@ public class Destilat {
     private int maengdeVaeskeILiter;
     private double alkoholprocent;
     private Medarbejder medarbejder;
+    private List<Paafyldning> paafyldninger;
 
 
     public Destilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, Medarbejder medarbejder) {
@@ -22,6 +25,7 @@ public class Destilat {
         this.maengdeVaeskeILiter = maengdeVaeskeILiter;
         this.alkoholprocent = alkoholprocent;
         this.medarbejder = medarbejder;
+        paafyldninger = new ArrayList<>();
     }
 
     public String getNavn() {
@@ -46,6 +50,12 @@ public class Destilat {
 
     public int getMaengdeVaeskeILiter() {
         return maengdeVaeskeILiter;
+    }
+    public void addPaafyldning(Paafyldning paafyldning){
+        if (!paafyldninger.contains(paafyldning)){
+            paafyldninger.add(paafyldning);
+            paafyldning.addDestilat(this);
+        }
     }
 
     public double getAlkoholprocent() {

@@ -15,19 +15,19 @@ public class Fad {
     private LocalDate startdato;
     private LocalDate slutdato;
 
-    private Destilat destilat;
+    private List<Destilat> destilater;
     private Medarbejder paafylder;
 
     private final List<Tapning> tapningList = new ArrayList<>();
 
 
     public Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
-        destilat = null;
+
         this.nummer = nummerCount + 1;
         this.type = type;
         this.stoerrelse = stoerrelse;
         this.lager = lager;
-
+        destilater = new ArrayList<>();
         this.leverandoer = leverandoer;
 
         nummerCount++;
@@ -75,13 +75,10 @@ public class Fad {
         return paafylder;
     }
 
-    public void paafyld(Medarbejder medarbejder, Destilat destilat, LocalDate startdato, int antalLiterPaafyldt) {
-        if (this.destilat == null) {
-            this.paafylder = medarbejder;
-            this.destilat = destilat;
-            this.startdato = startdato;
-            this.antalLiterPaafyldt = antalLiterPaafyldt;
-        }
+    public void paafyld(int antalLiterPaafyldt) {
+        if (this.antalLiterPaafyldt + antalLiterPaafyldt <= stoerrelse){
+            this.antalLiterPaafyldt += antalLiterPaafyldt;
+        } else throw new IllegalArgumentException("prøver at overfylde fadet");
     }
 
     public void aftap(int literTapet) {
