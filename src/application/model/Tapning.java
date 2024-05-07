@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Tapning {
 
-    private final List <Fad> fade = new ArrayList<>();
+    private final List<Fad> fade = new ArrayList<>();
 
-    private final List <Flaske> flasker = new ArrayList<>();
+    private final List<Flaske> flasker = new ArrayList<>();
 
     private LocalDate dato;
 
@@ -17,7 +17,7 @@ public class Tapning {
         return new ArrayList<>(flasker);
     }
 
-    public void addFlaske(Flaske flaske){
+    public void addFlaske(Flaske flaske) {
         if (!flasker.contains(flaske)) {
             flasker.add(flaske);
         }
@@ -41,7 +41,7 @@ public class Tapning {
         }
     }
 
-    public List<Flaske> fyldPaaFlasker(List<Integer> literTapet, int Vand, Medarbejder medarbejder, String flaskeNavn, double alkoholprocent){
+    public List<Flaske> fyldPaaFlasker(List<Integer> literTapet, int Vand, Medarbejder medarbejder, String flaskeNavn, double alkoholprocent) {
         dato = LocalDate.now();
         List<Flaske> flasker = new ArrayList<>();
         int vaeske = Vand;

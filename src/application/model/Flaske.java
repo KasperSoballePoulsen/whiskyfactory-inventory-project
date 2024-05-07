@@ -27,8 +27,6 @@ public class Flaske {
     }
 
 
-
-
     public String historik() {
         String res = "";
         for (Fad fad : tapning.getFade()) {

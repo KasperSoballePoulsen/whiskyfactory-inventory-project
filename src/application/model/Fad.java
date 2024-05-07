@@ -76,7 +76,7 @@ public class Fad {
     }
 
     public void paafyld(int antalLiterPaafyldt) {
-        if (this.antalLiterPaafyldt + antalLiterPaafyldt <= stoerrelse){
+        if (this.antalLiterPaafyldt + antalLiterPaafyldt <= stoerrelse) {
             this.antalLiterPaafyldt += antalLiterPaafyldt;
         } else throw new IllegalArgumentException("prøver at overfylde fadet");
     }

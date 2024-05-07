@@ -8,7 +8,8 @@ public class Paafyldning {
 
     private LocalDate dato;
     private Medarbejder medarbejder;
-    private List<Destilat> destilater = new ArrayList<>();;
+    private List<Destilat> destilater = new ArrayList<>();
+    ;
     private Fad fad;
 
     public LocalDate getDato() {
