@@ -15,8 +15,8 @@ public class DestilatTest {
         assertEquals("testKorn", batchTest.getKornsort());
         assertEquals(LocalDate.of(2024, 05, 02), batchTest.getStartdato());
         assertEquals(LocalDate.of(2024, 05, 04), batchTest.getSlutdato());
-        assertEquals("testMalt", batchTest.getMaltDestilat());
-        assertEquals(10, batchTest.getMængdeVæskeILiter());
+        assertEquals("testMalt", batchTest.getMaltdestilat());
+        assertEquals(10, batchTest.getMaengdeVaeskeILiter());
         assertEquals(50.2, batchTest.getAlkoholprocent());
     }
 }
