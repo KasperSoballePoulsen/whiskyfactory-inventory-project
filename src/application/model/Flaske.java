@@ -24,9 +24,9 @@ public class Flaske {
 
     public String historik() {
         String res = "";
-        res += "Batch: " + fad.getDestilat().getNavn() + "\n";
+        res += "Destilat: " + fad.getDestilat().getNavn() + "\n";
         res += "Korn sort: " + fad.getDestilat().getKornsort() + "\n";
-        res += "Malt batch: " + fad.getDestilat().getMaltdestilat() + "\n";
+        res += "Malt destilat: " + fad.getDestilat().getMaltdestilat() + "\n";
         res += "Startede destillation: " + fad.getDestilat().getStartdato() + " og sluttede: " + fad.getDestilat().getSlutdato() + "\n";
         res += "fad: " + fad.getNummer() + "\n";
         res += "type: " + fad.getType() + "\n";
