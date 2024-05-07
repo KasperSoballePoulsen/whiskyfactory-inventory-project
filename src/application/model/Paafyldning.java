@@ -41,6 +41,8 @@ public class Paafyldning {
         for (int i = 0; i < destilater.size(); i++) {
             Destilat destilat = destilater.get(i);
             int vaeske = liter.get(i);
+            fad.paafyld(vaeske, this);
+            destilat.setMaengdeVaeskeILiter(destilat.getMaengdeVaeskeILiter() - vaeske);
         }
     }
 

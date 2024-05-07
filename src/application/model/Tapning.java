@@ -27,17 +27,21 @@ public class Tapning {
         return new ArrayList<>(fade);
     }
 
+    public LocalDate getDato(){
+        return dato;
+    }
+
     public void addFad(Fad fad) {
         if (!fade.contains(fad)) {
             fade.add(fad);
-            fad.addPaaFyldning(this);
+            fad.addTapning(this);
         }
     }
 
     public void removeFad(Fad fad) {
         if (fade.contains(fad)) {
             fade.remove(fad);
-            fad.removePaaFyldning(this);
+            fad.removeTapning(this);
         }
     }
 
@@ -48,7 +52,7 @@ public class Tapning {
         for (int i = 0; i < fade.size(); i++) {
             Fad fad = fade.get(i);
             int liter = literTapet.get(i);
-            fad.aftap(liter);
+            fad.aftap(liter, this);
             vaeske += liter;
         }
 

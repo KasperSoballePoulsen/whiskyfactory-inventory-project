@@ -1,6 +1,5 @@
 package application.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +11,9 @@ public class Fad {
     private Lager lager;
     private int antalLiterPaafyldt;
     private String leverandoer;
-    private LocalDate startdato;
-    private LocalDate slutdato;
 
-    private Medarbejder paafylder;
-
-    private final List<Tapning> tapningList = new ArrayList<>();
+    private final List<Tapning> tapninger = new ArrayList<>();
+    private final List<Paafyldning> paafyldninger = new ArrayList<>();
 
 
     public Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
@@ -57,46 +53,41 @@ public class Fad {
         return leverandoer;
     }
 
-    public LocalDate getStartdato() {
-        return startdato;
+    public List<Paafyldning> getPaafyldninger(){
+        return new ArrayList<>(paafyldninger);
     }
 
-    public LocalDate getSlutdato() {
-        return slutdato;
-    }
 
-    public Medarbejder getPaafylder() {
-        return paafylder;
-    }
-
-    public void paafyld(int antalLiterPaafyldt) {
+    public void paafyld(int antalLiterPaafyldt, Paafyldning paafyldning) {
         if (this.antalLiterPaafyldt + antalLiterPaafyldt <= stoerrelse) {
             this.antalLiterPaafyldt += antalLiterPaafyldt;
+            paafyldninger.add(paafyldning);
         } else throw new IllegalArgumentException("prøver at overfylde fadet");
     }
 
-    public void aftap(int literTapet) {
+    public void aftap(int literTapet, Tapning tapning) {
         if (literTapet <= antalLiterPaafyldt) {
             antalLiterPaafyldt -= literTapet;
+            tapninger.add(tapning);
         } else {
             throw new IllegalArgumentException("der er ikke nok liter");
         }
     }
 
-    public ArrayList<Tapning> getPaaFyldninger() {
-        return new ArrayList<>(tapningList);
+    public ArrayList<Tapning> getTapninger() {
+        return new ArrayList<>(tapninger);
     }
 
-    public void addPaaFyldning(Tapning tapning) {
-        if (!tapningList.contains(tapning)) {
-            tapningList.add(tapning);
+    public void addTapning(Tapning tapning) {
+        if (!tapninger.contains(tapning)) {
+            tapninger.add(tapning);
             tapning.addFad(this);
         }
     }
 
-    public void removePaaFyldning(Tapning tapning) {
-        if (tapningList.contains(tapning)) {
-            tapningList.remove(tapning);
+    public void removeTapning(Tapning tapning) {
+        if (tapninger.contains(tapning)) {
+            tapninger.remove(tapning);
             tapning.removeFad(this);
         }
     }

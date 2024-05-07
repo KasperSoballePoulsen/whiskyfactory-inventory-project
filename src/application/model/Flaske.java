@@ -30,15 +30,21 @@ public class Flaske {
     public String historik() {
         String res = "";
         for (Fad fad : tapning.getFade()) {
-            res += "Destilat: " + fad.getDestilat().getNavn() + "\n";
-            res += "Korn sort: " + fad.getDestilat().getKornsort() + "\n";
-            res += "Malt destilat: " + fad.getDestilat().getMaltdestilat() + "\n";
-            res += "Startede destillation: " + fad.getDestilat().getStartdato() + " og sluttede: " + fad.getDestilat().getSlutdato() + "\n";
+            for (Paafyldning paafyldning : fad.getPaafyldninger()) {
+                for (Destilat destilat : paafyldning.getDestilater()) {
+
+                    res += "Destilat: " + destilat.getNavn() + "\n";
+                    res += "Korn sort: " + destilat.getKornsort() + "\n";
+                    res += "Malt destilat: " + destilat.getMaltdestilat() + "\n";
+                    res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
+                }
+            }
             res += "fad: " + fad.getNummer() + "\n";
             res += "type: " + fad.getType() + "\n";
             res += "leverandør: " + fad.getLeverandoer() + "\n";
             res += "lå på lager: " + fad.getLager().getNavn() + "\n";
-            res += "lagt på fad: " + fad.getStartdato() + " og blev tappet " + fad.getSlutdato() + "\n";
+            //mangler lige noget her
+            res += "lagt på fad: "   + " og blev tappet " + tapning.getDato() + "\n";
         }
         return res;
     }

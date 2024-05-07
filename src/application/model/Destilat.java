@@ -51,6 +51,9 @@ public class Destilat {
     public int getMaengdeVaeskeILiter() {
         return maengdeVaeskeILiter;
     }
+    public void setMaengdeVaeskeILiter(int vaeskeILiter){
+        maengdeVaeskeILiter = vaeskeILiter;
+    }
 
     public void addPaafyldning(Paafyldning paafyldning) {
         if (!paafyldninger.contains(paafyldning)) {
