@@ -14,8 +14,11 @@ public class Fad {
     private String leverandoer;
     private LocalDate startdato;
     private LocalDate slutdato;
+
     private Destilat destilat;
     private Medarbejder paafylder;
+
+    private final List<PaaFyldning> paaFyldningList = new ArrayList<>();
 
 
     public Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
@@ -27,8 +30,6 @@ public class Fad {
 
         this.leverandoer = leverandoer;
 
-
-        medarbejderer = new Medarbejder[2];
         nummerCount++;
 
     }
@@ -90,4 +91,23 @@ public class Fad {
             throw new IllegalArgumentException("der er ikke nok liter");
         }
     }
+
+    public ArrayList<PaaFyldning> getPaaFyldninger() {
+        return new ArrayList<>(paaFyldningList);
+    }
+
+    public void addPaaFyldning(PaaFyldning paaFyldning) {
+        if (!paaFyldningList.contains(paaFyldning)) {
+            paaFyldningList.add(paaFyldning);
+            paaFyldning.addFad(this);
+        }
+    }
+
+    public void removePaaFyldning(PaaFyldning paaFyldning) {
+        if (paaFyldningList.contains(paaFyldning)) {
+            paaFyldningList.remove(paaFyldning);
+            paaFyldning.removeFad(this);
+        }
+    }
+
 }
