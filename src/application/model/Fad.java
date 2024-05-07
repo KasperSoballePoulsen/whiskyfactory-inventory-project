@@ -1,7 +1,9 @@
 package application.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Fad {
@@ -15,7 +17,7 @@ public class Fad {
     private LocalDate slutdato;
 
     private Destilat destilat;
-    private Medarbejder[] medarbejderer;
+    private List<Medarbejder> medarbejderer;
 
 
     public Fad(int nummer, String type, int stoerrelse, Lager lager, String leverandoer) {
@@ -27,7 +29,7 @@ public class Fad {
 
         this.leverandoer = leverandoer;
 
-        medarbejderer = new Medarbejder[2];
+        medarbejderer = new ArrayList<>();
     }
 
     public int getNummer() {
@@ -69,41 +71,29 @@ public class Fad {
     }
 
     public Medarbejder getPaafylder() {
-        return medarbejderer[0];
+        return medarbejderer.get(0);
     }
 
-    public Medarbejder getAftapper() {
-        return medarbejderer[1];
+    public List<Medarbejder> getAftapper() {
+        return medarbejderer.subList(1, medarbejderer.size());
     }
 
     public void paafyld(Medarbejder medarbejder, Destilat destilat, LocalDate startdato, int antalLiterPaafyldt) {
         if (this.destilat == null) {
-            medarbejderer[0] = medarbejder;
+            medarbejderer.set(0,medarbejder);
             this.destilat = destilat;
             this.startdato = startdato;
             this.antalLiterPaafyldt = antalLiterPaafyldt;
         }
     }
 
-    public Map<String, Integer> aftap(Medarbejder medarbejder, LocalDate slutdato, String flaskeNavn) {
-        if (this.destilat != null) {
-            Map<String, Integer> flasker = new HashMap<>();
-            medarbejderer[1] = medarbejder;
+    public void aftap(Medarbejder medarbejder, int literTapet, LocalDate slutdato) {
+        if (literTapet <= antalLiterPaafyldt) {
             this.slutdato = slutdato;
-
-            for (int i = 0; i < antalLiterPaafyldt; i++) {
-                Flaske flaske = new Flaske(1, flaskeNavn, this);
-
-                if (!flasker.keySet().contains(flaskeNavn)) {
-                    flasker.put(flaskeNavn, 1);
-                } else {
-                    flasker.put(flaskeNavn, flasker.get(flaskeNavn) + 1);
-                }
-            }
-            this.antalLiterPaafyldt = 0;
-            this.destilat = null;
-            return flasker;
-        } else return null;
-
+            medarbejderer.add(medarbejder);
+            antalLiterPaafyldt -= literTapet;
+        } else {
+            throw new IllegalArgumentException("der er ikke nok liter");
+        }
     }
 }
