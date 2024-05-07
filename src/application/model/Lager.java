@@ -1,7 +1,5 @@
 package application.model;
 
-import java.util.NoSuchElementException;
-
 public class Lager {
     private Fad[] pladser;
     private String navn;
@@ -18,14 +16,16 @@ public class Lager {
     public String getNavn() {
         return navn;
     }
-    public Fad createFad(String type, int stoerrelse, String leverandør){
-        Fad fad = new Fad(type, stoerrelse,this, leverandør);
-        int pladsNr = findFørsteLedigePlads();
+
+    public Fad createFad(int nummer,String type, int stoerrelse, String leverandoer){
+        Fad fad = new Fad(nummer,type,stoerrelse,this,leverandoer);
+        int pladsNr = findLedigePlads();
         pladser[pladsNr] = fad;
         return fad;
     }
 
-    private int findFørsteLedigePlads(){
+
+    public int findLedigePlads(){
         boolean found = false;
         int i = 0;
         int k = 0;

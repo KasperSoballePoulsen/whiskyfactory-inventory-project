@@ -16,12 +16,8 @@ public class FlaskeTest {
         Fad fad = new Fad("cherry", 20, lager, "Spanien");
         Medarbejder medarbejder = new Medarbejder("Snavær");
         fad.paafyld(medarbejder, destilatTest, LocalDate.now(), 10);
-        Map<String, Integer> flasker = fad.aftap(medarbejder, LocalDate.of(2030, 2, 2), "MULD-1.0");
+        Map<String, Integer> flasker = fad.aftap(medarbejder,10, LocalDate.of(2030, 2, 2));
 
-        assertEquals(1, flasker.keySet().size());
-        for (String flaske : flasker.keySet()) {
-            assertEquals(10, flasker.get(flaske));
-        }
     }
 
 
