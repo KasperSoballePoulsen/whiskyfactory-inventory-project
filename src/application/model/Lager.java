@@ -4,10 +4,9 @@ import java.util.NoSuchElementException;
 
 public class Lager {
     private Fad[] pladser;
-
     private String navn;
 
-    public Lager(String navn, int antalPladser){
+    public Lager(String navn, int antalPladser) {
         pladser = new Fad[antalPladser];
         this.navn = navn;
     }
@@ -19,14 +18,14 @@ public class Lager {
     public String getNavn() {
         return navn;
     }
-    public Fad createFad(int nummer,String type, int stoerrelse, String leverandør){
-        Fad fad = new Fad(nummer,type,stoerrelse,this,leverandør);
+    public Fad createFad(String type, int stoerrelse, String leverandør){
+        Fad fad = new Fad(type, stoerrelse,this, leverandør);
         int pladsNr = findFørsteLedigePlads();
         pladser[pladsNr] = fad;
         return fad;
     }
 
-    public int findFørsteLedigePlads(){
+    private int findFørsteLedigePlads(){
         boolean found = false;
         int i = 0;
         int k = 0;
