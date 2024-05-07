@@ -26,8 +26,6 @@ public class Fad {
         this.lager = lager;
 
         this.leverandoer = leverandoer;
-
-        paafylder = new ArrayList<>();
     }
 
     public int getNummer() {
