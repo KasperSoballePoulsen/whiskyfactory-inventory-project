@@ -2,23 +2,20 @@ package application.model;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Flaske {
     private int liter;
     private String navn;
-    private PaaFyldning paaFyldning;
+    private Tapning tapning;
 
     private double alkoholprocent;
 
-    public Flaske(String navn, double alkoholprocent, PaaFyldning paaFyldning) {
+    public Flaske(String navn, double alkoholprocent, Tapning tapning) {
         liter = 1;
         this.navn = navn;
         this.alkoholprocent = alkoholprocent;
-        this.paaFyldning = paaFyldning;
-        paaFyldning.addFlaske(this);
+        this.tapning = tapning;
+        tapning.addFlaske(this);
     }
 
     public int getLiter() {
@@ -30,26 +27,30 @@ public class Flaske {
     }
 
 
-
-
     public String historik() {
         String res = "";
-        for (Fad fad : paaFyldning.getFade()) {
-            res += "Destilat: " + fad.getDestilat().getNavn() + "\n";
-            res += "Korn sort: " + fad.getDestilat().getKornsort() + "\n";
-            res += "Malt destilat: " + fad.getDestilat().getMaltdestilat() + "\n";
-            res += "Startede destillation: " + fad.getDestilat().getStartdato() + " og sluttede: " + fad.getDestilat().getSlutdato() + "\n";
+        for (Fad fad : tapning.getFade()) {
+            for (Paafyldning paafyldning : fad.getPaafyldninger()) {
+                for (Destilat destilat : paafyldning.getDestilater()) {
+
+                    res += "Destilat: " + destilat.getNavn() + "\n";
+                    res += "Korn sort: " + destilat.getKornsort() + "\n";
+                    res += "Malt destilat: " + destilat.getMaltdestilat() + "\n";
+                    res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
+                }
+            }
             res += "fad: " + fad.getNummer() + "\n";
             res += "type: " + fad.getType() + "\n";
             res += "leverandør: " + fad.getLeverandoer() + "\n";
             res += "lå på lager: " + fad.getLager().getNavn() + "\n";
-            res += "lagt på fad: " + fad.getStartdato() + " og blev tappet " + fad.getSlutdato() + "\n";
+            //mangler lige noget her
+            res += "lagt på fad: "   + " og blev tappet " + tapning.getDato() + "\n";
         }
         return res;
     }
 
-    public PaaFyldning getPaaFyldning() {
-        return paaFyldning;
+    public Tapning getPaaFyldning() {
+        return tapning;
     }
 
     public void historikPaaFil(String filnavn) {

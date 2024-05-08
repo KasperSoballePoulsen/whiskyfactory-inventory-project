@@ -4,18 +4,20 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaaFyldning {
+public class Tapning {
 
-    private final List <Fad> fade = new ArrayList<>();
+    private final List<Fad> fade = new ArrayList<>();
 
-    private final List <Flaske> flasker = new ArrayList<>();
+    private final List<Flaske> flasker = new ArrayList<>();
+
+    private LocalDate dato;
 
 
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);
     }
 
-    public void addFlaske(Flaske flaske){
+    public void addFlaske(Flaske flaske) {
         if (!flasker.contains(flaske)) {
             flasker.add(flaske);
         }
@@ -25,27 +27,32 @@ public class PaaFyldning {
         return new ArrayList<>(fade);
     }
 
+    public LocalDate getDato(){
+        return dato;
+    }
+
     public void addFad(Fad fad) {
         if (!fade.contains(fad)) {
             fade.add(fad);
-            fad.addPaaFyldning(this);
+            fad.addTapning(this);
         }
     }
 
     public void removeFad(Fad fad) {
         if (fade.contains(fad)) {
             fade.remove(fad);
-            fad.removePaaFyldning(this);
+            fad.removeTapning(this);
         }
     }
 
-    public List<Flaske> fyldPaaFlasker(List<Integer> literTapet, int Vand, Medarbejder medarbejder, String flaskeNavn, double alkoholprocent){
+    public List<Flaske> fyldPaaFlasker(List<Integer> literTapet, int Vand, Medarbejder medarbejder, String flaskeNavn, double alkoholprocent) {
+        dato = LocalDate.now();
         List<Flaske> flasker = new ArrayList<>();
         int vaeske = Vand;
         for (int i = 0; i < fade.size(); i++) {
             Fad fad = fade.get(i);
             int liter = literTapet.get(i);
-            fad.aftap(liter);
+            fad.aftap(liter, this);
             vaeske += liter;
         }
 

@@ -17,21 +17,21 @@ public class Lager {
         return navn;
     }
 
-    public Fad createFad(String type, int stoerrelse, String leverandoer){
-        Fad fad = new Fad(type,stoerrelse,this,leverandoer);
+    public Fad createFad(String type, int stoerrelse, String leverandoer) {
+        Fad fad = new Fad(type, stoerrelse, this, leverandoer);
         int pladsNr = findLedigePlads();
         pladser[pladsNr] = fad;
         return fad;
     }
 
 
-    public int findLedigePlads(){
+    public int findLedigePlads() {
         boolean found = false;
         int i = 0;
         int k = 0;
-        while (!found && i < pladser.length){
-             k = i;
-            if (pladser[k] == null){
+        while (!found && i < pladser.length) {
+            k = i;
+            if (pladser[k] == null) {
                 found = true;
             }
             i++;
@@ -39,13 +39,14 @@ public class Lager {
         if (found) {
             return k;
         } else {
-         throw new IndexOutOfBoundsException("lager er fyldt");
+            throw new IndexOutOfBoundsException("lager er fyldt");
         }
     }
-    public int antalLedigePladser(){
+
+    public int antalLedigePladser() {
         int k = 0;
         for (int i = 0; i < pladser.length; i++) {
-            if (pladser[i] == null){
+            if (pladser[i] == null) {
                 k++;
             }
         }

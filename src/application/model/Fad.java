@@ -1,6 +1,5 @@
 package application.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,22 +11,17 @@ public class Fad {
     private Lager lager;
     private int antalLiterPaafyldt;
     private String leverandoer;
-    private LocalDate startdato;
-    private LocalDate slutdato;
 
-    private Destilat destilat;
-    private Medarbejder paafylder;
-
-    private final List<PaaFyldning> paaFyldningList = new ArrayList<>();
+    private final List<Tapning> tapninger = new ArrayList<>();
+    private final List<Paafyldning> paafyldninger = new ArrayList<>();
 
 
     public Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
-        destilat = null;
+
         this.nummer = nummerCount + 1;
         this.type = type;
         this.stoerrelse = stoerrelse;
         this.lager = lager;
-
         this.leverandoer = leverandoer;
 
         nummerCount++;
@@ -59,54 +53,42 @@ public class Fad {
         return leverandoer;
     }
 
-    public LocalDate getStartdato() {
-        return startdato;
+    public List<Paafyldning> getPaafyldninger(){
+        return new ArrayList<>(paafyldninger);
     }
 
-    public LocalDate getSlutdato() {
-        return slutdato;
+
+    public void paafyld(int antalLiterPaafyldt, Paafyldning paafyldning) {
+        if (this.antalLiterPaafyldt + antalLiterPaafyldt <= stoerrelse) {
+            this.antalLiterPaafyldt += antalLiterPaafyldt;
+            paafyldninger.add(paafyldning);
+        } else throw new IllegalArgumentException("prøver at overfylde fadet");
     }
 
-    public Destilat getDestilat() {
-        return destilat;
-    }
-
-    public Medarbejder getPaafylder() {
-        return paafylder;
-    }
-
-    public void paafyld(Medarbejder medarbejder, Destilat destilat, LocalDate startdato, int antalLiterPaafyldt) {
-        if (this.destilat == null) {
-            this.paafylder = medarbejder;
-            this.destilat = destilat;
-            this.startdato = startdato;
-            this.antalLiterPaafyldt = antalLiterPaafyldt;
-        }
-    }
-
-    public void aftap(int literTapet) {
+    public void aftap(int literTapet, Tapning tapning) {
         if (literTapet <= antalLiterPaafyldt) {
             antalLiterPaafyldt -= literTapet;
+            tapninger.add(tapning);
         } else {
             throw new IllegalArgumentException("der er ikke nok liter");
         }
     }
 
-    public ArrayList<PaaFyldning> getPaaFyldninger() {
-        return new ArrayList<>(paaFyldningList);
+    public ArrayList<Tapning> getTapninger() {
+        return new ArrayList<>(tapninger);
     }
 
-    public void addPaaFyldning(PaaFyldning paaFyldning) {
-        if (!paaFyldningList.contains(paaFyldning)) {
-            paaFyldningList.add(paaFyldning);
-            paaFyldning.addFad(this);
+    public void addTapning(Tapning tapning) {
+        if (!tapninger.contains(tapning)) {
+            tapninger.add(tapning);
+            tapning.addFad(this);
         }
     }
 
-    public void removePaaFyldning(PaaFyldning paaFyldning) {
-        if (paaFyldningList.contains(paaFyldning)) {
-            paaFyldningList.remove(paaFyldning);
-            paaFyldning.removeFad(this);
+    public void removeTapning(Tapning tapning) {
+        if (tapninger.contains(tapning)) {
+            tapninger.remove(tapning);
+            tapning.removeFad(this);
         }
     }
 
