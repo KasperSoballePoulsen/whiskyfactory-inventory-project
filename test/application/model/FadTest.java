@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FadTest {
 
-    private Medarbejder medarbejder;
+    private String medarbejder;
     private Destilat destilat;
 
     private Lager lager;
@@ -17,7 +17,7 @@ class FadTest {
 
     @BeforeEach
     void setup() {
-        medarbejder = new Medarbejder("Rasmus");
+        medarbejder = "Medarbejder";
         destilat = new Destilat("Destilat1", "Byg", LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 02), "1", 37, 50.50, medarbejder);
         lager = new Lager("Sall", 10);
     }

@@ -19,13 +19,13 @@ public class Lager {
 
     public Fad createFad(String type, int stoerrelse, String leverandoer) {
         Fad fad = new Fad(type, stoerrelse, this, leverandoer);
-        int pladsNr = findLedigePlads();
+        int pladsNr = findLedigPlads();
         pladser[pladsNr] = fad;
         return fad;
     }
 
 
-    public int findLedigePlads() {
+    public int findLedigPlads() {
         boolean found = false;
         int i = 0;
         int k = 0;

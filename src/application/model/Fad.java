@@ -8,10 +8,9 @@ public class Fad {
     private int nummer;
     private String type;
     private int stoerrelse;
-    private Lager lager;
     private int antalLiterPaafyldt;
     private String leverandoer;
-
+    private Lager lager;
     private final List<Tapning> tapninger = new ArrayList<>();
     private final List<Paafyldning> paafyldninger = new ArrayList<>();
 

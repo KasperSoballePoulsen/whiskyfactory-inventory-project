@@ -7,12 +7,9 @@ import java.util.List;
 public class Tapning {
 
     private final List<Fad> fade = new ArrayList<>();
-
     private final List<Flaske> flasker = new ArrayList<>();
-
+    private String medarbejder;
     private LocalDate dato;
-
-
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);
     }
@@ -45,13 +42,14 @@ public class Tapning {
         }
     }
 
-    public List<Flaske> fyldPaaFlasker(List<Integer> literTapet, int Vand, Medarbejder medarbejder, String flaskeNavn, double alkoholprocent) {
+    public List<Flaske> fyldPaaFlasker(List<Integer> literTappet, int Vand, String medarbejder, String flaskeNavn, double alkoholprocent) {
+        this.medarbejder = medarbejder;
         dato = LocalDate.now();
         List<Flaske> flasker = new ArrayList<>();
         int vaeske = Vand;
         for (int i = 0; i < fade.size(); i++) {
             Fad fad = fade.get(i);
-            int liter = literTapet.get(i);
+            int liter = literTappet.get(i);
             fad.aftap(liter, this);
             vaeske += liter;
         }
