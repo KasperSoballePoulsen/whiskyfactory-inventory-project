@@ -6,9 +6,9 @@ import java.io.PrintWriter;
 public class Flaske {
     private int liter;
     private String navn;
+    private double alkoholprocent;
     private Tapning tapning;
 
-    private double alkoholprocent;
 
     public Flaske(String navn, double alkoholprocent, Tapning tapning) {
         liter = 1;

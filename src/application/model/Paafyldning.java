@@ -7,16 +7,15 @@ import java.util.List;
 public class Paafyldning {
 
     private LocalDate dato;
-    private Medarbejder medarbejder;
-    private List<Destilat> destilater = new ArrayList<>();
-    ;
+    private String medarbejder;
+    private final List<Destilat> destilater = new ArrayList<>();
     private Fad fad;
 
     public LocalDate getDato() {
         return dato;
     }
 
-    public Medarbejder getMedarbejder() {
+    public String getMedarbejder() {
         return medarbejder;
     }
 
@@ -35,7 +34,7 @@ public class Paafyldning {
         }
     }
 
-    public void fyldFad(List<Integer> liter, Medarbejder medarbejder) {
+    public void fyldFad(List<Integer> liter, String medarbejder) {
         this.medarbejder = medarbejder;
         dato = LocalDate.now();
         for (int i = 0; i < destilater.size(); i++) {

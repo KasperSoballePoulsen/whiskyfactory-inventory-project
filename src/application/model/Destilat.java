@@ -12,11 +12,11 @@ public class Destilat {
     private String maltdestilat;
     private int maengdeVaeskeILiter;
     private double alkoholprocent;
-    private Medarbejder medarbejder;
-    private List<Paafyldning> paafyldninger;
+    private String medarbejder;
+    private final List<Paafyldning> paafyldninger;
 
 
-    public Destilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, Medarbejder medarbejder) {
+    public Destilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
         this.navn = navn;
         this.kornsort = kornsort;
         this.startdato = startdato;
