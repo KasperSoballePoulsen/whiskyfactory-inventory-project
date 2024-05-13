@@ -9,6 +9,27 @@ import java.util.List;
 
 public class Controller {
 
+
+    public static List<Lager> getLager(){
+        return Storage.getLagerer();
+    }
+
+    public static List<Destilat>getDestilater(){
+
+        return Storage.getDestilater();
+    }
+
+    public static List<Paafyldning> getPaafyldning(){
+        return Storage.getPaafyldninger();
+    }
+
+    public static List<Tapning> getTapninger(){
+        return Storage.getTapninger();
+    }
+
+    public static List<Flaske> PaafyldFlasker(Tapning tapning, List<Integer> literTappet, int vand, String medarbejder, String flaskeNavn, double alkoholprocent){
+        return tapning.fyldPaaFlasker(literTappet, vand, medarbejder,flaskeNavn,alkoholprocent);
+
     public static Destilat opretDestilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
         Destilat destilat = new Destilat(navn, kornsort, startdato, slutdato, maltdestilat, maengdeVaeskeILiter, alkoholprocent, medarbejder);
         Storage.addDestilat(destilat);
@@ -62,5 +83,13 @@ public class Controller {
         return fade;
     }
 
+    public static void fyldFad(Paafyldning paafyldning, List<Integer> liter, String medarbejder){
+        paafyldning.fyldFad(liter, medarbejder);
+    }
 
+    public static Lager opretLager(String navn, int antalPladser){
+        Lager lager = new Lager(navn, antalPladser);
+        Storage.addLager(lager);
+        return lager;
+    }
 }
