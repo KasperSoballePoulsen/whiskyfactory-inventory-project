@@ -46,11 +46,17 @@ public class FadPane extends GridPane {
 
         Button btnAftapFad = new Button("Aftap fad");
         this.add(btnAftapFad,3,5);
+        btnAftapFad.setOnAction(event -> openTapning());
 
     }
 
     public void openTapning(){
         TapningWindow dia = new TapningWindow("Tapning", lvwFyldteFade.getSelectionModel().getSelectedItems());
+        dia.showAndWait();
+    }
+
+    public void OpretFad(){
+        OpretFadWindow dia = new OpretFadWindow("Opret Fad");
         dia.showAndWait();
     }
 
