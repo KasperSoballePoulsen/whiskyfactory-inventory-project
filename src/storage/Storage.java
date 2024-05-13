@@ -9,7 +9,6 @@ public class Storage {
 
 
     private final List<Lager> lagerer = new ArrayList<>();
-    private final List<Medarbejder> medarbejderer = new ArrayList<>();
     private final List<Destilat> destilater = new ArrayList<>();
     private final List<Tapning> tapninger = new ArrayList<>();
     private final List<Paafyldning> paafyldninger = new ArrayList<>();
@@ -19,9 +18,6 @@ public class Storage {
         lagerer.add(lager);
     }
 
-    public void addMedarbejder(Medarbejder medarbejder) {
-        medarbejderer.add(medarbejder);
-    }
 
     public void addDestilat(Destilat destilat) {
         destilater.add(destilat);
@@ -39,9 +35,6 @@ public class Storage {
         return new ArrayList<>(lagerer);
     }
 
-    public List<Medarbejder> getMedarbejderer() {
-        return new ArrayList<>(medarbejderer);
-    }
 
     public List<Destilat> getDestilater() {
         return new ArrayList<>(destilater);

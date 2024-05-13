@@ -65,4 +65,8 @@ public class Destilat {
     public double getAlkoholprocent() {
         return alkoholprocent;
     }
+
+    public String toString(){
+        return navn;
+    }
 }

@@ -61,4 +61,8 @@ public class Flaske {
             e.printStackTrace();
         }
     }
+
+    public String toString(){
+        return navn + " " + alkoholprocent + "%";
+    }
 }
