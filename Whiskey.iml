@@ -12,5 +12,6 @@
     <orderEntry type="library" name="junit.jupiter" level="project" />
     <orderEntry type="library" name="javafx17" level="application" />
     <orderEntry type="library" exported="" name="javafx" level="application" />
+    <orderEntry type="library" exported="" name="javafx.base" level="application" />
   </component>
 </module>

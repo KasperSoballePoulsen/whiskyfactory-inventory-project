@@ -1,14 +1,9 @@
 package gui;
 
-import application.controller.Controller;
-import application.model.Fad;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -35,15 +30,25 @@ public class StartWindow extends Application {
     private void initTabPane(TabPane tabPane) {
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-        Tab tabFade = new Tab("Fade");
+        Tab tabFad = new Tab("Fad");
+        Tab tabDestilat = new Tab("Destilat");
+        Tab tabFlaske = new Tab("Flaske");
 
-        FadePane fadePane = new FadePane();
-        tabFade.setContent(fadePane);
+        FadPane fadPane = new FadPane();
+        tabFad.setContent(fadPane);
+        DestilatPane destilatPane = new DestilatPane();
+        tabDestilat.setContent(destilatPane);
+        FlaskePane flaskePane = new FlaskePane();
+        tabFlaske.setContent(flaskePane);
 
 
-        tabPane.getTabs().add(tabFade);
+        tabPane.getTabs().add(tabFad);
+        tabPane.getTabs().add(tabDestilat);
+        tabPane.getTabs().add(tabFlaske);
 
-        //tabFade.setOnSelectionChanged(event -> fadePane.updateControls());
+        //tabFad.setOnSelectionChanged(event -> fadPane.updateControls());
+        //tabDestilat.setOnSelectionChanged(event -> destilatPane.updateControls());
+        //tabFlaske.setOnSelectionChanged(event -> flaskePane.updateControls());
 
     }
 

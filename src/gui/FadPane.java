@@ -8,14 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-public class FadePane extends GridPane {
+public class FadPane extends GridPane {
     private final ListView<Fad> lvwTommeFade = new ListView<>();
     private final ListView<Fad> lvwFyldteFade = new ListView<>();
 
-    public FadePane() {
-        this.setGridLinesVisible(false);
+    public FadPane() {
+        this.setGridLinesVisible(true);
         this.setPadding(new Insets(30));
         this.setHgap(30);
         this.setVgap(30);
@@ -49,5 +48,12 @@ public class FadePane extends GridPane {
         this.add(btnAftapFad,3,5);
 
     }
+
+    /*public void updateControls() {
+
+    }
+     */
+
+
 
 }
