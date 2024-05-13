@@ -29,11 +29,22 @@ public class DestillatPane extends GridPane {
         Button btnOpretDestillat = new Button("Opret destillat");
         this.add(btnOpretDestillat,1,5);
         btnOpretDestillat.setOnAction(event -> opretDestillat());
+                
+        Button btnPaafyldFad = new Button("Påfyld fad");
+        this.add(btnPaafyldFad,0,5);
+        btnPaafyldFad.setOnAction(event -> paafyld());
+
     }
 
     public void opretDestillat(){
         OpretDestillatWindow dia = new OpretDestillatWindow("Opret Destillat");
         dia.showAndWait();
         lvwDestillater.getItems().setAll(Controller.getDestillater());
+    }
+        
+    public void paafyld(){
+        PaafyldningWindow dia = new PaafyldningWindow("Påfyld", lvwDestilater.getSelectionModel().getSelectedItems());
+        dia.showAndWait();
+
     }
 }
