@@ -43,7 +43,7 @@ public class DestillatPane extends GridPane {
     }
         
     public void paafyld(){
-        PaafyldningWindow dia = new PaafyldningWindow("Påfyld", lvwDestilater.getSelectionModel().getSelectedItems());
+        PaafyldningWindow dia = new PaafyldningWindow("Påfyld", lvwDestillater.getSelectionModel().getSelectedItems());
         dia.showAndWait();
 
     }

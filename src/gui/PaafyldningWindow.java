@@ -19,10 +19,10 @@ public class PaafyldningWindow extends Stage {
     private ListView<Fad> lvwFade;
     private TextField txfMedarbejder;
     private DatePicker dpDato;
-    private List<Destilat> selectedDestillater;
+    private List<Destillat> selectedDestillater;
     private List<TextField> literTappet;
 
-    public PaafyldningWindow(String title, List<Destilat> destilater) {
+    public PaafyldningWindow(String title, List<Destillat> destilater) {
         this.setTitle(title);
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(20));
