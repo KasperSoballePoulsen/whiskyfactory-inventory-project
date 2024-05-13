@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -29,6 +30,7 @@ public class DestilatPane extends GridPane {
         vbxDestilater.getChildren().add(lblDestilater);
         lvwDestilater.setPrefHeight(150);
         lvwDestilater.getItems().setAll(Controller.getDestilater());
+        lvwDestilater.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         vbxDestilater.getChildren().add(lvwDestilater);
 
         Button btnOpretDestilat = new Button("Opret destilat");

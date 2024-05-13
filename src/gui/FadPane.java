@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -33,6 +34,7 @@ public class FadPane extends GridPane {
         vbxFyldteFade.getChildren().add(lblFyldteFade);
         lvwFyldteFade.setPrefHeight(150);
         lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
+        lvwFyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         vbxFyldteFade.getChildren().add(lvwFyldteFade);
 
         Button btnOpretFad = new Button("Opret fad");
