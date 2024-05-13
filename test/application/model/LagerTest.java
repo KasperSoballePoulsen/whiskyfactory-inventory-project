@@ -12,16 +12,16 @@ public class LagerTest {
     @BeforeEach
     void lavObjekter() {
         this.lager = new Lager("test", 10);
-        fade = new Fad[] {lager.createFad("Cherry", 10, "Leverandoer"),
-                lager.createFad("Cherry", 20, "Leverandoer"),
-                lager.createFad("Cherry", 30, "Leverandoer")
+        fade = new Fad[] {lager.opretFad("Cherry", 10, "Leverandoer"),
+                lager.opretFad("Cherry", 20, "Leverandoer"),
+                lager.opretFad("Cherry", 30, "Leverandoer")
         };
     }
 
     @Test
     void testAtDerOprettesEtFad() {
         assertEquals("Cherry", fade[2].getType());
-        assertEquals(30, fade[2].getStoerrelse());
+        assertEquals(30, fade[2].getLiterKapacitet());
         assertEquals("Leverandoer", fade[2].getLeverandoer());
     }
 

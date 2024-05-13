@@ -4,24 +4,24 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Destilat {
+public class Destillat {
     private String navn;
     private String kornsort;
     private LocalDate startdato;
     private LocalDate slutdato;
-    private String maltdestilat;
+    private String maltdestillat;
     private int maengdeVaeskeILiter;
     private double alkoholprocent;
     private String medarbejder;
     private final List<Paafyldning> paafyldninger;
 
 
-    public Destilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
+    public Destillat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
         this.navn = navn;
         this.kornsort = kornsort;
         this.startdato = startdato;
         this.slutdato = slutdato;
-        this.maltdestilat = maltdestilat;
+        this.maltdestillat = maltdestilat;
         this.maengdeVaeskeILiter = maengdeVaeskeILiter;
         this.alkoholprocent = alkoholprocent;
         this.medarbejder = medarbejder;
@@ -44,8 +44,8 @@ public class Destilat {
         return slutdato;
     }
 
-    public String getMaltdestilat() {
-        return maltdestilat;
+    public String getMaltdestillat() {
+        return maltdestillat;
     }
 
     public int getMaengdeVaeskeILiter() {
@@ -58,7 +58,7 @@ public class Destilat {
     public void addPaafyldning(Paafyldning paafyldning) {
         if (!paafyldninger.contains(paafyldning)) {
             paafyldninger.add(paafyldning);
-            paafyldning.addDestilat(this);
+            paafyldning.addDestillat(this);
         }
     }
 

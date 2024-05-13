@@ -36,7 +36,7 @@ public class StartWindow extends Application {
 
         FadPane fadPane = new FadPane();
         tabFad.setContent(fadPane);
-        DestilatPane destilatPane = new DestilatPane();
+        DestillatPane destilatPane = new DestillatPane();
         tabDestilat.setContent(destilatPane);
         FlaskePane flaskePane = new FlaskePane();
         tabFlaske.setContent(flaskePane);

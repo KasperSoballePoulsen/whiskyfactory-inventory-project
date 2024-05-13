@@ -9,7 +9,7 @@ public class Storage {
 
 
     private static List<Lager> lagerer = new ArrayList<>();
-    private static List<Destilat> destilater = new ArrayList<>();
+    private static List<Destillat> destilater = new ArrayList<>();
     private static List<Tapning> tapninger = new ArrayList<>();
     private static List<Paafyldning> paafyldninger = new ArrayList<>();
 
@@ -19,7 +19,7 @@ public class Storage {
     }
 
 
-    public static void addDestilat(Destilat destilat) {
+    public static void addDestilat(Destillat destilat) {
         destilater.add(destilat);
     }
 
@@ -36,7 +36,7 @@ public class Storage {
     }
 
 
-    public static List<Destilat> getDestilater() {
+    public static List<Destillat> getDestillater() {
         return new ArrayList<>(destilater);
     }
 

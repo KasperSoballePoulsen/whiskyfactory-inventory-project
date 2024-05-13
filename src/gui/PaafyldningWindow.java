@@ -1,7 +1,7 @@
 package gui;
 
 import application.controller.Controller;
-import application.model.Destilat;
+import application.model.Destillat;
 import application.model.Fad;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -15,12 +15,11 @@ import java.util.List;
 
 public class PaafyldningWindow extends Stage {
 
-
+    private Fad fad;
     private ListView<Fad> lvwFade;
     private TextField txfMedarbejder;
     private DatePicker dpDato;
     private List<Destilat> selectedDestillater;
-
     private List<TextField> literTappet;
 
     public PaafyldningWindow(String title, List<Destilat> destilater) {
@@ -80,5 +79,4 @@ public class PaafyldningWindow extends Stage {
         Controller.paaFyldFad(selectedDestillater, selectedFad, literTappes,dato,medarbejder);
         this.hide();
     }
-
 }

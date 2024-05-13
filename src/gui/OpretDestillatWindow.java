@@ -13,13 +13,13 @@ import javafx.scene.control.TextField;
 import java.time.LocalDate;
 
 
-public class OpretDestilatWindow extends Stage {
+public class OpretDestillatWindow extends Stage {
 
     private TextField txfName, txfKornsort, txfMængdeLiter, txfAlkoPro, txfMalt, txfMedarbejder;
 
     private DatePicker dpStart, dpSlut;
 
-    public OpretDestilatWindow(String title) {
+    public OpretDestillatWindow(String title) {
         this.setTitle(title);
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(20));
@@ -92,7 +92,7 @@ public class OpretDestilatWindow extends Stage {
         String maltBatch = txfMalt.getText().trim();
         String medarbejder = txfMedarbejder.getText().trim();
         int mængde = Integer.parseInt(txfMængdeLiter.getText().trim());
-        Controller.opretDestilat(navn,kornsort,startDato,slutDato,maltBatch,mængde,alkoPro,medarbejder);
+        Controller.opretDestillat(navn,kornsort,startDato,slutDato,maltBatch,mængde,alkoPro,medarbejder);
 
         this.hide();
 

@@ -3,7 +3,6 @@ package application.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaafyldningTest {
     private Lager lager;
-    private Destilat destilat;
+    private Destillat destilat;
     //private Medarbejder medarbejder;
     private Fad fad1;
     private Fad fad2;

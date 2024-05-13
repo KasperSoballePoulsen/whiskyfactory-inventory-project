@@ -27,6 +27,7 @@ public class FadPane extends GridPane {
         lvwTommeFade.setPrefHeight(150);
         lvwTommeFade.getItems().setAll(Controller.getTommeFade());
         vbxTommeFade.getChildren().add(lvwTommeFade);
+        lvwTommeFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         VBox vbxFyldteFade = new VBox(10);
         this.add(vbxFyldteFade, 2,0,2,5);
@@ -36,6 +37,7 @@ public class FadPane extends GridPane {
         lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
         lvwFyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         vbxFyldteFade.getChildren().add(lvwFyldteFade);
+        lvwFyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         Button btnOpretFad = new Button("Opret fad");
         this.add(btnOpretFad,0,5);
