@@ -26,10 +26,6 @@ public class Controller {
         return Storage.getTapninger();
     }
 
-    public static List<Flaske> PaafyldFlasker(Tapning tapning, List<Integer> literTappet, int vand, String medarbejder, String flaskeNavn, double alkoholprocent) {
-        return tapning.fyldPaaFlasker(literTappet, vand, medarbejder, flaskeNavn, alkoholprocent);
-    }
-
     public static Destilat opretDestilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
         Destilat destilat = new Destilat(navn, kornsort, startdato, slutdato, maltdestilat, maengdeVaeskeILiter, alkoholprocent, medarbejder);
         Storage.addDestilat(destilat);
@@ -51,7 +47,7 @@ public class Controller {
         for (Integer i : liter) {
             sumLiter += i;
         }
-        fad.paafyld(sumLiter, paafyldning);
+//        fad.paafyld(sumLiter, paafyldning);
     }
 
     public static void aftapFad(List<Fad> fade, List<Integer> literTapet, LocalDate dato, String medarbejder, int vand, String flaskeNavn, double alkoholprocent) {
@@ -59,8 +55,8 @@ public class Controller {
         for (int i = 0; i < fade.size(); i++) {
             fade.get(i).aftap(literTapet.get(i), tapning);
         }
+        Storage.addTapning(tapning);
         tapning.fyldPaaFlasker(literTapet, vand, medarbejder, flaskeNavn, alkoholprocent);
-
     }
 
     public static List<Fad> getTommeFade() {

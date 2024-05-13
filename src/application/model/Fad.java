@@ -98,7 +98,11 @@ public class Fad {
     }
 
     public String toString() {
-        return nummer + " " + type + " " + stoerrelse;
+        if (antalLiterPaafyldt == 0) {
+            return nummer + " " + type + " " + stoerrelse;
+        } else {
+            return nummer + " " + type + " " + stoerrelse + ". " + antalLiterPaafyldt + " liter påfyldt";
+        }
     }
 
 }

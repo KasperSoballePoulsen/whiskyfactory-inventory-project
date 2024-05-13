@@ -51,12 +51,14 @@ public class PaafyldningWindow extends Stage {
         pane.add(dpDato, 1, 7);
         int test = selectedDestillater.size();
         literTappet = new ArrayList<>();
+        int temp = 1;
         for (int i = 0; i < test; i++) {
             Label lblLiter = new Label("mængde (L):" );
             TextField txfLiterFad = new TextField();
             literTappet.add(txfLiterFad);
-            pane.add(lblLiter,2,i+1);
-            pane.add(txfLiterFad,2,i+2);
+            pane.add(lblLiter,2,i+temp+1);
+            pane.add(txfLiterFad,2,i+temp+2);
+            temp++;
         }
 
         Button btnPaafyld = new Button("Fyld fad");

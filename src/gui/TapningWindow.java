@@ -38,6 +38,7 @@ public class TapningWindow extends Stage {
 
         lvwFade = new ListView<>();
         lvwFade.getItems().setAll(fade);
+        lvwFade.setPrefHeight(200);
         pane.add(lvwFade,0,1,2,fade.size());
         literTappet = new ArrayList<>();
         for (int i = 0; i < fade.size(); i++) {
