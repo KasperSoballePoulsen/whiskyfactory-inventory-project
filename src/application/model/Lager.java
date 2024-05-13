@@ -17,8 +17,8 @@ public class Lager {
         return navn;
     }
 
-    public Fad createFad(String type, int stoerrelse, String leverandoer) {
-        Fad fad = new Fad(type, stoerrelse, this, leverandoer);
+    public Fad opretFad(String type, int literKapacitet, String leverandoer) {
+        Fad fad = new Fad(type, literKapacitet, this, leverandoer);
         int pladsNr = findLedigPlads();
         pladser[pladsNr] = fad;
         return fad;

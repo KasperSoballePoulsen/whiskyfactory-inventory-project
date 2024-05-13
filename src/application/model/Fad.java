@@ -7,7 +7,7 @@ public class Fad {
     private static int nummerCount;
     private int nummer;
     private String type;
-    private int stoerrelse;
+    private int literKapacitet;
     private int antalLiterPaafyldt;
     private String leverandoer;
     private Lager lager;
@@ -15,11 +15,11 @@ public class Fad {
     private final List<Paafyldning> paafyldninger = new ArrayList<>();
 
 
-    Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
+    Fad(String type, int literKapacitet, Lager lager, String leverandoer) {
 
         this.nummer = nummerCount + 1;
         this.type = type;
-        this.stoerrelse = stoerrelse;
+        this.literKapacitet = literKapacitet;
         this.lager = lager;
         this.leverandoer = leverandoer;
 
@@ -35,8 +35,8 @@ public class Fad {
         return type;
     }
 
-    public int getStoerrelse() {
-        return stoerrelse;
+    public int getLiterKapacitet() {
+        return literKapacitet;
     }
 
     public Lager getLager() {
@@ -58,7 +58,7 @@ public class Fad {
 
 
     public void paafyld(int antalLiterPaafyldt, Paafyldning paafyldning) {
-        if (this.antalLiterPaafyldt + antalLiterPaafyldt <= stoerrelse) {
+        if (this.antalLiterPaafyldt + antalLiterPaafyldt <= literKapacitet) {
             this.antalLiterPaafyldt += antalLiterPaafyldt;
             paafyldninger.add(paafyldning);
         } else throw new IllegalArgumentException("prøver at overfylde fadet");

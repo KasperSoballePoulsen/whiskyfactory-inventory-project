@@ -13,9 +13,9 @@ public class Controller {
         return Storage.getLagerer();
     }
 
-    public static List<Destilat> getDestilater() {
+    public static List<Destillat> getDestillater() {
 
-        return Storage.getDestilater();
+        return Storage.getDestillater();
     }
 
     public static List<Paafyldning> getPaafyldning() {
@@ -30,21 +30,21 @@ public class Controller {
         return tapning.fyldPaaFlasker(literTappet, vand, medarbejder, flaskeNavn, alkoholprocent);
     }
 
-    public static Destilat opretDestilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
-        Destilat destilat = new Destilat(navn, kornsort, startdato, slutdato, maltdestilat, maengdeVaeskeILiter, alkoholprocent, medarbejder);
-        Storage.addDestilat(destilat);
-        return destilat;
+    public static Destillat opretDestillat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestillat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
+        Destillat destillat = new Destillat(navn, kornsort, startdato, slutdato, maltdestillat, maengdeVaeskeILiter, alkoholprocent, medarbejder);
+        Storage.addDestilat(destillat);
+        return destillat;
     }
 
-    public static Fad opretFad(String type, int stoerrelse, Lager lager, String leverandoer) {
-        Fad fad = lager.createFad(type, stoerrelse, leverandoer);
+    public static Fad opretFad(String type, int literKapacitet, Lager lager, String leverandoer) {
+        Fad fad = lager.opretFad(type, literKapacitet, leverandoer);
         return fad;
     }
 
-    public static void paaFyldFad(List<Destilat> destilater, Fad fad, List<Integer> liter, LocalDate dato, String medarbejder) {
-        Paafyldning paafyldning = new Paafyldning(dato, medarbejder);
-        for (int i = 0; i < destilater.size(); i++) {
-            paafyldning.addDestilat(destilater.get(i));
+    public static void paaFyldFad(List<Destillat> destillater, Fad fad, List<Integer> liter, LocalDate dato, String medarbejder) {
+        Paafyldning paafyldning = new Paafyldning(dato, medarbejder, fad);
+        for (int i = 0; i < destillater.size(); i++) {
+            paafyldning.addDestillat(destillater.get(i));
         }
         paafyldning.fyldFad(liter);
         int sumLiter = 0;
@@ -100,5 +100,35 @@ public class Controller {
         Lager lager = new Lager(navn, antalPladser);
         Storage.addLager(lager);
         return lager;
+    }
+
+    public static void createSomeObjects() {
+        Lager lagerContainer = Controller.opretLager("Container", 8);
+        Lager lagerLade = Controller.opretLager("Lade", 14);
+
+        Fad fad1 = Controller.opretFad("Sherryfad",30, lagerContainer, "Spanien");
+        Fad fad2 = Controller.opretFad("Sherryfad", 30, lagerContainer, "Spanien");
+        Controller.opretFad("Sherryfad",30, lagerContainer,"Spanien");
+        Controller.opretFad("Bourbonfad",50, lagerContainer, "Spanien");
+        Controller.opretFad("Bourbonfad", 50, lagerContainer, "Spanien");
+
+        Controller.opretFad("Sherryfad", 100, lagerLade, "Spanien");
+        Controller.opretFad("Sherryfad", 100, lagerLade, "Spanien");
+        Controller.opretFad("Sherryfad", 100, lagerLade, "Spanien");
+        Controller.opretFad("Sherryfad", 250, lagerLade, "Spanien");
+        Controller.opretFad("Sherryfad", 190, lagerLade, "Spanien");
+        Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
+        Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
+        Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
+        Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
+
+        Destillat destillat1 = Controller.opretDestillat("Første distillat", "Byg",LocalDate.of(2024,01,01), LocalDate.of(2024,01,14),"Malthuset",200, 50.2, "Snævar Njall Albertsson");
+        Controller.opretDestillat("Andet distillat", "Byg",LocalDate.of(2024,01,01), LocalDate.of(2024,01,14),"Malthuset",200, 50.2, "Snævar Njall Albertsson");
+
+        List<Destillat> destillater = new ArrayList<>();
+        destillater.add(destillat1);
+        List<Integer> literMængder = new ArrayList<>();
+        literMængder.add(30);
+        Controller.paaFyldFad(destillater, fad1, literMængder,LocalDate.of(2024,01,15), "Snævar Njall Albertsson");
     }
 }

@@ -1,7 +1,7 @@
 package gui;
 
 import application.controller.Controller;
-import application.model.Destilat;
+import application.model.Destillat;
 import application.model.Fad;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,7 +16,7 @@ import java.util.List;
 public class PaafyldningWindow extends Stage {
 
     private Fad fad;
-    private ListView<Destilat> lvwDestilater;
+    private ListView<Destillat> lvwDestilater;
     private TextField txfMedarbejder;
     private DatePicker dpDato;
 
@@ -35,7 +35,7 @@ public class PaafyldningWindow extends Stage {
         pane.add(lblFad, 0, 0);
 
         lvwDestilater = new ListView<>();
-        lvwDestilater.getItems().setAll(Controller.getDestilater());
+        lvwDestilater.getItems().setAll(Controller.getDestillater());
         pane.add(lvwDestilater, 0, 1, 2, 5);
 
         Label lblMedarbejder = new Label("Medarbejder");
@@ -55,7 +55,7 @@ public class PaafyldningWindow extends Stage {
     }
 
     public void paaFyldAction() {
-        List<Destilat> selectedDestillater = lvwDestilater.getSelectionModel().getSelectedItems();
+        List<Destillat> selectedDestillater = lvwDestilater.getSelectionModel().getSelectedItems();
         List<Integer> liter = new ArrayList<>();
         LocalDate dato = dpDato.getValue();
         String medarbejder = txfMedarbejder.getText();

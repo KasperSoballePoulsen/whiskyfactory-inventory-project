@@ -15,6 +15,12 @@ public class Tapning {
         this.dato = dato;
         this.medarbejder = medarbejder;
     }
+
+    public Flaske createFlaske(String navn, double alkoholprocent, Tapning tapning) {
+        Flaske flaske = new Flaske(navn, alkoholprocent, tapning);
+        flasker.add(flaske);
+        return flaske;
+    }
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);
     }

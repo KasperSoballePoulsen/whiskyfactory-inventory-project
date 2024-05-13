@@ -10,7 +10,7 @@ public class Flaske {
     private Tapning tapning;
 
 
-    public Flaske(String navn, double alkoholprocent, Tapning tapning) {
+    Flaske(String navn, double alkoholprocent, Tapning tapning) {
         liter = 1;
         this.navn = navn;
         this.alkoholprocent = alkoholprocent;
@@ -31,11 +31,11 @@ public class Flaske {
         String res = "";
         for (Fad fad : tapning.getFade()) {
             for (Paafyldning paafyldning : fad.getPaafyldninger()) {
-                for (Destilat destilat : paafyldning.getDestilater()) {
+                for (Destillat destilat : paafyldning.getDestillater()) {
 
                     res += "Destilat: " + destilat.getNavn() + "\n";
                     res += "Korn sort: " + destilat.getKornsort() + "\n";
-                    res += "Malt destilat: " + destilat.getMaltdestilat() + "\n";
+                    res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
                     res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
                 }
             }

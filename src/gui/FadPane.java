@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -26,6 +27,7 @@ public class FadPane extends GridPane {
         lvwTommeFade.setPrefHeight(150);
         lvwTommeFade.getItems().setAll(Controller.getTommeFade());
         vbxTommeFade.getChildren().add(lvwTommeFade);
+        lvwTommeFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         VBox vbxFyldteFade = new VBox(10);
         this.add(vbxFyldteFade, 2,0,2,5);
@@ -34,6 +36,7 @@ public class FadPane extends GridPane {
         lvwFyldteFade.setPrefHeight(150);
         lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
         vbxFyldteFade.getChildren().add(lvwFyldteFade);
+        lvwFyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         Button btnOpretFad = new Button("Opret fad");
         this.add(btnOpretFad,0,5);
