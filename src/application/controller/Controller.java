@@ -9,13 +9,13 @@ import java.util.List;
 
 public class Controller {
 
-    public static Destilat createDestilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
+    public static Destilat opretDestilat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
         Destilat destilat = new Destilat(navn, kornsort, startdato, slutdato, maltdestilat, maengdeVaeskeILiter, alkoholprocent, medarbejder);
         Storage.addDestilat(destilat);
         return destilat;
     }
 
-    public static Fad createFad(String type, int stoerrelse, Lager lager, String leverandoer) {
+    public static Fad opretFad(String type, int stoerrelse, Lager lager, String leverandoer) {
         Fad fad = lager.createFad(type, stoerrelse, leverandoer);
         return fad;
     }
