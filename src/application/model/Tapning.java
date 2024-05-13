@@ -10,6 +10,11 @@ public class Tapning {
     private final List<Flaske> flasker = new ArrayList<>();
     private String medarbejder;
     private LocalDate dato;
+
+    public Tapning(LocalDate dato, String medarbejder){
+        this.dato = dato;
+        this.medarbejder = medarbejder;
+    }
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);
     }
@@ -42,9 +47,7 @@ public class Tapning {
         }
     }
 
-    public List<Flaske> fyldPaaFlasker(List<Integer> literTappet, int Vand, String medarbejder, String flaskeNavn, double alkoholprocent) {
-        this.medarbejder = medarbejder;
-        dato = LocalDate.now();
+    public List<Flaske> fyldPaaFlasker(List<Integer> literTappet, int Vand, String flaskeNavn, double alkoholprocent) {
         List<Flaske> flasker = new ArrayList<>();
         int vaeske = Vand;
         for (int i = 0; i < fade.size(); i++) {

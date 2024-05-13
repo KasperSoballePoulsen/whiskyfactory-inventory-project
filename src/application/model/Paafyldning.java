@@ -11,6 +11,11 @@ public class Paafyldning {
     private final List<Destilat> destilater = new ArrayList<>();
     private Fad fad;
 
+    public Paafyldning(LocalDate dato, String medarbejder){
+        this.dato = dato;
+        this.medarbejder = medarbejder;
+    }
+
     public LocalDate getDato() {
         return dato;
     }
@@ -34,9 +39,8 @@ public class Paafyldning {
         }
     }
 
-    public void fyldFad(List<Integer> liter, String medarbejder) {
-        this.medarbejder = medarbejder;
-        dato = LocalDate.now();
+    public void fyldFad(List<Integer> liter) {
+
         for (int i = 0; i < destilater.size(); i++) {
             Destilat destilat = destilater.get(i);
             int vaeske = liter.get(i);

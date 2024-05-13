@@ -15,7 +15,7 @@ public class Fad {
     private final List<Paafyldning> paafyldninger = new ArrayList<>();
 
 
-    public Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
+    Fad(String type, int stoerrelse, Lager lager, String leverandoer) {
 
         this.nummer = nummerCount + 1;
         this.type = type;
@@ -52,7 +52,7 @@ public class Fad {
         return leverandoer;
     }
 
-    public List<Paafyldning> getPaafyldninger(){
+    public List<Paafyldning> getPaafyldninger() {
         return new ArrayList<>(paafyldninger);
     }
 
@@ -91,7 +91,7 @@ public class Fad {
         }
     }
 
-    public String toString(){
+    public String toString() {
         return nummer + " " + type;
     }
 
