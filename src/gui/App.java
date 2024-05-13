@@ -42,5 +42,8 @@ public class App {
         List<Integer> literMængder = new ArrayList<>();
         literMængder.add(30);
         Controller.paaFyldFad(destillater, fad1, literMængder,LocalDate.of(2024,01,15), "Snævar Njall Albertsson");
+        List<Fad> fadList = new ArrayList<>();
+        fadList.add(fad1);
+        Controller.aftapFad(fadList,literMængder,LocalDate.of(2024,3,15),"Snævar", 10, "MULD", 30.2);
     }
 }
