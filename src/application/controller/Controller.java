@@ -42,8 +42,7 @@ public class Controller {
     }
 
     public static void paaFyldFad(List<Destilat> destilater, Fad fad, List<Integer> liter, LocalDate dato, String medarbejder) {
-        Paafyldning paafyldning = new Paafyldning(dato, medarbejder);
-        paafyldning.setFad(fad); //tjek i morgen
+        Paafyldning paafyldning = new Paafyldning(dato, medarbejder, fad);
         for (int i = 0; i < destilater.size(); i++) {
             paafyldning.addDestilat(destilater.get(i));
         }

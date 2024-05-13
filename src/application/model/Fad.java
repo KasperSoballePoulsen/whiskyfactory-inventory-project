@@ -61,7 +61,6 @@ public class Fad {
         if (this.antalLiterPaafyldt + antalLiterPaafyldt <= stoerrelse) {
             this.antalLiterPaafyldt += antalLiterPaafyldt;
             paafyldninger.add(paafyldning);
-            paafyldning.setFad(this); //tjek i morgen
         } else throw new IllegalArgumentException("prøver at overfylde fadet");
     }
 
@@ -99,7 +98,7 @@ public class Fad {
     }
 
     public String toString() {
-        return nummer + " " + type;
+        return nummer + " " + type + " " + stoerrelse;
     }
 
 }
