@@ -1,6 +1,7 @@
 package gui;
 
 import application.controller.Controller;
+import application.model.Destilat;
 import application.model.Fad;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -11,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 public class DestilatPane extends GridPane {
 
-    private final ListView<Fad> lvwDestilater = new ListView<>();
+    private final ListView<Destilat> lvwDestilater = new ListView<>();
     public DestilatPane() {
         this.setGridLinesVisible(true);
         this.setPadding(new Insets(30));
@@ -23,17 +24,20 @@ public class DestilatPane extends GridPane {
         Label lblDestilater = new Label("Destilater");
         vbxDestilater.getChildren().add(lblDestilater);
         lvwDestilater.setPrefHeight(150);
-        //lvwDestilater.getItems().setAll(Controller.getDestilater);
+        lvwDestilater.getItems().setAll(Controller.getDestilater());
         vbxDestilater.getChildren().add(lvwDestilater);
 
         Button btnOpretDestilat = new Button("Opret destilat");
         this.add(btnOpretDestilat,1,5);
+        btnOpretDestilat.setOnAction(event -> opretDestilat());
 
 
+    }
 
-
-
-
+    public void opretDestilat(){
+        OpretDestilatWindow dia = new OpretDestilatWindow("Opret Destilat");
+        dia.showAndWait();
+        lvwDestilater.getItems().setAll(Controller.getDestilater());
 
 
     }

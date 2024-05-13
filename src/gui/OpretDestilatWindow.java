@@ -45,7 +45,7 @@ public class OpretDestilatWindow extends Stage {
         Label lblSlut = new Label("Slut Dato");
         pane.add(lblSlut,0,4);
 
-        dpStart = new DatePicker();
+        dpSlut = new DatePicker();
         pane.add(dpSlut, 0,5);
 
         Label lblKorn = new Label("Korn Sort");
