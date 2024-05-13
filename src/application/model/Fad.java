@@ -64,9 +64,9 @@ public class Fad {
         } else throw new IllegalArgumentException("prøver at overfylde fadet");
     }
 
-    public void aftap(int literTapet, Tapning tapning) {
-        if (literTapet <= antalLiterPaafyldt) {
-            antalLiterPaafyldt -= literTapet;
+    public void aftap(int literTappet, Tapning tapning) {
+        if (literTappet <= antalLiterPaafyldt) {
+            antalLiterPaafyldt -= literTappet;
             tapninger.add(tapning);
         } else {
             throw new IllegalArgumentException("der er ikke nok liter");
