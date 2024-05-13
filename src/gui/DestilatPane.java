@@ -10,6 +10,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DestilatPane extends GridPane {
 
     private final ListView<Destilat> lvwDestilater = new ListView<>();
@@ -31,6 +35,10 @@ public class DestilatPane extends GridPane {
         this.add(btnOpretDestilat,1,5);
         btnOpretDestilat.setOnAction(event -> opretDestilat());
 
+        Button btnPaafyldFad = new Button("Påfyld fad");
+        this.add(btnPaafyldFad,0,5);
+        btnPaafyldFad.setOnAction(event -> paafyld());
+
 
     }
 
@@ -38,9 +46,15 @@ public class DestilatPane extends GridPane {
         OpretDestilatWindow dia = new OpretDestilatWindow("Opret Destilat");
         dia.showAndWait();
         lvwDestilater.getItems().setAll(Controller.getDestilater());
+    }
 
+    public void paafyld(){
+        PaafyldningWindow dia = new PaafyldningWindow("Påfyld", lvwDestilater.getSelectionModel().getSelectedItems());
+        dia.showAndWait();
 
     }
+
+
 
     /*public void updateControls() {
 

@@ -15,12 +15,15 @@ import java.util.List;
 
 public class PaafyldningWindow extends Stage {
 
-    private Fad fad;
-    private ListView<Destilat> lvwDestilater;
+
+    private ListView<Fad> lvwFade;
     private TextField txfMedarbejder;
     private DatePicker dpDato;
+    private List<Destilat> selectedDestillater;
 
-    public PaafyldningWindow(String title, Fad fad) {
+    private List<TextField> literTappet;
+
+    public PaafyldningWindow(String title, List<Destilat> destilater) {
         this.setTitle(title);
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(20));
@@ -29,36 +32,51 @@ public class PaafyldningWindow extends Stage {
         pane.setGridLinesVisible(false);
         Scene scene = new Scene(pane);
         this.setScene(scene);
+        selectedDestillater = destilater;
 
-        this.fad = fad;
-        Label lblFad = new Label(fad.toString());
-        pane.add(lblFad, 0, 0);
 
-        lvwDestilater = new ListView<>();
-        lvwDestilater.getItems().setAll(Controller.getDestilater());
-        pane.add(lvwDestilater, 0, 1, 2, 5);
+
+        lvwFade = new ListView<>();
+        lvwFade.getItems().setAll(Controller.getTommeFade());
+        pane.add(lvwFade, 0, 1, 2, 5);
 
         Label lblMedarbejder = new Label("Medarbejder");
-        pane.add(lblMedarbejder, 0, 5);
+        pane.add(lblMedarbejder, 0, 6);
         txfMedarbejder = new TextField();
-        pane.add(txfMedarbejder, 1, 5);
+        pane.add(txfMedarbejder, 1, 6);
 
         Label lblDato = new Label("dato");
-        pane.add(lblDato, 0, 6);
+        pane.add(lblDato, 0, 7);
         dpDato = new DatePicker();
-        pane.add(dpDato, 1, 6);
+        pane.add(dpDato, 1, 7);
+        int test = selectedDestillater.size();
+        literTappet = new ArrayList<>();
+        for (int i = 0; i < test; i++) {
+            Label lblLiter = new Label("mængde (L):" );
+            TextField txfLiterFad = new TextField();
+            literTappet.add(txfLiterFad);
+            pane.add(lblLiter,2,i+1);
+            pane.add(txfLiterFad,2,i+2);
+        }
 
         Button btnPaafyld = new Button("Fyld fad");
         btnPaafyld.setOnAction(event -> paaFyldAction());
-        pane.add(btnPaafyld,0,7);
+        pane.add(btnPaafyld,0,8);
+        btnPaafyld.setOnAction(event -> paaFyldAction());
 
     }
 
     public void paaFyldAction() {
-        List<Destilat> selectedDestillater = lvwDestilater.getSelectionModel().getSelectedItems();
-        List<Integer> liter = new ArrayList<>();
+        Fad selectedFad = lvwFade.getSelectionModel().getSelectedItem();
+        List<Integer> literTappes = new ArrayList<>();
+        for (int i = 0; i < literTappet.size(); i++) {
+            int liter = Integer.parseInt(literTappet.get(i).getText());
+            literTappes.add(liter);
+        }
         LocalDate dato = dpDato.getValue();
         String medarbejder = txfMedarbejder.getText();
-        Controller.paaFyldFad(selectedDestillater, fad, liter,dato,medarbejder);
+        Controller.paaFyldFad(selectedDestillater, selectedFad, literTappes,dato,medarbejder);
+        this.hide();
     }
+
 }

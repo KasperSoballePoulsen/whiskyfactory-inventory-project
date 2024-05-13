@@ -37,9 +37,9 @@ public class FadPane extends GridPane {
 
         Button btnOpretFad = new Button("Opret fad");
         this.add(btnOpretFad,0,5);
+        btnOpretFad.setOnAction(event -> opretFad());
 
-        Button btnPaafyldFad = new Button("Påfyld fad");
-        this.add(btnPaafyldFad,1,5);
+
 
         Button btnFadInfo = new Button("Fad info");
         this.add(btnFadInfo,2,5);
@@ -55,10 +55,19 @@ public class FadPane extends GridPane {
         dia.showAndWait();
     }
 
-    public void OpretFad(){
+    public void opretFad(){
         OpretFadWindow dia = new OpretFadWindow("Opret Fad");
         dia.showAndWait();
+        lvwTommeFade.getItems().setAll(Controller.getTommeFade());
     }
+
+    public void updateControls(){
+        lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
+        lvwTommeFade.getItems().setAll(Controller.getTommeFade());
+
+    }
+
+
 
     /*public void updateControls() {
 

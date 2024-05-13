@@ -37,7 +37,7 @@ public class OpretFadWindow extends Stage {
         txfType = new TextField();
         pane.add(txfType,0,1);
 
-        Label lblSize = new Label("Type");
+        Label lblSize = new Label("Størrelse");
         pane.add(lblSize,0,2);
 
         txfStoerrelse = new TextField();
@@ -68,5 +68,6 @@ public class OpretFadWindow extends Stage {
         Lager lager = (Lager) cbLager.getSelectionModel().getSelectedItem();
         String leverandoer = txfLeverandoer.getText().trim();
         Controller.opretFad(type,stoerrelse,lager, leverandoer);
+        this.hide();
     }
 }

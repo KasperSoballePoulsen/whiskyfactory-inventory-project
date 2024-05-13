@@ -39,8 +39,11 @@ public class Paafyldning {
         }
     }
 
-    public void fyldFad(List<Integer> liter) {
+    public void setFad(Fad fad) {
+        this.fad = fad; // tjek i morgen
+    }
 
+    public void fyldFad(List<Integer> liter) {
         for (int i = 0; i < destilater.size(); i++) {
             Destilat destilat = destilater.get(i);
             int vaeske = liter.get(i);

@@ -61,6 +61,7 @@ public class Fad {
         if (this.antalLiterPaafyldt + antalLiterPaafyldt <= stoerrelse) {
             this.antalLiterPaafyldt += antalLiterPaafyldt;
             paafyldninger.add(paafyldning);
+            paafyldning.setFad(this); //tjek i morgen
         } else throw new IllegalArgumentException("prøver at overfylde fadet");
     }
 
@@ -78,6 +79,12 @@ public class Fad {
     }
 
     public void addTapning(Tapning tapning) {
+        if (!tapninger.contains(tapning)) {
+            tapninger.add(tapning);
+            tapning.addFad(this);
+        }
+    }
+    public void addPaafyldning(Tapning tapning) {
         if (!tapninger.contains(tapning)) {
             tapninger.add(tapning);
             tapning.addFad(this);
