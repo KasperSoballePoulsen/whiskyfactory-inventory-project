@@ -85,10 +85,10 @@ public class TapningWindow extends Stage {
     }
     public void fyldFlasker(){
         List<Fad> fadlist = lvwFade.getItems();
-        List<Integer> literTapes = new ArrayList<>();
+        List<Integer> literTappes = new ArrayList<>();
         for (int i = 0; i < literTappet.size(); i++) {
             int liter = Integer.parseInt(literTappet.get(i).getText());
-            literTapes.add(liter);
+            literTappes.add(liter);
         }
         LocalDate dato = dpDato.getValue();
         String medarbejder = txfMedarbejder.getText();
@@ -96,8 +96,9 @@ public class TapningWindow extends Stage {
         double alkoholprocent = Double.parseDouble(txfAlkoholprocent.getText());
         String flaskeNavn = txfFlaskeNavn.getText();
         for (int i = 0; i < fadlist.size(); i++) {
-            Controller.aftapFad(fadlist,literTapes,dato,medarbejder,vand,flaskeNavn,alkoholprocent);
+            Controller.aftapFad(fadlist,literTappes,dato,medarbejder,vand,flaskeNavn,alkoholprocent);
         }
+        this.hide();
 
     }
 }
