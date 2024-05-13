@@ -91,4 +91,8 @@ public class Fad {
         }
     }
 
+    public String toString(){
+        return nummer + " " + type;
+    }
+
 }

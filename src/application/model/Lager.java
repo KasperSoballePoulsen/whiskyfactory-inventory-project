@@ -52,4 +52,8 @@ public class Lager {
         }
         return k;
     }
+
+    public String toString(){
+        return navn;
+    }
 }
