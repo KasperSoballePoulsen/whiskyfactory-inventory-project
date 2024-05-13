@@ -47,9 +47,10 @@ public class Tapning {
         }
     }
 
-    public List<Flaske> fyldPaaFlasker(List<Integer> literTappet, int Vand, String flaskeNavn, double alkoholprocent) {
+
+    public List<Flaske> fyldPaaFlasker(List<Integer> literTappet, int vand, String medarbejder, String flaskeNavn, double alkoholprocent) {
         List<Flaske> flasker = new ArrayList<>();
-        int vaeske = Vand;
+        int vaeske = vand;
         for (int i = 0; i < fade.size(); i++) {
             Fad fad = fade.get(i);
             int liter = literTappet.get(i);
