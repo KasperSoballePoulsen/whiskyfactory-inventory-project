@@ -99,9 +99,9 @@ public class Fad {
 
     public String toString() {
         if (antalLiterPaafyldt == 0) {
-            return nummer + " " + type + " " + stoerrelse;
+            return nummer + " " + type + " " + literKapacitet;
         } else {
-            return nummer + " " + type + " " + stoerrelse + ". " + antalLiterPaafyldt + " liter påfyldt";
+            return nummer + " " + type + " " + literKapacitet + ". " + antalLiterPaafyldt + " liter påfyldt";
         }
     }
 
