@@ -39,12 +39,12 @@ public class TapningWindow extends Stage {
         lvwFade = new ListView<>();
         lvwFade.getItems().setAll(fade);
         pane.add(lvwFade,0,1,2,fade.size());
-
+        literTappet = new ArrayList<>();
         for (int i = 0; i < fade.size(); i++) {
             Label lblLiter = new Label("mængde (L):" );
             TextField txfLiterFad = new TextField();
             literTappet.add(txfLiterFad);
-            pane.add(txfLiterFad,2,i+1);
+            pane.add(lblLiter,2,i+1);
             pane.add(txfLiterFad,3,i+1);
         }
 
@@ -66,7 +66,7 @@ public class TapningWindow extends Stage {
         Label lblDato = new Label("dato");
         pane.add(lblDato,0,fade.size()+4);
          dpDato = new DatePicker();
-        pane.add(dpDato,1,fade.size()+5);
+        pane.add(dpDato,1,fade.size()+4);
 
         Label lblMedarbejder = new Label("Medarbejder");
         pane.add(lblMedarbejder,0,fade.size()+5);
