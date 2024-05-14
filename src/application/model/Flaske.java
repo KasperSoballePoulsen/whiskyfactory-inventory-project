@@ -29,15 +29,16 @@ public class Flaske {
     public String historik() {
         String res = "";
         for (Fad fad : tapning.getFade()) {
-            for (Paafyldning paafyldning : fad.getPaafyldninger()) {
+            Paafyldning paafyldning = fad.getPaafyldninger().get(fad.getPaafyldninger().size()-1);
                 for (Destillat destilat : paafyldning.getDestillater()) {
 
                     res += "Destilat: " + destilat.getNavn() + "\n";
                     res += "Korn sort: " + destilat.getKornsort() + "\n";
                     res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
                     res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
+                    res += "-------------------------- \n";
                 }
-            }
+
             res += "fad: " + fad.getNummer() + "\n";
             res += "type: " + fad.getType() + "\n";
             res += "leverandør: " + fad.getLeverandoer() + "\n";
