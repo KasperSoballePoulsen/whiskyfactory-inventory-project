@@ -5,6 +5,7 @@ import application.model.Flaske;
 import application.model.Lager;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -44,6 +45,10 @@ public class LagerPane extends GridPane {
 
         txfledigePladser = new TextField();
         add(txfledigePladser, 2, 1);
+
+        Button btnOpret = new Button("Opret Lager");
+        add(btnOpret,2,2);
+        btnOpret.setOnAction(event -> opretAction());
     }
 
     public void lagerSelectedChanged() {
@@ -51,5 +56,11 @@ public class LagerPane extends GridPane {
         List fade = new ArrayList<>(lager.fadePaaLager());
         lvwFadePaaLager.getItems().setAll(fade);
         txfledigePladser.setText("" + (lager.antalLedigePladser()));
+    }
+
+    public void opretAction(){
+        OpretLagerWindow dia = new OpretLagerWindow("Opret Lager");
+        dia.showAndWait();
+        lvwLager.getItems().setAll(Controller.getLager());
     }
 }
