@@ -14,7 +14,6 @@ import java.util.List;
 
 public class TapningWindow extends Stage {
 
-    private ListView<Fad> lvwFade;
     private List<TextField> literTappet;
     private TextField txfVand;
     private TextField txfVandkilde;
@@ -34,15 +33,12 @@ public class TapningWindow extends Stage {
         this.setScene(scene);
 
         Label lblFade = new Label("Fade");
-        pane.add(lblFade,0,0);
+        pane.add(lblFade,2,0);
 
-        lvwFade = new ListView<>();
-        lvwFade.getItems().setAll(fade);
-        lvwFade.setPrefHeight(200);
-        pane.add(lvwFade,0,1,2,fade.size());
+
         literTappet = new ArrayList<>();
         for (int i = 0; i < fade.size(); i++) {
-            Label lblLiter = new Label("mængde (L):" );
+            Label lblLiter = new Label(fade.get(i) + " mængde (L):" );
             TextField txfLiterFad = new TextField();
             literTappet.add(txfLiterFad);
             pane.add(lblLiter,2,i+1);
@@ -80,12 +76,11 @@ public class TapningWindow extends Stage {
         pane.add(txfFlaskeNavn,1,fade.size()+6);
 
         Button btnFyldFlasker = new Button("Fyld på Flasker");
-        btnFyldFlasker.setOnAction(event -> fyldFlasker());
+        btnFyldFlasker.setOnAction(event -> fyldFlasker(fade));
         pane.add(btnFyldFlasker,1,fade.size()+7);
 
     }
-    public void fyldFlasker(){
-        List<Fad> fadlist = lvwFade.getItems();
+    public void fyldFlasker(List<Fad> fadList){
         List<Integer> literTappes = new ArrayList<>();
         for (int i = 0; i < literTappet.size(); i++) {
             int liter = Integer.parseInt(literTappet.get(i).getText());
@@ -96,8 +91,8 @@ public class TapningWindow extends Stage {
         int vand = Integer.parseInt(txfVand.getText());
         double alkoholprocent = Double.parseDouble(txfAlkoholprocent.getText());
         String flaskeNavn = txfFlaskeNavn.getText();
-        for (int i = 0; i < fadlist.size(); i++) {
-            Controller.aftapFad(fadlist,literTappes,dato,medarbejder,vand,flaskeNavn,alkoholprocent);
+        for (int i = 0; i < fadList.size(); i++) {
+            Controller.aftapFad(fadList,literTappes,dato,medarbejder,vand,flaskeNavn,alkoholprocent);
         }
         this.hide();
 

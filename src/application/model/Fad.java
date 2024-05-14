@@ -92,6 +92,29 @@ public class Fad {
         }
     }
 
+    public String historik() {
+        String res = "";
+
+            if (paafyldninger.size() != 0) {
+                Paafyldning paafyldning = paafyldninger.get(paafyldninger.size() - 1);
+                for (Destillat destilat : paafyldning.getDestillater()) {
+                    res += "Destilat: " + destilat.getNavn() + "\n";
+                    res += "Korn sort: " + destilat.getKornsort() + "\n";
+                    res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
+                    res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
+                    res += "-------------------------- \n";
+                }
+                res += "blev fyldt: " + paafyldning.getDato();
+            }
+            res += "fad: " + nummer + "\n";
+            res += "type: " + type + "\n";
+            res += "leverandør: " + leverandoer + "\n";
+            res += "lå på lager: " + lager.getNavn() + "\n";
+
+
+        return res;
+    }
+
     public String toString() {
         if (antalLiterPaafyldt == 0) {
             return nummer + " " + type + " " + literKapacitet;

@@ -3,16 +3,14 @@ package gui;
 import application.controller.Controller;
 import application.model.Fad;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 public class FadPane extends GridPane {
     private final ListView<Fad> lvwTommeFade = new ListView<>();
     private final ListView<Fad> lvwFyldteFade = new ListView<>();
+    private Label lblTapErr;
 
     public FadPane() {
         this.setGridLinesVisible(true);
@@ -47,6 +45,11 @@ public class FadPane extends GridPane {
 
         Button btnFadInfo = new Button("Fad info");
         this.add(btnFadInfo,2,5);
+        btnFadInfo.setOnAction(event -> infoAction());
+
+        lblTapErr = new Label("");
+        lblTapErr.setStyle("-fx-text-fill: red");
+        add(lblTapErr,3,6);
 
         Button btnAftapFad = new Button("Aftap fad");
         this.add(btnAftapFad,3,5);
@@ -55,15 +58,41 @@ public class FadPane extends GridPane {
     }
 
     public void openTapning(){
-        TapningWindow dia = new TapningWindow("Tapning", lvwFyldteFade.getSelectionModel().getSelectedItems());
-        dia.showAndWait();
-        lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
+        if (lvwFyldteFade.getSelectionModel().getSelectedItems().size() != 0) {
+            TapningWindow dia = new TapningWindow("Tapning", lvwFyldteFade.getSelectionModel().getSelectedItems());
+            dia.showAndWait();
+            lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
+        } else {
+            lblTapErr.setText("Vælg fyldt fad");
+        }
     }
 
     public void opretFad(){
         OpretFadWindow dia = new OpretFadWindow("Opret Fad");
         dia.showAndWait();
         lvwTommeFade.getItems().setAll(Controller.getTommeFade());
+    }
+
+    public void infoAction(){
+        if (lvwTommeFade.getSelectionModel().getSelectedItem() != null){
+            infotomt();
+        } else if (lvwFyldteFade.getSelectionModel().getSelectedItem() != null) {
+            infoFyldt();
+        }
+    }
+    private void infoFyldt(){
+        Fad fad = lvwFyldteFade.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(fad.toString());
+        alert.setContentText(fad.historik());
+        alert.showAndWait();
+    }
+    private void infotomt(){
+        Fad fad = lvwTommeFade.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(fad.toString());
+        alert.setContentText(fad.historik());
+        alert.showAndWait();
     }
 
     public void updateControls(){
