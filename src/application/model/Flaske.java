@@ -43,8 +43,7 @@ public class Flaske {
             res += "type: " + fad.getType() + "\n";
             res += "leverandør: " + fad.getLeverandoer() + "\n";
             res += "lå på lager: " + fad.getLager().getNavn() + "\n";
-            //mangler lige noget her
-            res += "lagt på fad: "   + " og blev tappet " + tapning.getDato() + "\n";
+            res += "lagt på fad: " + paafyldning.getDato() + " og blev tappet " + tapning.getDato() + "\n";
         }
         return res;
     }
