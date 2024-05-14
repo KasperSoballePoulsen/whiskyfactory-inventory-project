@@ -8,47 +8,29 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FadTest {
-
-    private String medarbejder;
-    private Destillat destilat;
-
-    private Lager lager;
-
-
+    private Fad fad;
+    private Destillat destillat;
+    private Paafyldning paafyldning;
     @BeforeEach
     void setup() {
-        medarbejder = "Medarbejder";
-        destilat = new Destillat("Destilat1", "Byg", LocalDate.of(2024, 01, 01), LocalDate.of(2024, 01, 02), "1", 37, 50.50, medarbejder);
-        lager = new Lager("Sall", 10);
-    }
-
-
-    @Test
-    void testAtAlleVaerdierBliverOprettet() {
-        Fad fad = new Fad( "Bourbon", 37, lager, "USA");
-        assertEquals(1, fad.getNummer());
-        assertEquals("Bourbon", fad.getType());
-        assertEquals(37, fad.getLiterKapacitet());
-        assertEquals("Sall", fad.getLager().getNavn());
-        assertEquals("USA", fad.getLeverandoer());
+        Lager lager = new Lager("Container", 10);
+        this.fad = lager.createFad("Sherry", 10, "Spanien");
+        this.destillat = new Destillat("Destillat","Byg", LocalDate.of(2024,01,01), LocalDate.of(2024, 01,14), "Maltdestillat", 11,50,"Snævar");
+        this.paafyldning = new Paafyldning(LocalDate.of(2024,01,14),"Snævar", this.fad);
     }
 
     @Test
-    void testAtFadetFaarSineVaerdierPaafyld() {
-        Fad fad = new Fad( "Bourbon", 37, lager, "USA");
-       // assertEquals(null, fad.getDestilat());
-        assertEquals(0, fad.getAntalLiterPaafyldt());
-       // assertEquals(null, fad.getPaafylder());
+    void TC1AtDerTilføjesEnPaafyldningTilFadet() {
+        assertEquals(0, fad.getPaafyldninger().size());
+        fad.paafyld(10, this.paafyldning);
+        assertEquals(1,fad.getPaafyldninger().size());
 
-        //fad.paafyld(medarbejder, destilat, LocalDate.of(2024, 01, 03), 37);
-        //assertEquals(destilat, fad.getDestilat());
-        assertEquals(37, fad.getAntalLiterPaafyldt());
-        //assertEquals(medarbejder, fad.getPaafylder());
+        Paafyldning paafyldning = fad.getPaafyldninger().get(0);
+        assertEquals(fad, paafyldning.getFad());
+        assertEquals(destillat, paafyldning.getDestillater().get(0));
+        assertEquals(LocalDate.of(2024, 01, 14), paafyldning.getDato());
+        assertEquals("Snævar", paafyldning.getMedarbejder());
     }
 
-    @Test
-    void testAtFadIkkeKanOverfyldes() {
-        Fad fad = new Fad( "Bourbon", 37, lager, "USA");
-       // assertThrows(IllegalArgumentException.class, () -> fad.paafyld(medarbejder, destilat, LocalDate.of(2024, 01, 03), 38));
-    }
+
 }

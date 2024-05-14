@@ -37,7 +37,7 @@ public class Controller {
     }
 
     public static Fad opretFad(String type, int stoerrelse, Lager lager, String leverandoer) {
-        Fad fad = lager.opretFad(type, stoerrelse, leverandoer);
+        Fad fad = lager.createFad(type, stoerrelse, leverandoer);
         return fad;
     }
 
