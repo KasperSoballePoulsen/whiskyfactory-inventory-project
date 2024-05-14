@@ -47,8 +47,8 @@ public class StartWindow extends Application {
         tabPane.getTabs().add(tabFlaske);
 
         tabFad.setOnSelectionChanged(event -> fadPane.updateControls());
-        //tabDestilat.setOnSelectionChanged(event -> destilatPane.updateControls());
-        //tabFlaske.setOnSelectionChanged(event -> flaskePane.updateControls());
+        tabDestilat.setOnSelectionChanged(event -> destilatPane.updateControls());
+        tabFlaske.setOnSelectionChanged(event -> flaskePane.updateControls());
 
     }
 
