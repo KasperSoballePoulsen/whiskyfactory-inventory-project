@@ -48,12 +48,13 @@ public class Lager {
 
     public int antalLedigePladser() {
         int k = 0;
-        for (int i = 0; i < pladser.length; i++) {
-            if (pladser[i] == null) {
-                k++;
-            }
+        boolean found = false;
+        while (!found && k < pladser.length){
+            if (pladser[k] == null){
+                found = true;
+            } else k++;
         }
-        return k;
+        return pladser.length - k;
     }
 
     public List<Fad> fadePaaLager(){
