@@ -33,6 +33,7 @@ public class StartWindow extends Application {
         Tab tabFad = new Tab("Fad");
         Tab tabDestilat = new Tab("Destilat");
         Tab tabFlaske = new Tab("Flaske");
+        Tab tabLager = new Tab("Lager");
 
         FadPane fadPane = new FadPane();
         tabFad.setContent(fadPane);
@@ -40,11 +41,14 @@ public class StartWindow extends Application {
         tabDestilat.setContent(destilatPane);
         FlaskePane flaskePane = new FlaskePane();
         tabFlaske.setContent(flaskePane);
+        LagerPane lagerPane = new LagerPane();
+        tabLager.setContent(lagerPane);
 
 
         tabPane.getTabs().add(tabFad);
         tabPane.getTabs().add(tabDestilat);
         tabPane.getTabs().add(tabFlaske);
+        tabPane.getTabs().add(tabLager);
 
         tabFad.setOnSelectionChanged(event -> fadPane.updateControls());
         tabDestilat.setOnSelectionChanged(event -> destilatPane.updateControls());

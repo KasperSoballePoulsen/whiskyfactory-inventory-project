@@ -1,5 +1,8 @@
 package application.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Lager {
     private Fad[] pladser;
     private String navn;
@@ -51,6 +54,16 @@ public class Lager {
             }
         }
         return k;
+    }
+
+    public List<Fad> fadePaaLager(){
+        List<Fad> fade = new ArrayList<>();
+        for (Fad fad : pladser){
+            if (fad != null) {
+                fade.add(fad);
+            }
+        }
+        return fade;
     }
 
     public String toString(){
