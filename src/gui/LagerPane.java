@@ -44,6 +44,7 @@ public class LagerPane extends GridPane {
         add(lblPlads, 2, 0);
 
         txfledigePladser = new TextField();
+        txfledigePladser.setEditable(false);
         add(txfledigePladser, 2, 1);
 
         Button btnOpret = new Button("Opret Lager");
