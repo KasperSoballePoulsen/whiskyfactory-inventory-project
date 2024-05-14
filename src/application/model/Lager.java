@@ -20,7 +20,7 @@ public class Lager {
         return navn;
     }
 
-    public Fad opretFad(String type, int literKapacitet, String leverandoer) {
+    public Fad createFad(String type, int literKapacitet, String leverandoer) {
         Fad fad = new Fad(type, literKapacitet, this, leverandoer);
         int pladsNr = findLedigPlads();
         pladser[pladsNr] = fad;

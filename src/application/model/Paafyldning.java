@@ -11,10 +11,14 @@ public class Paafyldning {
     private final List<Destillat> destillater = new ArrayList<>();
     private Fad fad;
 
-    public Paafyldning(LocalDate dato, String medarbejder, Fad fad){
+    public Paafyldning(LocalDate dato, String medarbejder, Fad fad, List<Destillat> destillater){
         this.dato = dato;
         this.medarbejder = medarbejder;
         this.fad = fad;
+        for (Destillat destillat : destillater) {
+            this.addDestillat(destillat);
+        }
+
     }
 
     public LocalDate getDato() {

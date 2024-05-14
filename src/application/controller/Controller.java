@@ -37,15 +37,12 @@ public class Controller {
     }
 
     public static Fad opretFad(String type, int stoerrelse, Lager lager, String leverandoer) {
-        Fad fad = lager.opretFad(type, stoerrelse, leverandoer);
+        Fad fad = lager.createFad(type, stoerrelse, leverandoer);
         return fad;
     }
 
     public static void paaFyldFad(List<Destillat> destillater, Fad fad, List<Integer> liter, LocalDate dato, String medarbejder) {
-        Paafyldning paafyldning = new Paafyldning(dato, medarbejder, fad);
-        for (int i = 0; i < destillater.size(); i++) {
-            paafyldning.addDestillat(destillater.get(i));
-        }
+        Paafyldning paafyldning = new Paafyldning(dato, medarbejder, fad, destillater);
         paafyldning.fyldFad(liter);
         int sumLiter = 0;
         for (Integer i : liter) {

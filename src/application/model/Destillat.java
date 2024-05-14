@@ -16,12 +16,12 @@ public class Destillat {
     private final List<Paafyldning> paafyldninger;
 
 
-    public Destillat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestilat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
+    public Destillat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestillat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
         this.navn = navn;
         this.kornsort = kornsort;
         this.startdato = startdato;
         this.slutdato = slutdato;
-        this.maltdestillat = maltdestilat;
+        this.maltdestillat = maltdestillat;
         this.maengdeVaeskeILiter = maengdeVaeskeILiter;
         this.alkoholprocent = alkoholprocent;
         this.medarbejder = medarbejder;

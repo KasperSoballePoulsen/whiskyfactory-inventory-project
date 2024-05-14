@@ -57,9 +57,14 @@ public class Fad {
     }
 
 
-    public void paafyld(int antalLiterPaafyldt, Paafyldning paafyldning) {
-        if (this.antalLiterPaafyldt + antalLiterPaafyldt <= literKapacitet) {
-            this.antalLiterPaafyldt += antalLiterPaafyldt;
+    /**
+     *
+     * @param antalLiterSomPaafyldes
+     * @param paafyldning
+     */
+    public void paafyld(int antalLiterSomPaafyldes, Paafyldning paafyldning) {
+        if (this.antalLiterPaafyldt + antalLiterSomPaafyldes <= literKapacitet) {
+            this.antalLiterPaafyldt += antalLiterSomPaafyldes;
             paafyldninger.add(paafyldning);
         } else throw new IllegalArgumentException("prøver at overfylde fadet");
     }
