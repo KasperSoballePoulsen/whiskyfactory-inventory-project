@@ -56,9 +56,12 @@ public class Controller {
 
     public static void aftapFad(List<Fad> fade, List<Integer> literTapet, LocalDate dato, String medarbejder, int vand, String flaskeNavn, double alkoholprocent) {
         Tapning tapning = new Tapning(dato, medarbejder);
-        for (int i = 0; i < fade.size(); i++) {
-            fade.get(i).aftap(literTapet.get(i), tapning);
+        for (Fad fad : fade){
+            tapning.addFad(fad);
         }
+//        for (int i = 0; i < fade.size(); i++) {
+//            fade.get(i).aftap(literTapet.get(i), tapning);
+//        }
         Storage.addTapning(tapning);
         tapning.fyldPaaFlasker(literTapet, vand, medarbejder, flaskeNavn, alkoholprocent);
 

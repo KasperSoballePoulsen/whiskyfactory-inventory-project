@@ -83,12 +83,7 @@ public class Fad {
             tapning.addFad(this);
         }
     }
-    public void addPaafyldning(Tapning tapning) {
-        if (!tapninger.contains(tapning)) {
-            tapninger.add(tapning);
-            tapning.addFad(this);
-        }
-    }
+
 
     public void removeTapning(Tapning tapning) {
         if (tapninger.contains(tapning)) {

@@ -15,7 +15,6 @@ public class Flaske {
         this.navn = navn;
         this.alkoholprocent = alkoholprocent;
         this.tapning = tapning;
-        tapning.addFlaske(this);
     }
 
     public int getLiter() {

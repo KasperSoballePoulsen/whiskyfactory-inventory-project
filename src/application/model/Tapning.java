@@ -18,7 +18,7 @@ public class Tapning {
 
     public Flaske createFlaske(String navn, double alkoholprocent) {
         Flaske flaske = new Flaske(navn, alkoholprocent, this);
-        flasker.add(flaske);
+        this.addFlaske(flaske);
         return flaske;
     }
     public List<Flaske> getFlasker() {

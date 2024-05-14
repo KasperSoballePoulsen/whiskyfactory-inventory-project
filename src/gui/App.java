@@ -40,7 +40,7 @@ public class App {
         List<Destillat> destillater = new ArrayList<>();
         destillater.add(destillat1);
         List<Integer> literMængder = new ArrayList<>();
-        literMængder.add(30);
+        literMængder.add(1);
         Controller.paaFyldFad(destillater, fad1, literMængder,LocalDate.of(2024,01,15), "Snævar Njall Albertsson");
         List<Fad> fadList = new ArrayList<>();
         fadList.add(fad1);
