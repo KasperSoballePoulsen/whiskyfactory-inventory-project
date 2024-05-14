@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 public class FadPane extends GridPane {
     private final ListView<Fad> lvwTommeFade = new ListView<>();
     private final ListView<Fad> lvwFyldteFade = new ListView<>();
+    private Label lblTapErr;
 
     public FadPane() {
         this.setGridLinesVisible(true);
@@ -48,6 +49,10 @@ public class FadPane extends GridPane {
         Button btnFadInfo = new Button("Fad info");
         this.add(btnFadInfo,2,5);
 
+        lblTapErr = new Label("");
+        lblTapErr.setStyle("-fx-text-fill: red");
+        add(lblTapErr,3,6);
+
         Button btnAftapFad = new Button("Aftap fad");
         this.add(btnAftapFad,3,5);
         btnAftapFad.setOnAction(event -> openTapning());
@@ -55,9 +60,13 @@ public class FadPane extends GridPane {
     }
 
     public void openTapning(){
-        TapningWindow dia = new TapningWindow("Tapning", lvwFyldteFade.getSelectionModel().getSelectedItems());
-        dia.showAndWait();
-        lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
+        if (lvwFyldteFade.getSelectionModel().getSelectedItems().size() != 0) {
+            TapningWindow dia = new TapningWindow("Tapning", lvwFyldteFade.getSelectionModel().getSelectedItems());
+            dia.showAndWait();
+            lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
+        } else {
+            lblTapErr.setText("Vælg fyldt fad");
+        }
     }
 
     public void opretFad(){
