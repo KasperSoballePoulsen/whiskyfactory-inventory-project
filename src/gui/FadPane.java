@@ -57,6 +57,7 @@ public class FadPane extends GridPane {
     public void openTapning(){
         TapningWindow dia = new TapningWindow("Tapning", lvwFyldteFade.getSelectionModel().getSelectedItems());
         dia.showAndWait();
+        lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
     }
 
     public void opretFad(){
@@ -73,10 +74,7 @@ public class FadPane extends GridPane {
 
 
 
-    /*public void updateControls() {
 
-    }
-     */
 
 
 

@@ -43,4 +43,14 @@ public class FlaskePane extends GridPane {
         alert.setContentText(flaske.historik());
         alert.showAndWait();
     }
+
+    public void updateControls(){
+        List<Flaske> flasker = new ArrayList<>();
+        for (Tapning tapning : Controller.getTapninger()) {
+            for (Flaske flaske : tapning.getFlasker()) {
+                flasker.add(flaske);
+            }
+        }
+        lvwFlasker.getItems().setAll(flasker);
+    }
 }

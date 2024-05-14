@@ -102,4 +102,6 @@ public class TapningWindow extends Stage {
         this.hide();
 
     }
+
+
 }
