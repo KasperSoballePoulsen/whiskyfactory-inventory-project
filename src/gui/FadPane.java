@@ -3,10 +3,7 @@ package gui;
 import application.controller.Controller;
 import application.model.Fad;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -48,6 +45,7 @@ public class FadPane extends GridPane {
 
         Button btnFadInfo = new Button("Fad info");
         this.add(btnFadInfo,2,5);
+        btnFadInfo.setOnAction(event -> infoAction());
 
         lblTapErr = new Label("");
         lblTapErr.setStyle("-fx-text-fill: red");
@@ -73,6 +71,28 @@ public class FadPane extends GridPane {
         OpretFadWindow dia = new OpretFadWindow("Opret Fad");
         dia.showAndWait();
         lvwTommeFade.getItems().setAll(Controller.getTommeFade());
+    }
+
+    public void infoAction(){
+        if (lvwTommeFade.getSelectionModel().getSelectedItem() != null){
+            infotomt();
+        } else if (lvwFyldteFade.getSelectionModel().getSelectedItem() != null) {
+            infoFyldt();
+        }
+    }
+    private void infoFyldt(){
+        Fad fad = lvwFyldteFade.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(fad.toString());
+        alert.setContentText(fad.historik());
+        alert.showAndWait();
+    }
+    private void infotomt(){
+        Fad fad = lvwTommeFade.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(fad.toString());
+        alert.setContentText(fad.historik());
+        alert.showAndWait();
     }
 
     public void updateControls(){
