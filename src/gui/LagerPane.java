@@ -29,7 +29,7 @@ public class LagerPane extends GridPane {
 
         lvwLager = new ListView<>();
         lvwLager.getItems().setAll(Controller.getLager());
-        add(lvwLager, 0, 1);
+        add(lvwLager, 0, 1, 1, 20);
         ChangeListener<Lager> lagerChangeListener = (ov, oldLager, newLager) -> lagerSelectedChanged();
         lvwLager.getSelectionModel().selectedItemProperty().addListener(lagerChangeListener);
 
@@ -38,7 +38,7 @@ public class LagerPane extends GridPane {
         add(lblFade, 1, 0);
 
         lvwFadePaaLager = new ListView<>();
-        add(lvwFadePaaLager, 1, 1);
+        add(lvwFadePaaLager, 1, 1,1,20);
 
         Label lblPlads = new Label("Ledige Pladser");
         add(lblPlads, 2, 0);
