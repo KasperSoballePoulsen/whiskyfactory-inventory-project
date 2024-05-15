@@ -111,9 +111,10 @@ public class Fad {
                 res += "Korn sort: " + destilat.getKornsort() + "\n";
                 res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
                 res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
-                res += "-------------------------- \n";
+                res += "--------------------------\n";
             }
-            res += "blev fyldt: " + paafyldning.getDato();
+            res += "blev fyldt: " + paafyldning.getDato() + "\n";
+            res += "--------------------------\n";
         }
         res += "fad: " + nummer + "\n";
         res += "type: " + type + "\n";
