@@ -68,6 +68,6 @@ public class Destillat {
     }
 
     public String toString() {
-        return navn;
+        return navn + " " + maengdeVaeskeILiter + " liter";
     }
 }
