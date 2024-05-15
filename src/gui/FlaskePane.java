@@ -45,7 +45,7 @@ public class FlaskePane extends GridPane {
         Flaske flaske = lvwFlasker.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(flaske.getNavn());
-        alert.setContentText(flaske.historik());
+        alert.setContentText(Controller.flaskeHistorik(flaske));
         alert.showAndWait();
     }
 

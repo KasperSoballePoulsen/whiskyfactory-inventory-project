@@ -103,5 +103,9 @@ public class Controller {
         return lager;
     }
 
+    public static String flaskeHistorik(Flaske flaske){
+        return flaske.historik();
+    }
+
 
 }
