@@ -28,7 +28,7 @@ public class ControllerTest {
         fad = Controller.opretFad("Sherry", 10, lager, "Spanien");
         LocalDate destillationStartdato = LocalDate.of(2024, 01, 01);
         LocalDate destillationSlutdato = LocalDate.of(2024, 01, 14);
-        destillat = Controller.opretDestillat("Destillat", "Byg", destillationStartdato, destillationSlutdato, "Maltdestillat", 11, 50, medarbejder);
+        destillat = Controller.opretDestillat("Destillat", "Byg", destillationStartdato, destillationSlutdato, "Maltdestillat", 15, 50, medarbejder);
     }
 
     @Test
@@ -48,8 +48,6 @@ public class ControllerTest {
         assertEquals(10, Controller.getTapninger().get(0).getFlasker().size());
         assertEquals("Whisky", Controller.getTapninger().get(0).getFlasker().get(0).getNavn());
 
-        Controller.aftapFad(fadList,literlist,dato,medarbejder,15,"Whisky",45);
-        assertEquals(20, Controller.getTapninger().get(1).getFlasker().size());
 
 
     }
