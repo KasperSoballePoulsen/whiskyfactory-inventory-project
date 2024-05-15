@@ -24,15 +24,58 @@ class FadTest {
     }
 
     @Test
-    void TC1AtDerTilføjesEnPaafyldningTilFadet() {
+    void TC1AtDerTilknyttesEnPaafyldningTilFadet() {
         assertEquals(0, fad.getPaafyldninger().size());
-        fad.paafyld(10, this.paafyldning);
-        assertEquals(1,fad.getPaafyldninger().size());
-
+        fad.paafyld(5, this.paafyldning);
+        assertEquals(1, fad.getPaafyldninger().size());
+        assertEquals(5,fad.getAntalLiterPaafyldt());
         Paafyldning paafyldning = fad.getPaafyldninger().get(0);
         assertEquals(fad, paafyldning.getFad());
         assertEquals(destillater.get(0), paafyldning.getDestillater().get(0));
         assertEquals(LocalDate.of(2024, 01, 14), paafyldning.getDato());
         assertEquals("Snævar", paafyldning.getMedarbejder());
     }
+
+
+    @Test
+    void TC2AtDerTilknyttesEnPaafyldningTilFadet() {
+        assertEquals(0, fad.getPaafyldninger().size());
+        fad.paafyld(1, this.paafyldning);
+        assertEquals(1, fad.getPaafyldninger().size());
+        assertEquals(1,fad.getAntalLiterPaafyldt());
+        Paafyldning paafyldning = fad.getPaafyldninger().get(0);
+        assertEquals(fad, paafyldning.getFad());
+        assertEquals(destillater.get(0), paafyldning.getDestillater().get(0));
+        assertEquals(LocalDate.of(2024, 01, 14), paafyldning.getDato());
+        assertEquals("Snævar", paafyldning.getMedarbejder());
+    }
+
+    @Test
+    void TC3AtDerTilknyttesEnPaafyldningTilFadet() {
+        assertEquals(0, fad.getPaafyldninger().size());
+        fad.paafyld(10, this.paafyldning);
+        assertEquals(1, fad.getPaafyldninger().size());
+        assertEquals(10,fad.getAntalLiterPaafyldt());
+        Paafyldning paafyldning = fad.getPaafyldninger().get(0);
+        assertEquals(fad, paafyldning.getFad());
+        assertEquals(destillater.get(0), paafyldning.getDestillater().get(0));
+        assertEquals(LocalDate.of(2024, 01, 14), paafyldning.getDato());
+        assertEquals("Snævar", paafyldning.getMedarbejder());
+    }
+
+    @Test
+    void TC4AtDerKastesEnException() {
+        assertEquals(0, fad.getPaafyldninger().size());
+        assertThrows(IllegalArgumentException.class, () -> fad.paafyld(11, this.paafyldning));
+    }
+
+    @Test
+    void TC5AtDerKastesEnException() {
+        assertEquals(0, fad.getPaafyldninger().size());
+        assertThrows(IllegalArgumentException.class, () -> fad.paafyld(20, this.paafyldning));
+    }
+
+
+
+
 }
