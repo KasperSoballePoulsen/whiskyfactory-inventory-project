@@ -97,6 +97,10 @@ public class Fad {
         }
     }
 
+    /**
+     * Pre: paafyldninger != null
+     * @return en string med hele historien bag fadet. Alle destillaternes informationer
+     */
     public String historik() {
         String res = "";
 
