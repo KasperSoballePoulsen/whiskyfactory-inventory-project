@@ -105,7 +105,7 @@ public class Fad {
         String res = "";
 
         if (paafyldninger.size() != 0) {
-            Paafyldning paafyldning = paafyldninger.get(paafyldninger.size() - 1);
+            Paafyldning paafyldning = sidstePaafyldning();
             for (Destillat destilat : paafyldning.getDestillater()) {
                 res += "Destilat: " + destilat.getNavn() + "\n";
                 res += "Korn sort: " + destilat.getKornsort() + "\n";
@@ -124,11 +124,15 @@ public class Fad {
         return res;
     }
 
+    private Paafyldning sidstePaafyldning() {
+        return paafyldninger.get(paafyldninger.size() - 1);
+    }
+
     public String toString() {
         if (antalLiterPaafyldt == 0) {
             return nummer + " " + type + " " + literKapacitet;
         } else {
-            return nummer + " " + type + " " + literKapacitet + ". " + antalLiterPaafyldt + " liter påfyldt";
+            return nummer + " " + type + " " + literKapacitet + ". " + antalLiterPaafyldt + " liter påfyldt " + sidstePaafyldning();
         }
     }
 
