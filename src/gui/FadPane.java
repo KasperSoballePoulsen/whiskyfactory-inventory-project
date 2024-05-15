@@ -2,6 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Fad;
+import application.model.Lager;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -11,6 +12,8 @@ public class FadPane extends GridPane {
     private final ListView<Fad> lvwTommeFade = new ListView<>();
     private final ListView<Fad> lvwFyldteFade = new ListView<>();
     private Label lblTapErr;
+
+
 
     public FadPane() {
         this.setGridLinesVisible(true);
@@ -53,6 +56,8 @@ public class FadPane extends GridPane {
         Button btnAftapFad = new Button("Aftap fad");
         this.add(btnAftapFad, 3, 5);
         btnAftapFad.setOnAction(event -> openTapning());
+
+
 
     }
 
@@ -101,6 +106,8 @@ public class FadPane extends GridPane {
         lvwTommeFade.getItems().setAll(Controller.getTommeFade());
 
     }
+
+
 
 
 }

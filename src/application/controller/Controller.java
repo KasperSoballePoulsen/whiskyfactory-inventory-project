@@ -128,6 +128,12 @@ public class Controller {
     }
 
 
+
+    public static Lager opretLager(String navn, int antalPladser) {
+        Lager lager = new Lager(navn, antalPladser);
+        Storage.addLager(lager);
+        return lager;
+    }
     /**
      * @param flaske
      * @return en String med historien bag flasken

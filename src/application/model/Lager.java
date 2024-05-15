@@ -1,5 +1,6 @@
 package application.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,11 +82,25 @@ public class Lager {
      */
     public List<Fad> fadePaaLager() {
         List<Fad> fade = new ArrayList<>();
-        int i = 0;
-        while (pladser[i] != null) {
-            fade.add(pladser[i]);
+        for (Fad fad : pladser) {
+            if (fad != null){
+                fade.add(fad);
+            }
         }
         return fade;
+    }
+
+    public List<Fad> faerdigeFade(){
+        List<Fad> faerdige = new ArrayList<>();
+        LocalDate today = LocalDate.now();
+        for (Fad fad : pladser){
+            if (fad != null && fad.getPaafyldninger().size() != 0){
+                if (fad.sidstePaafyldning().getDato().isBefore(today.minusYears(3))){
+                    faerdige.add(fad);
+                }
+            }
+        }
+        return faerdige;
     }
 
     public String toString() {
