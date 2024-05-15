@@ -20,6 +20,13 @@ public class Lager {
         return navn;
     }
 
+    /**
+     *
+     * @param type
+     * @param literKapacitet
+     * @param leverandoer
+     * @return Fad objekt
+     */
     public Fad createFad(String type, int literKapacitet, String leverandoer) {
         Fad fad = new Fad(type, literKapacitet, this, leverandoer);
         int pladsNr = findLedigPlads();
@@ -27,7 +34,10 @@ public class Lager {
         return fad;
     }
 
-
+    /**
+     * lavet med en standard søge skabelon
+     * @return den første ledige plads der er på laget, hvis lageret er fyldt så thrower den en out of bound exception
+     */
     public int findLedigPlads() {
         boolean found = false;
         int i = 0;
@@ -46,6 +56,11 @@ public class Lager {
         }
     }
 
+    /**
+     * da vi fylder lageret fra venstre til højre, kan vi søge efter den første ledige plads index,
+     * og trække det fra antallet af pladser på lageret for at få antallet af ledige pladser
+     * @return antallet af ledige pladser på lageret
+     */
     public int antalLedigePladser() {
         int k = 0;
         boolean found = false;
@@ -57,12 +72,17 @@ public class Lager {
         return pladser.length - k;
     }
 
+    /**
+     *
+     * da vi fylder fra venstre til højre kan vi fylde på vores liste indtil vi finder en tom plads
+     * så ved vi, vi har alle fad på lageret
+     * @return alle fade der lægger på et lager
+     */
     public List<Fad> fadePaaLager(){
         List<Fad> fade = new ArrayList<>();
-        for (Fad fad : pladser){
-            if (fad != null) {
-                fade.add(fad);
-            }
+        int i = 0;
+        while (pladser[i] != null) {
+            fade.add(pladser[i]);
         }
         return fade;
     }

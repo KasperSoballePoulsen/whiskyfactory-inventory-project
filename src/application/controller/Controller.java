@@ -51,6 +51,17 @@ public class Controller {
 //        fad.paafyld(sumLiter, paafyldning);
     }
 
+    /**
+     * pre: fade.size() == litertappet.size()
+     * @param fade
+     * @param literTapet
+     * @param dato
+     * @param medarbejder
+     * @param vand
+     * @param flaskeNavn
+     * @param alkoholprocent
+     * tager væske fra fade og opretter flasker med
+     */
     public static void aftapFad(List<Fad> fade, List<Integer> literTapet, LocalDate dato, String medarbejder, int vand, String flaskeNavn, double alkoholprocent) {
         Tapning tapning = new Tapning(dato, medarbejder);
         for (Fad fad : fade){
@@ -64,6 +75,10 @@ public class Controller {
 
     }
 
+    /**
+     * vi henter fadene fra storage og sortere de fyldte fade fra
+     * @return list<Fad> indeholder alle de tomme fade i storage
+     */
     public static List<Fad> getTommeFade() {
         List<Lager> lagerer = Storage.getLagerer();
         List<Fad> fade = new ArrayList<>();
@@ -80,6 +95,10 @@ public class Controller {
         return fade;
     }
 
+    /**
+     * vi henter fadene fra storage og sortere de tomme fade fra
+     * @return list<Fad> indeholder alle de fyldte fade i storage
+     */
     public static List<Fad> getFyldteFade() {
         List<Lager> lagerer = Storage.getLagerer();
         List<Fad> fade = new ArrayList<>();
@@ -103,6 +122,11 @@ public class Controller {
         return lager;
     }
 
+    /**
+     *
+     * @param flaske
+     * @return en String med historien bag flasken
+     */
     public static String flaskeHistorik(Flaske flaske){
         return flaske.historik();
     }
