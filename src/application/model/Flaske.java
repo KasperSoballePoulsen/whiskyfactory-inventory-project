@@ -32,9 +32,9 @@ public class Flaske {
             Paafyldning paafyldning = fad.getPaafyldninger().get(fad.getPaafyldninger().size()-1);
                 for (Destillat destilat : paafyldning.getDestillater()) {
 
-                    res += "Destilat: " + destilat.getNavn() + "\n";
+                    res += "Destillat: " + destilat.getNavn() + "\n";
                     res += "Korn sort: " + destilat.getKornsort() + "\n";
-                    res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
+                    res += "Malt destillat: " + destilat.getMaltdestillat() + "\n";
                     res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
                     res += "-------------------------- \n";
                 }
