@@ -12,6 +12,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
 public class ControllerTest {
 
     Lager lager;
@@ -80,5 +83,21 @@ public class ControllerTest {
         assertEquals(res,Controller.getTapninger().get(0).getFlasker().get(0).historik());
 
     }
+
+
+    @Test
+    void TC1testAtFadetErBlevetPaafyldt(){
+        List<Integer> literVaeske = new ArrayList<>();
+        LocalDate datoForPaafyldning = LocalDate.of(2023,1,14);
+        literVaeske.add(10);
+        List<Destillat> destillater = new ArrayList<>();
+        destillater.add(destillat);
+        Controller.paaFyldFad(destillater,fad,literVaeske,datoForPaafyldning,"Snævar");
+        assertEquals(10,fad.getAntalLiterPaafyldt());
+        assertEquals(LocalDate.of(2023,1,14),fad.sidstePaafyldning().getDato());
+        assertEquals("Snævar",fad.sidstePaafyldning().getMedarbejder());
+        assertTrue(fad.sidstePaafyldning().getDestillater().contains(destillat));
+    }
+
 
 }
