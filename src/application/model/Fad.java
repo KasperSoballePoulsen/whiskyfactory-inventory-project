@@ -72,7 +72,7 @@ public class Fad {
     public void aftap(int literTappet, Tapning tapning) {
         if (literTappet <= antalLiterPaafyldt) {
             antalLiterPaafyldt -= literTappet;
-            tapninger.add(tapning)
+            tapninger.add(tapning);
         } else {
             throw new IllegalArgumentException("der er ikke nok liter");
         }
