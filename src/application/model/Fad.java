@@ -132,7 +132,7 @@ public class Fad {
         if (antalLiterPaafyldt == 0) {
             return nummer + " " + type + " " + literKapacitet;
         } else {
-            return nummer + " " + type + " " + literKapacitet + ". " + antalLiterPaafyldt + " liter påfyldt " + sidstePaafyldning();
+            return nummer + " " + type + " " + literKapacitet + ". " + antalLiterPaafyldt + " liter påfyldt " + sidstePaafyldning().getDato();
         }
     }
 
