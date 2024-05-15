@@ -16,6 +16,7 @@ public class FlaskePane extends GridPane {
 
     private ListView<Flaske> lvwFlasker;
     private TextField txfAntal;
+
     public FlaskePane() {
         this.setGridLinesVisible(false);
         this.setPadding(new Insets(30));
@@ -25,23 +26,24 @@ public class FlaskePane extends GridPane {
         lvwFlasker = new ListView<>();
         lvwFlasker.getItems().setAll(flaskeList());
         lvwFlasker.setPrefHeight(200);
-        add(lvwFlasker,0,0,1,20);
-        ChangeListener<Flaske> flaskeChangeListener = (ov,oldFlaske,newFlaske) -> flaskeSelectedChanged();
+        add(lvwFlasker, 0, 0, 1, 20);
+        ChangeListener<Flaske> flaskeChangeListener = (ov, oldFlaske, newFlaske) -> flaskeSelectedChanged();
         lvwFlasker.getSelectionModel().selectedItemProperty().addListener(flaskeChangeListener);
 
         Button btnHistorik = new Button("Vis historik");
         btnHistorik.setOnAction(event -> historikAction());
-        add(btnHistorik,1,2);
+        add(btnHistorik, 1, 2);
 
         Label lblAntal = new Label("antal:");
-        add(lblAntal,1,0);
+        add(lblAntal, 1, 0);
         txfAntal = new TextField();
         txfAntal.setEditable(false);
-        add(txfAntal,1,1);
+        add(txfAntal, 1, 1);
 
 
     }
-    public void historikAction(){
+
+    public void historikAction() {
         Flaske flaske = lvwFlasker.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(flaske.getNavn());
@@ -49,20 +51,21 @@ public class FlaskePane extends GridPane {
         alert.showAndWait();
     }
 
-    public List<Flaske> flaskeList(){
+    public List<Flaske> flaskeList() {
         List<Flaske> flasker = new ArrayList<>();
         for (Tapning tapning : Controller.getTapninger()) {
             flasker.add(tapning.getFlasker().get(0));
         }
         return flasker;
     }
-    public void flaskeSelectedChanged(){
+
+    public void flaskeSelectedChanged() {
         Flaske flaske = lvwFlasker.getSelectionModel().getSelectedItem();
         if (flaske != null) txfAntal.setText(flaske.getPaaFyldning().getFlasker().size() + "");
     }
 
 
-    public void updateControls(){
+    public void updateControls() {
         lvwFlasker.getItems().setAll(flaskeList());
     }
 }

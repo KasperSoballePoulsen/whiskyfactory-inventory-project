@@ -26,14 +26,13 @@ public class Flaske {
     }
 
     /**
-     *
      * @return en string med hele historien bag flaske. Alle destillaternes informationer, samt alle fadenes historie
      */
     public String historik() {
         String res = "";
         for (Fad fad : tapning.getFade()) {
             res += fad.historik();
-            Paafyldning paafyldning = fad.getPaafyldninger().get(fad.getPaafyldninger().size()-1);
+            Paafyldning paafyldning = fad.getPaafyldninger().get(fad.getPaafyldninger().size() - 1);
             res += "lagt på fad: " + paafyldning.getDato() + " og blev tappet " + tapning.getDato() + "\n";
         }
         return res;
@@ -52,7 +51,7 @@ public class Flaske {
         }
     }
 
-    public String toString(){
+    public String toString() {
         return navn + " " + alkoholprocent + "%";
     }
 }

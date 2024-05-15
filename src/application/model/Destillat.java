@@ -51,7 +51,8 @@ public class Destillat {
     public int getMaengdeVaeskeILiter() {
         return maengdeVaeskeILiter;
     }
-    public void setMaengdeVaeskeILiter(int vaeskeILiter){
+
+    public void setMaengdeVaeskeILiter(int vaeskeILiter) {
         maengdeVaeskeILiter = vaeskeILiter;
     }
 
@@ -66,7 +67,7 @@ public class Destillat {
         return alkoholprocent;
     }
 
-    public String toString(){
+    public String toString() {
         return navn;
     }
 }

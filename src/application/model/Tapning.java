@@ -11,13 +11,12 @@ public class Tapning {
     private String medarbejder;
     private LocalDate dato;
 
-    public Tapning(LocalDate dato, String medarbejder){
+    public Tapning(LocalDate dato, String medarbejder) {
         this.dato = dato;
         this.medarbejder = medarbejder;
     }
 
     /**
-     *
      * @param navn
      * @param alkoholprocent
      * @return Flaske objekt
@@ -27,6 +26,7 @@ public class Tapning {
         this.addFlaske(flaske);
         return flaske;
     }
+
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);
     }
@@ -41,7 +41,7 @@ public class Tapning {
         return new ArrayList<>(fade);
     }
 
-    public LocalDate getDato(){
+    public LocalDate getDato() {
         return dato;
     }
 
@@ -62,13 +62,13 @@ public class Tapning {
 
     /**
      * Pre: literTappet.size() == fade.size()
+     *
      * @param literTappet
      * @param vand
      * @param medarbejder
      * @param flaskeNavn
-     * @param alkoholprocent
-     * først trækker vi literne fra fadet og summere literne, for alle fade
-     * så laver vi en flaske for hver liter væske vi har.
+     * @param alkoholprocent først trækker vi literne fra fadet og summere literne, for alle fade
+     *                       så laver vi en flaske for hver liter væske vi har.
      * @return List<Flaske> med flaskerne der er oprettet
      */
     public List<Flaske> fyldPaaFlasker(List<Integer> literTappet, int vand, String medarbejder, String flaskeNavn, double alkoholprocent) {

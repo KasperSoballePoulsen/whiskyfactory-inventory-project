@@ -11,7 +11,7 @@ public class Paafyldning {
     private final List<Destillat> destillater = new ArrayList<>();
     private Fad fad;
 
-    public Paafyldning(LocalDate dato, String medarbejder, Fad fad, List<Destillat> destillater){
+    public Paafyldning(LocalDate dato, String medarbejder, Fad fad, List<Destillat> destillater) {
         this.dato = dato;
         this.medarbejder = medarbejder;
         this.fad = fad;
@@ -46,8 +46,8 @@ public class Paafyldning {
 
     /**
      * Pre: liter.size() == destillater.size()
-     * @param liter
-     * vi tilføjer væsken til fadet, og trækker væsken fra destillatet, for hvert destillat
+     *
+     * @param liter vi tilføjer væsken til fadet, og trækker væsken fra destillatet, for hvert destillat
      */
     public void fyldFad(List<Integer> liter) {
 

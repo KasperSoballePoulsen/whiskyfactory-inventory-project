@@ -58,7 +58,6 @@ public class Fad {
 
 
     /**
-     *
      * @param antalLiterSomPaafyldes
      * @param paafyldning
      */
@@ -99,36 +98,41 @@ public class Fad {
 
     /**
      * Pre: paafyldninger != null
+     *
      * @return en string med hele historien bag fadet. Alle destillaternes informationer
      */
     public String historik() {
         String res = "";
 
-            if (paafyldninger.size() != 0) {
-                Paafyldning paafyldning = paafyldninger.get(paafyldninger.size() - 1);
-                for (Destillat destilat : paafyldning.getDestillater()) {
-                    res += "Destilat: " + destilat.getNavn() + "\n";
-                    res += "Korn sort: " + destilat.getKornsort() + "\n";
-                    res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
-                    res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
-                    res += "-------------------------- \n";
-                }
-                res += "blev fyldt: " + paafyldning.getDato();
+        if (paafyldninger.size() != 0) {
+            Paafyldning paafyldning = sidstePaafyldning();
+            for (Destillat destilat : paafyldning.getDestillater()) {
+                res += "Destilat: " + destilat.getNavn() + "\n";
+                res += "Korn sort: " + destilat.getKornsort() + "\n";
+                res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
+                res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
+                res += "-------------------------- \n";
             }
-            res += "fad: " + nummer + "\n";
-            res += "type: " + type + "\n";
-            res += "leverandør: " + leverandoer + "\n";
-            res += "lå på lager: " + lager.getNavn() + "\n";
+            res += "blev fyldt: " + paafyldning.getDato();
+        }
+        res += "fad: " + nummer + "\n";
+        res += "type: " + type + "\n";
+        res += "leverandør: " + leverandoer + "\n";
+        res += "lå på lager: " + lager.getNavn() + "\n";
 
 
         return res;
+    }
+
+    public Paafyldning sidstePaafyldning() {
+        return paafyldninger.get(paafyldninger.size() - 1);
     }
 
     public String toString() {
         if (antalLiterPaafyldt == 0) {
             return nummer + " " + type + " " + literKapacitet;
         } else {
-            return nummer + " " + type + " " + literKapacitet + ". " + antalLiterPaafyldt + " liter påfyldt";
+            return nummer + " " + type + " " + literKapacitet + ". " + antalLiterPaafyldt + " liter påfyldt " + sidstePaafyldning().getDato();
         }
     }
 

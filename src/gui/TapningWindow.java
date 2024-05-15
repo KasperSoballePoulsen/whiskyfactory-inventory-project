@@ -22,7 +22,7 @@ public class TapningWindow extends Stage {
     private TextField txfMedarbejder;
     private TextField txfFlaskeNavn;
 
-    public TapningWindow(String title, List<Fad> fade){
+    public TapningWindow(String title, List<Fad> fade) {
         this.setTitle(title);
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(20));
@@ -33,54 +33,55 @@ public class TapningWindow extends Stage {
         this.setScene(scene);
 
         Label lblFade = new Label("Fade");
-        pane.add(lblFade,2,0);
+        pane.add(lblFade, 2, 0);
 
 
         literTappet = new ArrayList<>();
         for (int i = 0; i < fade.size(); i++) {
-            Label lblLiter = new Label(fade.get(i) + " mængde (L):" );
+            Label lblLiter = new Label(fade.get(i) + " mængde (L):");
             TextField txfLiterFad = new TextField();
             literTappet.add(txfLiterFad);
-            pane.add(lblLiter,2,i+1);
-            pane.add(txfLiterFad,3,i+1);
+            pane.add(lblLiter, 2, i + 1);
+            pane.add(txfLiterFad, 3, i + 1);
         }
 
         Label lblVand = new Label("Mængde vand (L):");
-        pane.add(lblVand,0,fade.size()+1);
+        pane.add(lblVand, 0, fade.size() + 1);
         txfVand = new TextField();
-        pane.add(txfVand,1,fade.size()+1);
+        pane.add(txfVand, 1, fade.size() + 1);
 
         Label lblVandkilde = new Label("Vandkilde");
-        pane.add(lblVandkilde,0,fade.size()+2);
+        pane.add(lblVandkilde, 0, fade.size() + 2);
         txfVandkilde = new TextField();
-        pane.add(txfVandkilde,1,fade.size()+2);
+        pane.add(txfVandkilde, 1, fade.size() + 2);
 
         Label lblAlkoholprocent = new Label("Alkoholprocent");
-        pane.add(lblAlkoholprocent,0,fade.size()+3);
+        pane.add(lblAlkoholprocent, 0, fade.size() + 3);
         txfAlkoholprocent = new TextField();
-        pane.add(txfAlkoholprocent,1,fade.size()+3);
+        pane.add(txfAlkoholprocent, 1, fade.size() + 3);
 
         Label lblDato = new Label("dato");
-        pane.add(lblDato,0,fade.size()+4);
-         dpDato = new DatePicker();
-        pane.add(dpDato,1,fade.size()+4);
+        pane.add(lblDato, 0, fade.size() + 4);
+        dpDato = new DatePicker();
+        pane.add(dpDato, 1, fade.size() + 4);
 
         Label lblMedarbejder = new Label("Medarbejder");
-        pane.add(lblMedarbejder,0,fade.size()+5);
+        pane.add(lblMedarbejder, 0, fade.size() + 5);
         txfMedarbejder = new TextField();
-        pane.add(txfMedarbejder,1,fade.size()+5);
+        pane.add(txfMedarbejder, 1, fade.size() + 5);
 
         Label lblFlaske = new Label("Flaskens navn;");
-        pane.add(lblFlaske,0,fade.size()+6);
+        pane.add(lblFlaske, 0, fade.size() + 6);
         txfFlaskeNavn = new TextField();
-        pane.add(txfFlaskeNavn,1,fade.size()+6);
+        pane.add(txfFlaskeNavn, 1, fade.size() + 6);
 
         Button btnFyldFlasker = new Button("Fyld på Flasker");
         btnFyldFlasker.setOnAction(event -> fyldFlasker(fade));
-        pane.add(btnFyldFlasker,1,fade.size()+7);
+        pane.add(btnFyldFlasker, 1, fade.size() + 7);
 
     }
-    public void fyldFlasker(List<Fad> fadList){
+
+    public void fyldFlasker(List<Fad> fadList) {
         List<Integer> literTappes = new ArrayList<>();
         for (int i = 0; i < literTappet.size(); i++) {
             int liter = Integer.parseInt(literTappet.get(i).getText());
@@ -92,7 +93,7 @@ public class TapningWindow extends Stage {
         double alkoholprocent = Double.parseDouble(txfAlkoholprocent.getText());
         String flaskeNavn = txfFlaskeNavn.getText();
         for (int i = 0; i < fadList.size(); i++) {
-            Controller.aftapFad(fadList,literTappes,dato,medarbejder,vand,flaskeNavn,alkoholprocent);
+            Controller.aftapFad(fadList, literTappes, dato, medarbejder, vand, flaskeNavn, alkoholprocent);
         }
         this.hide();
 
