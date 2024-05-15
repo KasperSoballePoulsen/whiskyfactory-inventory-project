@@ -41,6 +41,15 @@ public class Controller {
         return fad;
     }
 
+    /**
+     * pre: destillater.size() == liter.size()
+     * @param destillater
+     * @param fad
+     * @param liter
+     * @param dato
+     * @param medarbejder
+     * flytter væske over på fadet
+     */
     public static void paaFyldFad(List<Destillat> destillater, Fad fad, List<Integer> liter, LocalDate dato, String medarbejder) {
         Paafyldning paafyldning = new Paafyldning(dato, medarbejder, fad, destillater);
         paafyldning.fyldFad(liter);
@@ -48,11 +57,11 @@ public class Controller {
         for (Integer i : liter) {
             sumLiter += i;
         }
-//        fad.paafyld(sumLiter, paafyldning);
     }
 
     /**
      * pre: fade.size() == litertappet.size()
+     * pre: datoen skal være 3 år efter paafyldnings datoen
      * @param fade
      * @param literTapet
      * @param dato
