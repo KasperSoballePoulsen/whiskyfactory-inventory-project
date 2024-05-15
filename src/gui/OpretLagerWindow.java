@@ -13,7 +13,7 @@ public class OpretLagerWindow extends Stage {
 
     TextField txfPladser, txfNavn;
 
-    public OpretLagerWindow (String  title){
+    public OpretLagerWindow(String title) {
         this.setTitle(title);
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(20));
@@ -24,23 +24,23 @@ public class OpretLagerWindow extends Stage {
         this.setScene(scene);
 
         Label lblPladser = new Label("Antal Pladser");
-        pane.add(lblPladser,1,0);
+        pane.add(lblPladser, 1, 0);
 
         txfNavn = new TextField();
-        pane.add(txfNavn,0,1);
+        pane.add(txfNavn, 0, 1);
 
         Label lblNavn = new Label("Navn på lager");
-        pane.add(lblNavn,0,0);
+        pane.add(lblNavn, 0, 0);
 
         txfPladser = new TextField();
-        pane.add(txfPladser,1,1);
+        pane.add(txfPladser, 1, 1);
 
         Button btnOpret = new Button("Opret Lager");
-        pane.add(btnOpret,1,2);
+        pane.add(btnOpret, 1, 2);
         btnOpret.setOnAction(event -> opretLagerAction());
     }
 
-    public void opretLagerAction(){
+    public void opretLagerAction() {
         Controller.opretLager(txfNavn.getText().trim(), Integer.parseInt(txfPladser.getText().trim()));
         this.hide();
     }

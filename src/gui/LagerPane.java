@@ -38,7 +38,7 @@ public class LagerPane extends GridPane {
         add(lblFade, 1, 0);
 
         lvwFadePaaLager = new ListView<>();
-        add(lvwFadePaaLager, 1, 1,1,20);
+        add(lvwFadePaaLager, 1, 1, 1, 20);
 
         Label lblPlads = new Label("Ledige Pladser");
         add(lblPlads, 2, 0);
@@ -48,7 +48,7 @@ public class LagerPane extends GridPane {
         add(txfledigePladser, 2, 1);
 
         Button btnOpret = new Button("Opret Lager");
-        add(btnOpret,2,2);
+        add(btnOpret, 2, 2);
         btnOpret.setOnAction(event -> opretAction());
     }
 
@@ -59,7 +59,7 @@ public class LagerPane extends GridPane {
         txfledigePladser.setText("" + (lager.antalLedigePladser()));
     }
 
-    public void opretAction(){
+    public void opretAction() {
         OpretLagerWindow dia = new OpretLagerWindow("Opret Lager");
         dia.showAndWait();
         lvwLager.getItems().setAll(Controller.getLager());

@@ -34,7 +34,6 @@ public class PaafyldningWindow extends Stage {
         selectedDestillater = destilater;
 
 
-
         lvwFade = new ListView<>();
         lvwFade.getItems().setAll(Controller.getTommeFade());
         pane.add(lvwFade, 0, 1, 2, 5);
@@ -52,17 +51,17 @@ public class PaafyldningWindow extends Stage {
         literTappet = new ArrayList<>();
         int temp = 1;
         for (int i = 0; i < test; i++) {
-            Label lblLiter = new Label("mængde (L):" );
+            Label lblLiter = new Label("mængde (L):");
             TextField txfLiterFad = new TextField();
             literTappet.add(txfLiterFad);
-            pane.add(lblLiter,2,i+temp+1);
-            pane.add(txfLiterFad,2,i+temp+2);
+            pane.add(lblLiter, 2, i + temp + 1);
+            pane.add(txfLiterFad, 2, i + temp + 2);
             temp++;
         }
 
         Button btnPaafyld = new Button("Fyld fad");
         btnPaafyld.setOnAction(event -> paaFyldAction());
-        pane.add(btnPaafyld,0,8);
+        pane.add(btnPaafyld, 0, 8);
         btnPaafyld.setOnAction(event -> paaFyldAction());
 
     }
@@ -76,7 +75,7 @@ public class PaafyldningWindow extends Stage {
         }
         LocalDate dato = dpDato.getValue();
         String medarbejder = txfMedarbejder.getText();
-        Controller.paaFyldFad(selectedDestillater, selectedFad, literTappes,dato,medarbejder);
+        Controller.paaFyldFad(selectedDestillater, selectedFad, literTappes, dato, medarbejder);
         this.hide();
     }
 }

@@ -21,7 +21,6 @@ public class Lager {
     }
 
     /**
-     *
      * @param type
      * @param literKapacitet
      * @param leverandoer
@@ -36,6 +35,7 @@ public class Lager {
 
     /**
      * lavet med en standard søge skabelon
+     *
      * @return den første ledige plads der er på laget, hvis lageret er fyldt så thrower den en out of bound exception
      */
     public int findLedigPlads() {
@@ -59,13 +59,14 @@ public class Lager {
     /**
      * da vi fylder lageret fra venstre til højre, kan vi søge efter den første ledige plads index,
      * og trække det fra antallet af pladser på lageret for at få antallet af ledige pladser
+     *
      * @return antallet af ledige pladser på lageret
      */
     public int antalLedigePladser() {
         int k = 0;
         boolean found = false;
-        while (!found && k < pladser.length){
-            if (pladser[k] == null){
+        while (!found && k < pladser.length) {
+            if (pladser[k] == null) {
                 found = true;
             } else k++;
         }
@@ -73,12 +74,12 @@ public class Lager {
     }
 
     /**
-     *
      * da vi fylder fra venstre til højre kan vi fylde på vores liste indtil vi finder en tom plads
      * så ved vi, vi har alle fad på lageret
+     *
      * @return alle fade der lægger på et lager
      */
-    public List<Fad> fadePaaLager(){
+    public List<Fad> fadePaaLager() {
         List<Fad> fade = new ArrayList<>();
         int i = 0;
         while (pladser[i] != null) {
@@ -87,7 +88,7 @@ public class Lager {
         return fade;
     }
 
-    public String toString(){
+    public String toString() {
         return navn;
     }
 }
