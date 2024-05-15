@@ -124,7 +124,7 @@ public class Fad {
         return res;
     }
 
-    private Paafyldning sidstePaafyldning() {
+    public Paafyldning sidstePaafyldning() {
         return paafyldninger.get(paafyldninger.size() - 1);
     }
 
