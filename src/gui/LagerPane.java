@@ -5,10 +5,7 @@ import application.model.Flaske;
 import application.model.Lager;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
@@ -17,6 +14,10 @@ import java.util.List;
 public class LagerPane extends GridPane {
     ListView lvwLager, lvwFadePaaLager;
     TextField txfledigePladser;
+
+    CheckBox chb3Aar;
+
+
 
     public LagerPane() {
         this.setGridLinesVisible(false);
@@ -48,8 +49,14 @@ public class LagerPane extends GridPane {
         add(txfledigePladser, 2, 1);
 
         Button btnOpret = new Button("Opret Lager");
-        add(btnOpret, 2, 2);
+        add(btnOpret, 2, 3);
         btnOpret.setOnAction(event -> opretAction());
+
+        chb3Aar = new CheckBox("Vis kun færdige fade");
+        add(chb3Aar,2,2);
+        chb3Aar.setOnAction(event -> visAction());
+
+
     }
 
     public void lagerSelectedChanged() {
@@ -64,4 +71,14 @@ public class LagerPane extends GridPane {
         dia.showAndWait();
         lvwLager.getItems().setAll(Controller.getLager());
     }
+
+    public void visAction() {
+        if (chb3Aar.isSelected()) {
+            Lager lager = (Lager) lvwLager.getSelectionModel().getSelectedItem();
+            lvwFadePaaLager.getItems().setAll(lager.faerdigeFade());
+        } else {
+           lagerSelectedChanged();
+        }
+    }
+
 }
