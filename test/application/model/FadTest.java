@@ -120,14 +120,14 @@ class FadTest {
     }
 
     @Test
-    void TC4AtDerKastesEnException() {
+    void TC4AtPaafyldningKasterException() {
         assertEquals(0, fad.getPaafyldninger().size());
         assertEquals(0, fad.getAntalLiterPaafyldt());
         assertThrows(IllegalArgumentException.class, () -> fad.paafyld(11, this.paafyldning));
     }
 
     @Test
-    void TC5AtDerKastesEnException() {
+    void TC5AtPaafyldningKasterException() {
         assertEquals(0, fad.getPaafyldninger().size());
         assertEquals(0, fad.getAntalLiterPaafyldt());
         assertThrows(IllegalArgumentException.class, () -> fad.paafyld(20, this.paafyldning));
@@ -137,11 +137,72 @@ class FadTest {
     @Test
     void TC1AtDerTilknyttesEnTapningTilFadet() {
         fad.paafyld(5, paafyldning);
-        Tapning tapning = new Tapning(LocalDate.of(2024,01,14), "Snævar");
+        assertEquals(0, fad.getTapninger().size());
+        assertEquals(5, fad.getAntalLiterPaafyldt());
+        Tapning tapning = new Tapning(LocalDate.of(2027,01,14), "Snævar");
         fad.aftap(4, tapning);
         assertEquals(tapning, fad.getTapninger().get(0));
         assertEquals(1, fad.getTapninger().size());
+        assertEquals(1, fad.getAntalLiterPaafyldt());
+    }
 
+    @Test
+    void TC2AtTapningKasterException() {
+        fad.paafyld(5, paafyldning);
+        assertEquals(0, fad.getTapninger().size());
+        assertEquals(5, fad.getAntalLiterPaafyldt());
+        Tapning tapning = new Tapning(LocalDate.of(2027,01,13), "Snævar");
+        assertThrows(IllegalArgumentException.class, () -> fad.aftap(4, tapning));
+        assertEquals(0, fad.getTapninger().size());
+        assertEquals(5, fad.getAntalLiterPaafyldt());
+    }
+
+    @Test
+    void TC3AtTapningKasterException() {
+        fad.paafyld(5, paafyldning);
+        assertEquals(0, fad.getTapninger().size());
+        assertEquals(5, fad.getAntalLiterPaafyldt());
+        Tapning tapning = new Tapning(LocalDate.of(2027,01,14), "Snævar");
+        assertThrows(IllegalArgumentException.class, () -> fad.aftap(6, tapning));
+        assertEquals(0, fad.getTapninger().size());
+        assertEquals(5, fad.getAntalLiterPaafyldt());
+    }
+
+    @Test
+    void TC1AtDerReturneresTapninger() {
+        fad.paafyld(5, paafyldning);
+        assertEquals(0, fad.getTapninger().size());
+        Tapning tapning = new Tapning(LocalDate.of(2027,01,14), "Snævar");
+        fad.aftap(5, tapning);
+        assertEquals(1, fad.getTapninger().size());
+        assertEquals(tapning, fad.getTapninger().get(0));
+    }
+
+    @Test
+    void TC1AtTapningTilføjes() {
+        Tapning tapning = new Tapning(LocalDate.of(2027,01,14), "Snævar");
+        assertEquals(0, fad.getTapninger().size());
+        assertEquals(0, tapning.getFade().size());
+        fad.addTapning(tapning);
+        assertEquals(1, fad.getTapninger().size());
+        assertEquals(1, tapning.getFade().size());
+        assertEquals(tapning, fad.getTapninger().get(0));
+        assertEquals(fad, tapning.getFade().get(0));
+    }
+
+    @Test
+    void TC1AtTapningFjernes() {
+        Tapning tapning = new Tapning(LocalDate.of(2027,01,14), "Snævar");
+        assertEquals(0, fad.getTapninger().size());
+        assertEquals(0, tapning.getFade().size());
+        fad.addTapning(tapning);
+        assertEquals(1, fad.getTapninger().size());
+        assertEquals(1, tapning.getFade().size());
+        assertEquals(tapning, fad.getTapninger().get(0));
+        assertEquals(fad, tapning.getFade().get(0));
+        fad.removeTapning(tapning);
+        assertEquals(0, fad.getTapninger().size());
+        assertEquals(0, tapning.getFade().size());
     }
 
 
