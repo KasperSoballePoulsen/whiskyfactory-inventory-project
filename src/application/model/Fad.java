@@ -69,14 +69,15 @@ public class Fad {
     }
 
     public void aftap(int literTappet, Tapning tapning) {
-        if (tapning.getDato().isBefore(this.sidstePaafyldning().getDato().plusYears(3)){
+        if (tapning.getDato().isBefore(this.sidstePaafyldning().getDato().plusYears(3))){
             throw new IllegalArgumentException("det er ikke klar til tapning");
         }
         if (literTappet <= antalLiterPaafyldt) {
             antalLiterPaafyldt -= literTappet;
             tapninger.add(tapning);
+
         } else {
-            throw new IllegalArgumentException("der er ikke nok liter");
+            throw new IllegalArgumentException("Der er ikke liter nok på fadet");
         }
     }
 
@@ -160,6 +161,10 @@ public class Fad {
 
     public Paafyldning sidstePaafyldning() {
         return paafyldninger.get(paafyldninger.size() - 1);
+    }
+
+    public Paafyldning foerstePaafyldning() {
+        return paafyldninger.get(0);
     }
 
     public String toString() {
