@@ -103,6 +103,8 @@ public class Lager {
         return faerdige;
     }
 
+
+
     public String toString() {
         return navn;
     }

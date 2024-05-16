@@ -13,7 +13,7 @@ import java.util.List;
 
 public class LagerPane extends GridPane {
     ListView lvwLager, lvwFadePaaLager;
-    TextField txfledigePladser;
+    TextField txfledigePladser, txfSoegeFade;
 
     CheckBox chb3Aar;
 
@@ -48,13 +48,25 @@ public class LagerPane extends GridPane {
         txfledigePladser.setEditable(false);
         add(txfledigePladser, 2, 1);
 
-        Button btnOpret = new Button("Opret Lager");
-        add(btnOpret, 2, 3);
-        btnOpret.setOnAction(event -> opretAction());
+        Label lblSoeg = new Label("Søg");
+        add(lblSoeg,2,2);
+
+        txfSoegeFade = new TextField();
+        add(txfSoegeFade,2,3);
+
+        Button btnSoeg = new Button("Søg");
+        add(btnSoeg,2,4);
+        btnSoeg.setOnAction(event -> soegAction());
+
 
         chb3Aar = new CheckBox("Vis kun færdige fade");
-        add(chb3Aar,2,2);
+        add(chb3Aar,2,5);
         chb3Aar.setOnAction(event -> visAction());
+
+        Button btnOpret = new Button("Opret Lager");
+        add(btnOpret, 2, 6);
+        btnOpret.setOnAction(event -> opretAction());
+
 
 
     }
@@ -79,6 +91,12 @@ public class LagerPane extends GridPane {
         } else {
            lagerSelectedChanged();
         }
+    }
+
+    public void soegAction(){
+        Lager lager = (Lager) lvwLager.getSelectionModel().getSelectedItem();
+        String string = txfSoegeFade.getText();
+        lvwFadePaaLager.getItems().setAll(Controller.soegteFade(string,lager));
     }
 
 }

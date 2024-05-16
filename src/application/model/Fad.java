@@ -69,6 +69,9 @@ public class Fad {
     }
 
     public void aftap(int literTappet, Tapning tapning) {
+        if (tapning.getDato().isBefore(this.sidstePaafyldning().getDato().plusYears(3)){
+            throw new IllegalArgumentException("det er ikke klar til tapning");
+        }
         if (literTappet <= antalLiterPaafyldt) {
             antalLiterPaafyldt -= literTappet;
             tapninger.add(tapning);

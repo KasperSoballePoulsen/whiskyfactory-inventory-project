@@ -140,5 +140,17 @@ public class Controller {
         return flaske.historik();
     }
 
+    public static List<Fad> soegteFade(String string, Lager lager){
+        List<Fad> soegteFade = new ArrayList<>();
+        for (Fad fade : lager.fadePaaLager()){
+            if (fade.getLeverandoer().equals(string)){
+                soegteFade.add(fade);
+            } else if (fade.getType().equals(string)){
+                soegteFade.add(fade);
+            }
+        }
+        return soegteFade;
+    }
+
 
 }
