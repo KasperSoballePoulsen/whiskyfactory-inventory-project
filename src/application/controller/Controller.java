@@ -131,6 +131,7 @@ public class Controller {
         return fade;
     }
 
+
     /**
      * @param flaske
      * @return en String med historien bag flasken

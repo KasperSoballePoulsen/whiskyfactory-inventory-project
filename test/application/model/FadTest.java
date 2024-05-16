@@ -58,6 +58,22 @@ class FadTest {
         assertEquals(lager, fad.getLager());
     }
 
+    @Test
+    void TC1AtDerReturneresAntalLiterPaafyldt() {
+        fad.paafyld(5, this.paafyldning);
+        assertEquals(5, fad.getAntalLiterPaafyldt());
+    }
+
+    @Test
+    void TC1AtDerReturneresLeverandoer() {
+        assertEquals("Spanien", fad.getLeverandoer());
+    }
+
+    @Test
+    void TC1AtDerReturneresPaafyldninger() {
+        fad.paafyld(10, paafyldning);
+        assertEquals(paafyldning, fad.getPaafyldninger().get(0));
+    }
 
 
     @Test
@@ -115,6 +131,17 @@ class FadTest {
         assertEquals(0, fad.getPaafyldninger().size());
         assertEquals(0, fad.getAntalLiterPaafyldt());
         assertThrows(IllegalArgumentException.class, () -> fad.paafyld(20, this.paafyldning));
+    }
+
+
+    @Test
+    void TC1AtDerTilknyttesEnTapningTilFadet() {
+        fad.paafyld(5, paafyldning);
+        Tapning tapning = new Tapning(LocalDate.of(2024,01,14), "Snævar");
+        fad.aftap(4, tapning);
+        assertEquals(tapning, fad.getTapninger().get(0));
+        assertEquals(1, fad.getTapninger().size());
+
     }
 
 

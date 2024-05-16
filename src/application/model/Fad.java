@@ -111,7 +111,7 @@ public class Fad {
                 res += "Korn sort: " + destilat.getKornsort() + "\n";
                 res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
                 res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
-                res += "-------------------------- \n";
+                res += "--------------------------\n";
             }
             res += "blev fyldt: " + paafyldning.getDato() + "\n";
             for (Fad fad : paafyldning.getGamleFad()) {
@@ -119,7 +119,9 @@ public class Fad {
                 res += "type: " + fad.getType() + "\n";
                 res += "leverandør: " + fad.getLeverandoer() + "\n";
                 res += "lå på lager: " + fad.getLager().getNavn() + "\n";
+                res += "--------------------------\n";
             }
+
         }
         res += "fad: " + nummer + "\n";
         res += "type: " + type + "\n";
