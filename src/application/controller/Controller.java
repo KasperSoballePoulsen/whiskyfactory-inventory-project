@@ -106,6 +106,10 @@ public class Controller {
         return fade;
     }
 
+    public static void flytPaafyldning(Fad gamleFad, Fad NyeFad){
+        gamleFad.flytPaafyldning(NyeFad);
+    }
+
     /**
      * vi henter fadene fra storage og sortere de tomme fade fra
      *
@@ -127,13 +131,6 @@ public class Controller {
         return fade;
     }
 
-
-
-    public static Lager opretLager(String navn, int antalPladser) {
-        Lager lager = new Lager(navn, antalPladser);
-        Storage.addLager(lager);
-        return lager;
-    }
     /**
      * @param flaske
      * @return en String med historien bag flasken
