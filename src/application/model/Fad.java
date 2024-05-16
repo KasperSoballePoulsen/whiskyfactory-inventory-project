@@ -163,9 +163,6 @@ public class Fad {
         return paafyldninger.get(paafyldninger.size() - 1);
     }
 
-    public Paafyldning foerstePaafyldning() {
-        return paafyldninger.get(0);
-    }
 
     public String toString() {
         if (antalLiterPaafyldt == 0) {
