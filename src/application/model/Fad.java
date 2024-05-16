@@ -69,6 +69,9 @@ public class Fad {
     }
 
     public void aftap(int literTappet, Tapning tapning) {
+        if (tapning.getDato().isBefore(this.sidstePaafyldning().getDato())){
+            throw new IllegalArgumentException("Tapningen sker før påfyldningen");
+        }
         if (literTappet <= antalLiterPaafyldt) {
             antalLiterPaafyldt -= literTappet;
             tapninger.add(tapning);
