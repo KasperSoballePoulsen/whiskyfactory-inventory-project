@@ -123,6 +123,29 @@ public class Fad {
 
         return res;
     }
+    public void addPaafyldning(Paafyldning paafyldning){
+        if (!paafyldninger.contains(paafyldning)){
+            paafyldninger.add(paafyldning);
+        }
+    }
+    public void flytPaafyldning(Fad fad){
+        Paafyldning paafyldning = sidstePaafyldning();
+        fad.addPaafyldning(paafyldning);
+        paafyldning.setFad(fad);
+        fad.setAntalLiterPaafyldt(antalLiterPaafyldt);
+        setAntalLiterPaafyldt(0);
+
+    }
+
+    public void removePaafyldning(Paafyldning paafyldning){
+        if (paafyldninger.contains(paafyldning)) {
+            paafyldninger.remove(paafyldning);
+        }
+    }
+
+    public void setAntalLiterPaafyldt(int antalLiterPaafyldt) {
+        this.antalLiterPaafyldt = antalLiterPaafyldt;
+    }
 
     public Paafyldning sidstePaafyldning() {
         return paafyldninger.get(paafyldninger.size() - 1);
