@@ -58,6 +58,10 @@ public class Paafyldning {
         }
     }
 
+    public List<Fad> getGamleFad(){
+        return new ArrayList<>(gamleFad);
+    }
+
     /**
      * Pre: liter.size() == destillater.size()
      *

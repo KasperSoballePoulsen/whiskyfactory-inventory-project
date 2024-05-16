@@ -113,7 +113,13 @@ public class Fad {
                 res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
                 res += "-------------------------- \n";
             }
-            res += "blev fyldt: " + paafyldning.getDato();
+            res += "blev fyldt: " + paafyldning.getDato() + "\n";
+            for (Fad fad : paafyldning.getGamleFad()) {
+                res += "fad: " + fad.getNummer() + "\n";
+                res += "type: " + fad.getType() + "\n";
+                res += "leverandør: " + fad.getLeverandoer() + "\n";
+                res += "lå på lager: " + fad.getLager().getNavn() + "\n";
+            }
         }
         res += "fad: " + nummer + "\n";
         res += "type: " + type + "\n";
@@ -130,8 +136,8 @@ public class Fad {
     }
     public void flytPaafyldning(Fad fad){
         Paafyldning paafyldning = sidstePaafyldning();
-        fad.addPaafyldning(paafyldning);
         paafyldning.setFad(fad);
+        fad.addPaafyldning(paafyldning);
         fad.setAntalLiterPaafyldt(antalLiterPaafyldt);
         setAntalLiterPaafyldt(0);
 
