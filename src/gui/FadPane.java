@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 public class FadPane extends GridPane {
     private final ListView<Fad> lvwTommeFade = new ListView<>();
     private final ListView<Fad> lvwFyldteFade = new ListView<>();
-    private Label lblTapErr;
+
 
 
 
@@ -48,13 +48,9 @@ public class FadPane extends GridPane {
         this.add(btnFadInfo, 2, 5);
         btnFadInfo.setOnAction(event -> infoAction());
 
-        lblTapErr = new Label("");
-        lblTapErr.setStyle("-fx-text-fill: red");
-        add(lblTapErr, 3, 6);
 
-        Button btnAftapFad = new Button("Aftap fad");
-        this.add(btnAftapFad, 3, 5);
-        btnAftapFad.setOnAction(event -> openTapning());
+
+
 
         Button btnOmhaeld = new Button("Omhæld");
         add(btnOmhaeld,1,5);
@@ -64,15 +60,7 @@ public class FadPane extends GridPane {
 
     }
 
-    public void openTapning() {
-        if (lvwFyldteFade.getSelectionModel().getSelectedItems().size() != 0) {
-            TapningWindow dia = new TapningWindow("Tapning", lvwFyldteFade.getSelectionModel().getSelectedItems());
-            dia.showAndWait();
-            lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
-        } else {
-            lblTapErr.setText("Vælg fyldt fad");
-        }
-    }
+
 
     public void opretFad() {
         OpretFadWindow dia = new OpretFadWindow("Opret Fad");

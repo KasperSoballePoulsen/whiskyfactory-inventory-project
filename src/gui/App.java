@@ -19,7 +19,7 @@ public class App {
         Lager lagerLade = Controller.opretLager("Lade", 14);
 
         Fad fad1 = Controller.opretFad("Sherryfad",30, lagerContainer, "Spanien");
-        Fad fad2 = Controller.opretFad("Sherryfad", 30, lagerContainer, "Spanien");
+        Fad fad2 = Controller.opretFad("Sherryfad", 30, lagerContainer, "USA");
         Fad fad3 = Controller.opretFad("Sherryfad",30, lagerContainer,"Spanien");
         Controller.opretFad("Bourbonfad",50, lagerContainer, "Spanien");
         Controller.opretFad("Bourbonfad", 50, lagerContainer, "Spanien");
