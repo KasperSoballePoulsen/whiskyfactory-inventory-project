@@ -114,7 +114,14 @@ public class Fad {
                 res += "--------------------------\n";
             }
             res += "blev fyldt: " + paafyldning.getDato() + "\n";
-            res += "--------------------------\n";
+            for (Fad fad : paafyldning.getGamleFad()) {
+                res += "fad: " + fad.getNummer() + "\n";
+                res += "type: " + fad.getType() + "\n";
+                res += "leverandør: " + fad.getLeverandoer() + "\n";
+                res += "lå på lager: " + fad.getLager().getNavn() + "\n";
+                res += "--------------------------\n";
+            }
+
         }
         res += "fad: " + nummer + "\n";
         res += "type: " + type + "\n";
@@ -123,6 +130,29 @@ public class Fad {
 
 
         return res;
+    }
+    public void addPaafyldning(Paafyldning paafyldning){
+        if (!paafyldninger.contains(paafyldning)){
+            paafyldninger.add(paafyldning);
+        }
+    }
+    public void flytPaafyldning(Fad fad){
+        Paafyldning paafyldning = sidstePaafyldning();
+        paafyldning.setFad(fad);
+        fad.addPaafyldning(paafyldning);
+        fad.setAntalLiterPaafyldt(antalLiterPaafyldt);
+        setAntalLiterPaafyldt(0);
+
+    }
+
+    public void removePaafyldning(Paafyldning paafyldning){
+        if (paafyldninger.contains(paafyldning)) {
+            paafyldninger.remove(paafyldning);
+        }
+    }
+
+    public void setAntalLiterPaafyldt(int antalLiterPaafyldt) {
+        this.antalLiterPaafyldt = antalLiterPaafyldt;
     }
 
     public Paafyldning sidstePaafyldning() {

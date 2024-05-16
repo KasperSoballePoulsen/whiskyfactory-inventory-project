@@ -106,6 +106,10 @@ public class Controller {
         return fade;
     }
 
+    public static void flytPaafyldning(Fad gamleFad, Fad NyeFad){
+        gamleFad.flytPaafyldning(NyeFad);
+    }
+
     /**
      * vi henter fadene fra storage og sortere de tomme fade fra
      *

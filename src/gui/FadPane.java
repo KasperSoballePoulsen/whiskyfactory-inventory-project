@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Fad;
-import application.model.Lager;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -57,6 +56,10 @@ public class FadPane extends GridPane {
         this.add(btnAftapFad, 3, 5);
         btnAftapFad.setOnAction(event -> openTapning());
 
+        Button btnOmhaeld = new Button("Omhæld");
+        add(btnOmhaeld,1,5);
+        btnOmhaeld.setOnAction(event -> omhaeld());
+
 
 
     }
@@ -99,6 +102,12 @@ public class FadPane extends GridPane {
         alert.setTitle(fad.toString());
         alert.setContentText(fad.historik());
         alert.showAndWait();
+    }
+    public void omhaeld(){
+        Fad nytFad = lvwTommeFade.getSelectionModel().getSelectedItem();
+        Fad gamleFad = lvwFyldteFade.getSelectionModel().getSelectedItem();
+        Controller.flytPaafyldning(gamleFad,nytFad);
+        updateControls();
     }
 
     public void updateControls() {
