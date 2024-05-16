@@ -16,6 +16,7 @@ public class LagerPane extends GridPane {
     TextField txfledigePladser, txfSoegeFade;
 
     CheckBox chb3Aar;
+    private Label lblTapErr;
 
 
 
@@ -40,6 +41,7 @@ public class LagerPane extends GridPane {
 
         lvwFadePaaLager = new ListView<>();
         add(lvwFadePaaLager, 1, 1, 1, 20);
+        lvwFadePaaLager.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         Label lblPlads = new Label("Ledige Pladser");
         add(lblPlads, 2, 0);
@@ -66,6 +68,14 @@ public class LagerPane extends GridPane {
         Button btnOpret = new Button("Opret Lager");
         add(btnOpret, 2, 6);
         btnOpret.setOnAction(event -> opretAction());
+
+        Button btnAftapFad = new Button("Aftap fad");
+        this.add(btnAftapFad, 2, 7);
+        btnAftapFad.setOnAction(event -> openTapning());
+
+        lblTapErr = new Label("");
+        lblTapErr.setStyle("-fx-text-fill: red");
+        add(lblTapErr, 2, 8);
 
 
 
@@ -97,6 +107,16 @@ public class LagerPane extends GridPane {
         Lager lager = (Lager) lvwLager.getSelectionModel().getSelectedItem();
         String string = txfSoegeFade.getText();
         lvwFadePaaLager.getItems().setAll(Controller.soegteFade(string,lager));
+    }
+
+    public void openTapning() {
+        if (lvwFadePaaLager.getSelectionModel().getSelectedItems().size() != 0) {
+            TapningWindow dia = new TapningWindow("Tapning", lvwFadePaaLager.getSelectionModel().getSelectedItems());
+            dia.showAndWait();
+            lvwFadePaaLager.getItems().setAll(Controller.getFyldteFade());
+        } else {
+            lblTapErr.setText("Vælg fyldt fad");
+        }
     }
 
 }
