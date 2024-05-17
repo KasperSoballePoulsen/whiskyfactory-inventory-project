@@ -241,13 +241,30 @@ class FadTest {
         fad.paafyld(5, paafyldning);
         assertEquals(paafyldning, fad.sidstePaafyldning());
     }
+    @Test
+    void testAtTomtFadPrinterHistorik(){
+        String expected = "fad: 1\n" +
+                "type: Sherry\n" +
+                "leverandør: Spanien\n" +
+                "lå på lager: Container\n";
+        assertEquals(expected, fad.historik());
+    }
 
-
-
-
-
-
-
+    @Test
+    void testAtFyldtFadPrinterHistorik(){
+        String expected = "Destilat: Destillat\n" +
+                "Korn sort: Byg\n" +
+                "Malt destilat: Maltdestillat\n" +
+                "Startede destillation: 2024-01-01 og sluttede: 2024-01-14\n" +
+                "--------------------------\n" +
+                "blev fyldt: 2024-01-14\n" +
+                "fad: 1\n" +
+                "type: Sherry\n" +
+                "leverandør: Spanien\n" +
+                "lå på lager: Container\n";
+        fad.paafyld(5,paafyldning);
+        assertEquals(expected, fad.historik());
+    }
 
 
 }
