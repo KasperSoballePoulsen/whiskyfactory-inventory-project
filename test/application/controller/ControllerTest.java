@@ -60,7 +60,6 @@ public class ControllerTest {
                 "Startede destillation: 2024-01-01 og sluttede: 2024-01-14\n" +
                 "--------------------------\n" +
                 "blev fyldt: 2024-01-14\n" +
-                "--------------------------\n" +
                 "fad: 1\n" +
                 "type: Sherry\n" +
                 "leverandør: Spanien\n" +
