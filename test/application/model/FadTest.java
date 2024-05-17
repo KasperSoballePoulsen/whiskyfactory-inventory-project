@@ -206,6 +206,42 @@ class FadTest {
     }
 
     @Test
+    void TC1AtPaafyldningTilføjes() {
+        assertEquals(0, fad.getPaafyldninger().size());
+        fad.addPaafyldning(paafyldning);
+        assertEquals(1, fad.getPaafyldninger().size());
+        assertEquals(fad, paafyldning.getFad());
+        assertEquals(paafyldning, fad.getPaafyldninger().get(0));
+    }
+
+    @Test
+    void TC1AtPaafyldningFlyttes() {
+        fad.paafyld(5, paafyldning);
+        assertEquals(1, fad.getPaafyldninger().size());
+        assertEquals(paafyldning, fad.getPaafyldninger().get(0));
+        Fad fad2 = lager.createFad("Bourbon", 10, "USA");
+        assertEquals(0, fad2.getPaafyldninger().size());
+        fad.flytPaafyldning(fad2);
+        assertEquals(1, fad2.getPaafyldninger().size());
+        assertEquals(paafyldning, fad2.getPaafyldninger().get(0));
+        assertEquals(1, fad.getPaafyldninger().size());
+        assertEquals(paafyldning, fad.getPaafyldninger().get(0));
+    }
+
+    @Test
+    void TC1AtSætteAntalLiterPaafyldt() {
+        assertEquals(0, fad.getAntalLiterPaafyldt());
+        fad.setAntalLiterPaafyldt(2);
+        assertEquals(2, fad.getAntalLiterPaafyldt());
+    }
+
+    @Test
+    void TC1AtReturnereSidstePaafyldning() {
+        assertEquals(0, fad.getPaafyldninger().size());
+        fad.paafyld(5, paafyldning);
+        assertEquals(paafyldning, fad.sidstePaafyldning());
+    }
+    @Test
     void testAtTomtFadPrinterHistorik(){
         String expected = "fad: 1\n" +
                 "type: Sherry\n" +

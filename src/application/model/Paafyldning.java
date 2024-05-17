@@ -52,7 +52,6 @@ public class Paafyldning {
             Fad gFad = this.fad;
             if (gFad != null){
                 gamleFad.add(gFad);
-                gFad.removePaafyldning(this);
             }
             this.fad = fad;
         }

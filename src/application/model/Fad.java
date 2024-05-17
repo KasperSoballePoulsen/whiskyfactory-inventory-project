@@ -149,12 +149,6 @@ public class Fad {
 
     }
 
-    public void removePaafyldning(Paafyldning paafyldning){
-        if (paafyldninger.contains(paafyldning)) {
-            paafyldninger.remove(paafyldning);
-        }
-    }
-
     public void setAntalLiterPaafyldt(int antalLiterPaafyldt) {
         this.antalLiterPaafyldt = antalLiterPaafyldt;
     }
