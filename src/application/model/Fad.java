@@ -101,7 +101,7 @@ public class Fad {
     }
 
     /**
-     * Pre: paafyldninger != null
+     *
      *
      * @return en string med hele historien bag fadet. Alle destillaternes informationer
      */
