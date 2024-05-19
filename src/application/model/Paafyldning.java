@@ -64,7 +64,8 @@ public class Paafyldning {
     /**
      * Pre: liter.size() == destillater.size()
      *
-     * @param liter vi tilføjer væsken til fadet, og trækker væsken fra destillatet, for hvert destillat
+     * @param liter != null
+     * vi tilføjer væsken til fadet, og trækker væsken fra destillatet, for hvert destillat
      */
     public void fyldFad(List<Integer> liter) {
         literList = liter;

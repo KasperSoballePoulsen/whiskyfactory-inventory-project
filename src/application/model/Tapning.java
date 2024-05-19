@@ -63,12 +63,13 @@ public class Tapning {
     /**
      * Pre: literTappet.size() == fade.size()
      *
-     * @param literTappet
+     * @param literTappet != null
      * @param vand
-     * @param medarbejder
-     * @param flaskeNavn
-     * @param alkoholprocent først trækker vi literne fra fadet og summere literne, for alle fade
-     *                       så laver vi en flaske for hver liter væske vi har.
+     * @param medarbejder != null
+     * @param flaskeNavn != null
+     * @param alkoholprocent != null
+     * først trækker vi literne fra fadet og summere literne, for alle fade
+     * så laver vi en flaske for hver liter væske vi har.
      * @return List<Flaske> med flaskerne der er oprettet
      */
     public List<Flaske> fyldPaaFlasker(List<Integer> literTappet, int vand, String medarbejder, String flaskeNavn, double alkoholprocent) {

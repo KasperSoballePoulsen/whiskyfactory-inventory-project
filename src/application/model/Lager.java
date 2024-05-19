@@ -22,9 +22,9 @@ public class Lager {
     }
 
     /**
-     * @param type
-     * @param literKapacitet
-     * @param leverandoer
+     * @param type != null
+     * @param literKapacitet != null
+     * @param leverandoer != null
      * @return Fad objekt
      */
     public Fad createFad(String type, int literKapacitet, String leverandoer) {

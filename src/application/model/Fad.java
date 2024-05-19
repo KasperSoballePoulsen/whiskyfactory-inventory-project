@@ -59,7 +59,7 @@ public class Fad {
 
     /**
      * @param antalLiterSomPaafyldes
-     * @param paafyldning
+     * @param paafyldning != null
      */
     public void paafyld(int antalLiterSomPaafyldes, Paafyldning paafyldning) {
         if (this.antalLiterPaafyldt + antalLiterSomPaafyldes <= literKapacitet) {

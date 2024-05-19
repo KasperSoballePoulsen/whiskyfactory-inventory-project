@@ -47,11 +47,11 @@ public class Controller {
     /**
      * pre: destillater.size() == liter.size()
      *
-     * @param destillater
-     * @param fad
-     * @param liter
-     * @param dato
-     * @param medarbejder
+     * @param destillater != null
+     * @param fad != null
+     * @param liter != null
+     * @param dato != null
+     * @param medarbejder != null
      * flytter væske over på fadet
      */
     public static void paaFyldFad(List<Destillat> destillater, Fad fad, List<Integer> liter, LocalDate dato, String medarbejder) {
@@ -67,13 +67,14 @@ public class Controller {
      * pre: fade.size() == litertappet.size()
      * pre: datoen skal være 3 år efter paafyldnings datoen
      *
-     * @param fade
-     * @param literTapet
-     * @param dato
-     * @param medarbejder
+     * @param fade != null
+     * @param literTapet != null
+     * @param dato != null
+     * @param medarbejder != null
      * @param vand
-     * @param flaskeNavn
-     * @param alkoholprocent tager væske fra fade og opretter flasker med
+     * @param flaskeNavn != null
+     * @param alkoholprocent != null
+     * tager væske fra fade og opretter flasker med
      */
     public static void aftapFad(List<Fad> fade, List<Integer> literTapet, LocalDate dato, String medarbejder, int vand, String flaskeNavn, double alkoholprocent) {
         Tapning tapning = new Tapning(dato, medarbejder);
@@ -133,7 +134,7 @@ public class Controller {
 
 
     /**
-     * @param flaske
+     * @param flaske != null
      * @return en String med historien bag flasken
      */
     public static String flaskeHistorik(Flaske flaske) {
