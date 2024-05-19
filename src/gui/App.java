@@ -34,6 +34,8 @@ public class App {
         Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
         Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
 
+
+
         Destillat destillat1 = Controller.opretDestillat("Første distillat", "Byg", LocalDate.of(2024,01,01), LocalDate.of(2024,01,14),"Malthuset",200, 50.2, "Snævar Njall Albertsson");
         Controller.opretDestillat("Andet distillat", "Byg",LocalDate.of(2024,01,01), LocalDate.of(2024,01,14),"Malthuset",200, 50.2, "Snævar Njall Albertsson");
 

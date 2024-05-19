@@ -3,19 +3,18 @@ package gui;
 import application.controller.Controller;
 import application.model.Destillat;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+
+import java.util.List;
 
 public class DestillatPane extends GridPane {
 
     private final ListView<Destillat> lvwDestillater = new ListView<>();
 
     public DestillatPane() {
-        this.setGridLinesVisible(true);
+        this.setGridLinesVisible(false);
         this.setPadding(new Insets(30));
         this.setHgap(30);
         this.setVgap(30);
@@ -46,11 +45,24 @@ public class DestillatPane extends GridPane {
     }
 
     public void paafyld() {
-        PaafyldningWindow dia = new PaafyldningWindow("Påfyld", lvwDestillater.getSelectionModel().getSelectedItems());
-        dia.showAndWait();
+        List<Destillat> destillaterValgt = lvwDestillater.getSelectionModel().getSelectedItems();
+        if (destillaterValgt.size() > 0) {
+            PaafyldningWindow dia = new PaafyldningWindow("Påfyld", destillaterValgt);
+            dia.showAndWait();
+        } else {
+            alertPopUp("Mangler destillat", "Inten destillater valgt", "Vælg destillater fra listen");
+        }
     }
 
     public void updateControls() {
         lvwDestillater.getItems().setAll(Controller.getDestillater());
+    }
+
+    private void alertPopUp(String titel, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titel);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
     }
 }

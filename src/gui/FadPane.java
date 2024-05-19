@@ -9,13 +9,13 @@ import javafx.scene.layout.VBox;
 
 public class FadPane extends GridPane {
     private final ListView<Fad> lvwTommeFade = new ListView<>();
-    private final ListView<Fad> lvwFyldteFade = new ListView<>();
+    private final ListView<Fad> lvwPaafyldteFade = new ListView<>();
 
 
 
 
     public FadPane() {
-        this.setGridLinesVisible(true);
+        this.setGridLinesVisible(false);
         this.setPadding(new Insets(30));
         this.setHgap(30);
         this.setVgap(30);
@@ -31,13 +31,13 @@ public class FadPane extends GridPane {
 
         VBox vbxFyldteFade = new VBox(10);
         this.add(vbxFyldteFade, 2, 0, 2, 5);
-        Label lblFyldteFade = new Label("Fyldte fade");
+        Label lblFyldteFade = new Label("Påfyldte fade");
         vbxFyldteFade.getChildren().add(lblFyldteFade);
-        lvwFyldteFade.setPrefHeight(150);
-        lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
-        lvwFyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        vbxFyldteFade.getChildren().add(lvwFyldteFade);
-        lvwFyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        lvwPaafyldteFade.setPrefHeight(150);
+        lvwPaafyldteFade.getItems().setAll(Controller.getFyldteFade());
+        lvwPaafyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        vbxFyldteFade.getChildren().add(lvwPaafyldteFade);
+        lvwPaafyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         Button btnOpretFad = new Button("Opret fad");
         this.add(btnOpretFad, 0, 5);
@@ -69,15 +69,21 @@ public class FadPane extends GridPane {
     }
 
     public void infoAction() {
-        if (lvwTommeFade.getSelectionModel().getSelectedItem() != null) {
-            infotomt();
-        } else if (lvwFyldteFade.getSelectionModel().getSelectedItem() != null) {
-            infoFyldt();
+        Fad tomFad = lvwTommeFade.getSelectionModel().getSelectedItem();
+        Fad paafyldtFad = lvwPaafyldteFade.getSelectionModel().getSelectedItem();
+        if (tomFad != null || paafyldtFad != null) {
+            if (tomFad != null) {
+                infotomt();
+            } else if (paafyldtFad != null) {
+                infoFyldt();
+            }
+        } else {
+            alertPopUp("Mangler fad", "Intet fad valgt", "Vælg fad fra listerne");
         }
     }
 
     private void infoFyldt() {
-        Fad fad = lvwFyldteFade.getSelectionModel().getSelectedItem();
+        Fad fad = lvwPaafyldteFade.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(fad.toString());
         alert.setContentText(fad.historik());
@@ -93,15 +99,27 @@ public class FadPane extends GridPane {
     }
     public void omhaeld(){
         Fad nytFad = lvwTommeFade.getSelectionModel().getSelectedItem();
-        Fad gamleFad = lvwFyldteFade.getSelectionModel().getSelectedItem();
-        Controller.flytPaafyldning(gamleFad,nytFad);
-        updateControls();
+        Fad gamleFad = lvwPaafyldteFade.getSelectionModel().getSelectedItem();
+        if (nytFad != null && gamleFad != null) {
+            Controller.flytPaafyldning(gamleFad, nytFad);
+            updateControls();
+        } else {
+            alertPopUp("Mangler fade", "Vælg to fade", "Vælg fade fra listerne for at omhælde");
+        }
     }
 
     public void updateControls() {
-        lvwFyldteFade.getItems().setAll(Controller.getFyldteFade());
+        lvwPaafyldteFade.getItems().setAll(Controller.getFyldteFade());
         lvwTommeFade.getItems().setAll(Controller.getTommeFade());
 
+    }
+
+    private void alertPopUp(String titel, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titel);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
     }
 
 
