@@ -108,15 +108,41 @@ public class Fad implements Serializable {
      */
     public String historik() {
         String res = "";
+        res += "Nr.: " + nummer + "\n";
+        res += "Type: " + type + "\n";
+        res += "Literkapacitet: " + literKapacitet + "\n";
+        res += "Leverandør: " + leverandoer + "\n";
+        res += "Lagerlokation: " + lager.getNavn() + "\n";
+        res += "\n\t\tTIDLIGERE PÅFYLDNINGER\n";
 
         if (paafyldninger.size() != 0) {
+            for (Paafyldning paafyldning : this.paafyldninger) {
+                res += "Påfyldningsdato: " + paafyldning.getDato() + "\n";
+                res += "Medarbejder: " + paafyldning.getMedarbejder() + "\n";
+                for (Destillat destilat : paafyldning.getDestillater()) {
+                    res += "Destillat info: \n";
+                    res += "\tNavn: " + destilat.getNavn() + "\n";
+                    res += "\tKornsort: " + destilat.getKornsort() + "\n";
+                    res += "\tMaltdestillat: " + destilat.getMaltdestillat() + "\n";
+                    res += "\tAlkoholprocent: " + destilat.getAlkoholprocent() + "\n";
+                    res += "\tStartdato: " + destilat.getStartdato() + "\n";
+                    res += "\tSlutdato: " + destilat.getSlutdato() + "\n";
+                    res += "\tMedarbejder: " + destilat.getMedarbejder() + "\n";
+                }
+                res += "--------------------------------\n";
+            }
+
+            /*
             Paafyldning paafyldning = sidstePaafyldning();
             for (Destillat destilat : paafyldning.getDestillater()) {
                 res += "Destilat: " + destilat.getNavn() + "\n";
-                res += "Korn sort: " + destilat.getKornsort() + "\n";
-                res += "Malt destilat: " + destilat.getMaltdestillat() + "\n";
-                res += "Startede destillation: " + destilat.getStartdato() + " og sluttede: " + destilat.getSlutdato() + "\n";
-                res += "--------------------------\n";
+                res += "\tKorn sort: " + destilat.getKornsort() + "\n";
+                res += "\tMalt destilat: " + destilat.getMaltdestillat() + "\n";
+                res += "\tAlkoholprocent: " + destilat.getAlkoholprocent() + "\n";
+                res += "\tStartdato: " + destilat.getStartdato() + "\n";
+                res += "\tSlutdato: " + destilat.getSlutdato() + "\n";
+                res += "\tMedarbejder: " + destilat.getMedarbejder() + "\n";
+                res += "------------------------------\n";
             }
             res += "blev fyldt: " + paafyldning.getDato() + "\n";
             for (Fad fad : paafyldning.getGamleFad()) {
@@ -127,11 +153,12 @@ public class Fad implements Serializable {
                 res += "--------------------------\n";
             }
 
+             */
+
+        } else {
+            res += "Ingen tidligere påfyldninger";
         }
-        res += "fad: " + nummer + "\n";
-        res += "type: " + type + "\n";
-        res += "leverandør: " + leverandoer + "\n";
-        res += "lå på lager: " + lager.getNavn() + "\n";
+
 
 
         return res;
@@ -161,9 +188,9 @@ public class Fad implements Serializable {
 
     public String toString() {
         if (antalLiterPaafyldt == 0) {
-            return nummer + " " + type + " " + literKapacitet;
+            return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter";
         } else {
-            return nummer + " " + type + " " + literKapacitet + ". " + antalLiterPaafyldt + " liter påfyldt " + sidstePaafyldning().getDato();
+            return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter. Liter påfyldt: " + antalLiterPaafyldt;
         }
     }
 

@@ -53,6 +53,10 @@ public class Destillat implements Serializable {
         return maengdeVaeskeILiter;
     }
 
+    public String getMedarbejder() {
+        return medarbejder;
+    }
+
     public void setMaengdeVaeskeILiter(int vaeskeILiter) {
         maengdeVaeskeILiter = vaeskeILiter;
     }
