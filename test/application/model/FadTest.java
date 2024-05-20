@@ -1,7 +1,9 @@
 package application.model;
 
+import application.controller.Controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import storage.Storage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ class FadTest {
 
     @BeforeEach
     void setup() {
+        Storage storage = new Storage();
+        Controller.setStorage(storage);
         this.lager = new Lager("Container", 10);
         this.fad = lager.createFad("Sherry", 10, "Spanien");
         LocalDate destillationStartdato = LocalDate.of(2024,01,01);

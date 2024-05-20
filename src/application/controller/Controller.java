@@ -7,35 +7,37 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller {
+public abstract class  Controller {
+
+    private static Storage storage;
 
     public static List<Lager> getLager() {
-        return Storage.getLagerer();
+        return storage.getLagerer();
     }
 
     public static List<Destillat> getDestillater() {
 
-        return Storage.getDestillater();
+        return storage.getDestillater();
     }
 
     public static List<Paafyldning> getPaafyldning() {
-        return Storage.getPaafyldninger();
+        return storage.getPaafyldninger();
     }
 
     public static List<Tapning> getTapninger() {
-        return Storage.getTapninger();
+        return storage.getTapninger();
     }
 
 
     public static Destillat opretDestillat(String navn, String kornsort, LocalDate startdato, LocalDate slutdato, String maltdestillat, int maengdeVaeskeILiter, double alkoholprocent, String medarbejder) {
         Destillat destillat = new Destillat(navn, kornsort, startdato, slutdato, maltdestillat, maengdeVaeskeILiter, alkoholprocent, medarbejder);
-        Storage.addDestilat(destillat);
+        storage.addDestilat(destillat);
         return destillat;
     }
 
     public static Lager opretLager(String navn, int antalPladser) {
         Lager lager = new Lager(navn, antalPladser);
-        Storage.addLager(lager);
+        storage.addLager(lager);
         return lager;
     }
 
@@ -82,7 +84,7 @@ public class Controller {
             tapning.addFad(fad);
         }
         tapning.fyldPaaFlasker(literTapet, vand, medarbejder, flaskeNavn, alkoholprocent);
-        Storage.addTapning(tapning);
+        storage.addTapning(tapning);
 
     }
 
@@ -92,7 +94,7 @@ public class Controller {
      * @return list<Fad> indeholder alle de tomme fade i storage
      */
     public static List<Fad> getTommeFade() {
-        List<Lager> lagerer = Storage.getLagerer();
+        List<Lager> lagerer = storage.getLagerer();
         List<Fad> fade = new ArrayList<>();
         for (Lager lager : lagerer) {
             for (Fad fad : lager.getPladser()) {
@@ -117,7 +119,7 @@ public class Controller {
      * @return list<Fad> indeholder alle de fyldte fade i storage
      */
     public static List<Fad> getFyldteFade() {
-        List<Lager> lagerer = Storage.getLagerer();
+        List<Lager> lagerer = storage.getLagerer();
         List<Fad> fade = new ArrayList<>();
         for (Lager lager : lagerer) {
             for (Fad fad : lager.getPladser()) {
@@ -151,6 +153,10 @@ public class Controller {
             }
         }
         return soegteFade;
+    }
+
+    public static void setStorage(Storage Storage){
+        Controller.storage = Storage;
     }
 
 

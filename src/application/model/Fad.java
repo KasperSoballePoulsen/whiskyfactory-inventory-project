@@ -1,9 +1,10 @@
 package application.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fad {
+public class Fad implements Serializable {
     private static int nummerCount;
     private int nummer;
     private String type;

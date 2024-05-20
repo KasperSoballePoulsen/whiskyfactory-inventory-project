@@ -5,7 +5,9 @@ import application.model.Fad;
 import application.model.Lager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import storage.Storage;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +26,14 @@ public class ControllerTest {
 
     @BeforeEach
     void setUp() {
+        Storage storage = new Storage();
+        Controller.setStorage(storage);
         lager = Controller.opretLager("Container", 10);
         fad = Controller.opretFad("Sherry", 10, lager, "Spanien");
         LocalDate destillationStartdato = LocalDate.of(2024, 01, 01);
         LocalDate destillationSlutdato = LocalDate.of(2024, 01, 14);
         destillat = Controller.opretDestillat("Destillat", "Byg", destillationStartdato, destillationSlutdato, "Maltdestillat", 15, 50, medarbejder);
+
     }
 
     @Test
