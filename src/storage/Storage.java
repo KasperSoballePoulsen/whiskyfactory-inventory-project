@@ -2,49 +2,82 @@ package storage;
 
 import application.model.*;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Storage {
+public class Storage implements Serializable {
 
 
-    private static List<Lager> lagerer = new ArrayList<>();
-    private static List<Destillat> destilater = new ArrayList<>();
-    private static List<Tapning> tapninger = new ArrayList<>();
-    private static List<Paafyldning> paafyldninger = new ArrayList<>();
+    private List<Lager> lagerer = new ArrayList<>();
+    private List<Destillat> destilater = new ArrayList<>();
+    private List<Tapning> tapninger = new ArrayList<>();
+    private List<Paafyldning> paafyldninger = new ArrayList<>();
 
 
-    public static void addLager(Lager lager) {
+    public void addLager(Lager lager) {
         lagerer.add(lager);
     }
 
 
-    public static void addDestilat(Destillat destilat) {
+    public void addDestilat(Destillat destilat) {
         destilater.add(destilat);
     }
 
-    public static void addPaafyldning(Paafyldning paafyldning) {
+    public void addPaafyldning(Paafyldning paafyldning) {
         paafyldninger.add(paafyldning);
     }
 
-    public static void addTapning(Tapning tapning) {
+    public void addTapning(Tapning tapning) {
         tapninger.add(tapning);
     }
 
-    public static List<Lager> getLagerer() {
+    public List<Lager> getLagerer() {
         return new ArrayList<>(lagerer);
     }
 
 
-    public static List<Destillat> getDestillater() {
+    public List<Destillat> getDestillater() {
         return new ArrayList<>(destilater);
     }
 
-    public static List<Tapning> getTapninger() {
+    public List<Tapning> getTapninger() {
         return new ArrayList<>(tapninger);
     }
 
-    public static List<Paafyldning> getPaafyldninger() {
+    public List<Paafyldning> getPaafyldninger() {
         return new ArrayList<>(paafyldninger);
     }
+
+
+    public static Storage loadStorage() {
+        String fileName = "storage.ser";
+        try (FileInputStream fileIn = new FileInputStream(fileName);
+             ObjectInputStream objIn = new ObjectInputStream(fileIn)
+        ) {
+            Object obj = objIn.readObject();
+            Storage storage = (Storage) obj;
+            System.out.println("Storage loaded from file " + fileName);
+            return storage;
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println("Error deserializing storage");
+            System.out.println(ex);
+            return null;
+        }
+    }
+
+    public static void saveStorage(Storage storage) {
+        String fileName = "storage.ser";
+        try (FileOutputStream fileOut = new FileOutputStream(fileName);
+             ObjectOutputStream objOut = new ObjectOutputStream(fileOut)
+        ) {
+            objOut.writeObject(storage);
+            System.out.println("Storage saved in file " + fileName);
+        } catch (IOException ex) {
+            System.out.println("Error serializing storage");
+            System.out.println(ex);
+            throw new RuntimeException();
+        }
+    }
 }
+

@@ -1,10 +1,11 @@
 package application.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paafyldning {
+public class Paafyldning implements Serializable {
 
     private LocalDate dato;
     private String medarbejder;

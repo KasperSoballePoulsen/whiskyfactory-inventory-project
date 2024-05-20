@@ -2,8 +2,9 @@ package application.model;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 
-public class Flaske {
+public class Flaske implements Serializable {
     private int liter;
     private String navn;
     private double alkoholprocent;

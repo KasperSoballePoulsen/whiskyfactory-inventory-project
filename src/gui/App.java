@@ -3,6 +3,7 @@ package gui;
 import application.controller.Controller;
 import application.model.*;
 import javafx.application.Application;
+import storage.Storage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,8 +11,21 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        createSomeObjects();
+
+        Storage storage = Storage.loadStorage();
+        if (storage == null) {
+            storage = new Storage();
+            System.out.println("Empty ListStorage created");
+        }
+        Controller.setStorage(storage);
+
+        if (Controller.getTommeFade().isEmpty() && Controller.getDestillater().isEmpty()){
+            createSomeObjects();
+            System.out.println("Storage initialized");
+        }
         Application.launch(StartWindow.class);
+
+        Storage.saveStorage(storage);
     }
 
     public static void createSomeObjects() {

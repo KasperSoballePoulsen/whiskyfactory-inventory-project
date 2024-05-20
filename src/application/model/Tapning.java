@@ -1,10 +1,11 @@
 package application.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tapning {
+public class Tapning implements Serializable {
 
     private final List<Fad> fade = new ArrayList<>();
     private final List<Flaske> flasker = new ArrayList<>();
