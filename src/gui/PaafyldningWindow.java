@@ -43,7 +43,7 @@ public class PaafyldningWindow extends Stage {
         txfMedarbejder = new TextField();
         pane.add(txfMedarbejder, 1, 6);
 
-        Label lblDato = new Label("dato");
+        Label lblDato = new Label("Dato");
         pane.add(lblDato, 0, 7);
         dpDato = new DatePicker();
         pane.add(dpDato, 1, 7);
@@ -51,7 +51,7 @@ public class PaafyldningWindow extends Stage {
         literTappet = new ArrayList<>();
         int temp = 1;
         for (int i = 0; i < test; i++) {
-            Label lblLiter = new Label("mængde (L):");
+            Label lblLiter = new Label("Mængde (L):");
             TextField txfLiterFad = new TextField();
             literTappet.add(txfLiterFad);
             pane.add(lblLiter, 2, i + temp + 1);

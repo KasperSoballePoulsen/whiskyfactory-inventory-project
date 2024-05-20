@@ -36,25 +36,25 @@ public class OpretDestillatWindow extends Stage {
         pane.add(txfName, 0, 1);
         txfName.setPrefWidth(200);
 
-        Label lblStart = new Label("Start Dato");
+        Label lblStart = new Label("Startdato");
         pane.add(lblStart, 0, 2);
 
         dpStart = new DatePicker();
         pane.add(dpStart, 0, 3);
 
-        Label lblSlut = new Label("Slut Dato");
+        Label lblSlut = new Label("Slutdato");
         pane.add(lblSlut, 0, 4);
 
         dpSlut = new DatePicker();
         pane.add(dpSlut, 0, 5);
 
-        Label lblKorn = new Label("Korn Sort");
+        Label lblKorn = new Label("Kornsort");
         pane.add(lblKorn, 0, 6);
 
         txfKornsort = new TextField();
         pane.add(txfKornsort, 0, 7);
 
-        Label lblMalt = new Label("Malt Batch");
+        Label lblMalt = new Label("Maltdestillat");
         pane.add(lblMalt, 0, 8);
 
         txfMalt = new TextField();
@@ -72,13 +72,13 @@ public class OpretDestillatWindow extends Stage {
         txfMængdeLiter = new TextField();
         pane.add(txfMængdeLiter, 1, 1);
 
-        Label lblAlko = new Label("Alkohol Procent");
+        Label lblAlko = new Label("Alkoholprocent");
         pane.add(lblAlko, 1, 2);
 
         txfAlkoPro = new TextField();
         pane.add(txfAlkoPro, 1, 3);
 
-        Button btnOpret = new Button("Opret Destilat");
+        Button btnOpret = new Button("Opret Destillat");
         pane.add(btnOpret, 1, 11);
         btnOpret.setOnAction(event -> OpretAction());
     }

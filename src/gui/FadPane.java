@@ -83,18 +83,12 @@ public class FadPane extends GridPane {
 
     private void infoFyldt() {
         Fad fad = lvwPaafyldteFade.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(fad.toString());
-        alert.setContentText(fad.historik());
-        alert.showAndWait();
+        alertPopUp("Fad info", fad.toString(), fad.historik());
     }
 
     private void infotomt() {
         Fad fad = lvwTommeFade.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(fad.toString());
-        alert.setContentText(fad.historik());
-        alert.showAndWait();
+        alertPopUp("Fad info", fad.toString(), fad.historik());
     }
     public void omhaeld(){
         Fad nytFad = lvwTommeFade.getSelectionModel().getSelectedItem();
