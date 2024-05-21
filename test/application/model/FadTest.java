@@ -281,7 +281,6 @@ class FadTest {
                 "Liter påfyldt: 0\n" +
                 "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. 26\n" +
                 "Ingen tidligere påfyldninger";
-        System.out.println(fad.historik());
         assertEquals(expected, fad.historik());
     }
 
