@@ -5,10 +5,7 @@ import application.model.Fad;
 import application.model.Lager;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -61,11 +58,28 @@ public class OpretFadWindow extends Stage {
 
 
     public void opretFad() {
-        String type = txfType.getText().trim();
-        int stoerrelse = Integer.parseInt(txfStoerrelse.getText().trim());
         Lager lager = (Lager) cbLager.getSelectionModel().getSelectedItem();
+        String type = txfType.getText().trim();
         String leverandoer = txfLeverandoer.getText().trim();
-        Controller.opretFad(type, stoerrelse, lager, leverandoer);
-        this.hide();
+        try {
+            int stoerrelse = Integer.parseInt(txfStoerrelse.getText().trim());
+            if (type.isEmpty() || leverandoer.isEmpty() || stoerrelse <= 0 || lager == null) {
+                alertPopUp("Fejl", "Fad ikke oprettet", "Udfyld alle felter korrekt");
+            } else {
+                Controller.opretFad(type, stoerrelse, lager, leverandoer);
+                this.hide();
+            }
+        } catch (NumberFormatException e) {
+            alertPopUp("Fejl", "Fad ikke oprettet", "Udfyld alle felter korrekt");
+        }
+    }
+
+
+    private void alertPopUp(String titel, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titel);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
     }
 }

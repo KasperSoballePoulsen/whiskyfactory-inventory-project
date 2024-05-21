@@ -75,8 +75,7 @@ public class Fad implements Serializable {
         }
         if (literTappet <= antalLiterPaafyldt) {
             antalLiterPaafyldt -= literTappet;
-            tapninger.add(tapning);
-
+            this.addTapning(tapning);
         } else {
             throw new IllegalArgumentException("Der er ikke liter nok på fadet");
         }
@@ -119,9 +118,11 @@ public class Fad implements Serializable {
             for (int i = 0; i < paafyldninger.size(); i++) {
                 Paafyldning paafyldning = paafyldninger.get(i);
                 res += "Påfyldningsdato: " + paafyldning.getDato() + "\n";
-                /*if (tapninger.size() != 0) {
+                if (tapninger.size() > i) {
                     res += "Tapningsdato: " + tapninger.get(i).getDato() + "\n";
-                }*/
+                } else {
+                    res += "Tapningsdato: Endnu ikke tappet\n";
+                }
                 res += "Medarbejder: " + paafyldning.getMedarbejder() + "\n";
                 for (Destillat destilat : paafyldning.getDestillater()) {
                     res += "Destillat info:\n";

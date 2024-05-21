@@ -3,13 +3,11 @@ package gui;
 import application.controller.Controller;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 
@@ -84,17 +82,31 @@ public class OpretDestillatWindow extends Stage {
     }
 
     private void OpretAction() {
-        String navn = txfName.getText().trim();
-        String kornsort = txfKornsort.getText().trim();
-        Double alkoPro = Double.parseDouble(txfAlkoPro.getText().trim());
-        LocalDate startDato = dpStart.getValue();
-        LocalDate slutDato = dpSlut.getValue();
-        String maltBatch = txfMalt.getText().trim();
-        String medarbejder = txfMedarbejder.getText().trim();
-        int mængde = Integer.parseInt(txfMængdeLiter.getText().trim());
-        Controller.opretDestillat(navn, kornsort, startDato, slutDato, maltBatch, mængde, alkoPro, medarbejder);
+        try {
+            String navn = txfName.getText().trim();
+            String kornsort = txfKornsort.getText().trim();
+            Double alkoPro = Double.parseDouble(txfAlkoPro.getText().trim());
+            LocalDate startDato = dpStart.getValue();
+            LocalDate slutDato = dpSlut.getValue();
+            String maltBatch = txfMalt.getText().trim();
+            String medarbejder = txfMedarbejder.getText().trim();
+            int mængde = Integer.parseInt(txfMængdeLiter.getText().trim());
+            if (navn.isEmpty() || kornsort.isEmpty() || alkoPro < 0 || slutDato.isBefore(startDato) || maltBatch.isEmpty() || medarbejder.isEmpty() || mængde <= 0) {
+                alertPopUp("Fejl", "Destillat ikke oprettet", "Udfyld alle felter korrekt");
+            } else {
+                Controller.opretDestillat(navn, kornsort, startDato, slutDato, maltBatch, mængde, alkoPro, medarbejder);
+                this.hide();
+            }
+        } catch (Exception e) {
+            alertPopUp("Fejl", "Destillat ikke oprettet", "Udfyld alle felter korrekt");
+        }
+    }
 
-        this.hide();
-
+    private void alertPopUp(String titel, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titel);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
     }
 }

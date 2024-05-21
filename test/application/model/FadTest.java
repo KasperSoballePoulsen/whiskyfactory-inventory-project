@@ -293,6 +293,7 @@ class FadTest {
                 "Lagerlokation: Container\n" +
                 "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. 27\n" +
                 "Påfyldningsdato: 2024-01-14\n" +
+                "Tapningsdato: Endnu ikke tappet\n" +
                 "Medarbejder: Snævar\n" +
                 "Destillat info:\n" +
                 "\tNavn: Destillat\n" +

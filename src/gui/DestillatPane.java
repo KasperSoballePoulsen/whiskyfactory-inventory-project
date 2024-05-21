@@ -50,7 +50,7 @@ public class DestillatPane extends GridPane {
             PaafyldningWindow dia = new PaafyldningWindow("Påfyld", destillaterValgt);
             dia.showAndWait();
         } else {
-            alertPopUp("Mangler destillat", "Inten destillater valgt", "Vælg destillater fra listen");
+            alertPopUp("Mangler destillat", "Ingen destillater valgt", "Vælg destillater fra listen");
         }
     }
 
