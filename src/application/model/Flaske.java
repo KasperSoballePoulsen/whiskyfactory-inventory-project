@@ -31,10 +31,13 @@ public class Flaske implements Serializable {
      */
     public String historik() {
         String res = "";
+        res += "\t\tINFO OM FLASKEN\n";
+        res += "Navn: " + navn + "\n";
+        res += "Alkoholprocent: " + alkoholprocent + "\n";
+        res += "Tapningsdato: " + tapning.getDato() + "\n";
+        res += "\n\t\tINFO OM FLASKENS FADE\n";
         for (Fad fad : tapning.getFade()) {
             res += fad.historik();
-            Paafyldning paafyldning = fad.getPaafyldninger().get(fad.getPaafyldninger().size() - 1);
-            res += "lagt på fad: " + paafyldning.getDato() + " og blev tappet " + tapning.getDato() + "\n";
         }
         return res;
     }
