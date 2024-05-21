@@ -247,25 +247,36 @@ class FadTest {
     }
     @Test
     void testAtTomtFadPrinterHistorik(){
-        String expected = "fad: 1\n" +
-                "type: Sherry\n" +
-                "leverandør: Spanien\n" +
-                "lå på lager: Container\n";
+        String expected = "Nr.: 1\n" +
+                "Type: Sherry\n" +
+                "Literkapacitet: 10\n" +
+                "Leverandør: Spanien\n" +
+                "Lagerlokation: Container\n" +
+                "\n\t\tTIDLIGERE PÅFYLDNINGER\n" +
+                "Ingen tidligere påfyldninger";
         assertEquals(expected, fad.historik());
     }
 
     @Test
     void testAtFyldtFadPrinterHistorik(){
-        String expected = "Destilat: Destillat\n" +
-                "Korn sort: Byg\n" +
-                "Malt destilat: Maltdestillat\n" +
-                "Startede destillation: 2024-01-01 og sluttede: 2024-01-14\n" +
-                "--------------------------\n" +
-                "blev fyldt: 2024-01-14\n" +
-                "fad: 1\n" +
-                "type: Sherry\n" +
-                "leverandør: Spanien\n" +
-                "lå på lager: Container\n";
+        String expected = "Nr.: 1\n" +
+                "Type: Sherry\n" +
+                "Literkapacitet: 10\n" +
+                "Leverandør: Spanien\n" +
+                "Lagerlokation: Container\n" +
+                "\n\t\tTIDLIGERE PÅFYLDNINGER\n" +
+                "Påfyldningsdato: 2024-01-14\n" +
+                "Medarbejder: Snævar\n" +
+                "Destillat info: \n" +
+                "\tNavn: Destillat\n" +
+                "\tKornsort: Byg\n" +
+                "\tMaltdestillat: Maltdestillat\n" +
+                "\tAlkoholprocent: 50.0\n" +
+                "\tStartdato: 2024-01-01\n" +
+                "\tSlutdato: 2024-01-14\n" +
+                "\tMedarbejder: Snævar\n" +
+                "--------------------------------\n";
+
         fad.paafyld(5,paafyldning);
         assertEquals(expected, fad.historik());
     }
