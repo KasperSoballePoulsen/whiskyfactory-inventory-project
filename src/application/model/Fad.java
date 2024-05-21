@@ -116,8 +116,12 @@ public class Fad implements Serializable {
         res += "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. " + nummer + "\n";
 
         if (paafyldninger.size() != 0) {
-            for (Paafyldning paafyldning : this.paafyldninger) {
+            for (int i = 0; i < paafyldninger.size(); i++) {
+                Paafyldning paafyldning = paafyldninger.get(i);
                 res += "Påfyldningsdato: " + paafyldning.getDato() + "\n";
+                /*if (tapninger.size() != 0) {
+                    res += "Tapningsdato: " + tapninger.get(i).getDato() + "\n";
+                }*/
                 res += "Medarbejder: " + paafyldning.getMedarbejder() + "\n";
                 for (Destillat destilat : paafyldning.getDestillater()) {
                     res += "Destillat info:\n";

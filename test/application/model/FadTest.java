@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//Vi antager at alle test køres på en gang
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class FadTest {
     private Fad fad;
