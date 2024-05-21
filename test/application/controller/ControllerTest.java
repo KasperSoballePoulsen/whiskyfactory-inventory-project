@@ -59,17 +59,28 @@ public class ControllerTest {
 
     @Test
     void testAtFlaskenPrinterSinHistorieRigtigt(){
-        String res = "Destilat: Destillat\n" +
-                "Korn sort: Byg\n" +
-                "Malt destilat: Maltdestillat\n" +
-                "Startede destillation: 2024-01-01 og sluttede: 2024-01-14\n" +
-                "--------------------------\n" +
-                "blev fyldt: 2024-01-14\n" +
-                "fad: 1\n" +
-                "type: Sherry\n" +
-                "leverandør: Spanien\n" +
-                "lå på lager: Container\n" +
-                "lagt på fad: 2024-01-14 og blev tappet 2027-02-20\n";
+        String res = "\t\tINFO OM FLASKEN\n" +
+                "Navn: Whisky\n" +
+                "Alkoholprocent: 45.0\n" +
+                "Tapningsdato: 2027-02-20\n"+
+                "\n\t\tINFO OM FLASKENS FADE\n" +
+                "Nr.: 1\n" +
+                "Type: Sherry\n" +
+                "Literkapacitet: 10\n" +
+                "Leverandør: Spanien\n" +
+                "Lagerlokation: Container\n" +
+                "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. 1\n" +
+                "Påfyldningsdato: 2024-01-14\n" +
+                "Medarbejder: Snævar\n" +
+                "Destillat info: \n" +
+                "\tNavn: Destillat\n" +
+                "\tKornsort: Byg\n" +
+                "\tMaltdestillat: Maltdestillat\n" +
+                "\tAlkoholprocent: 50.0\n" +
+                "\tStartdato: 2024-01-01\n" +
+                "\tSlutdato: 2024-01-14\n" +
+                "\tMedarbejder: Snævar\n\n";
+
 
         List<Destillat> destillatList = new ArrayList<>();
         destillatList.add(destillat);

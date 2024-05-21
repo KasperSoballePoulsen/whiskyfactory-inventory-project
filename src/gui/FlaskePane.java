@@ -45,10 +45,7 @@ public class FlaskePane extends GridPane {
 
     public void historikAction() {
         Flaske flaske = lvwFlasker.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(flaske.getNavn());
-        alert.setContentText(Controller.flaskeHistorik(flaske));
-        alert.showAndWait();
+        alertPopUp("Flaske info", flaske.toString(), flaske.historik());
     }
 
     public List<Flaske> flaskeList() {
@@ -67,5 +64,13 @@ public class FlaskePane extends GridPane {
 
     public void updateControls() {
         lvwFlasker.getItems().setAll(flaskeList());
+    }
+
+    private void alertPopUp(String titel, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titel);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
     }
 }

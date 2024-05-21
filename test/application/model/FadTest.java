@@ -1,8 +1,7 @@
 package application.model;
 
 import application.controller.Controller;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import storage.Storage;
 
 import java.time.LocalDate;
@@ -10,6 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class FadTest {
     private Fad fad;
     private ArrayList<Destillat> destillater = new ArrayList<>();
@@ -18,8 +18,6 @@ class FadTest {
 
     @BeforeEach
     void setup() {
-        Storage storage = new Storage();
-        Controller.setStorage(storage);
         this.lager = new Lager("Container", 10);
         this.fad = lager.createFad("Sherry", 10, "Spanien");
         LocalDate destillationStartdato = LocalDate.of(2024,01,01);
@@ -29,7 +27,11 @@ class FadTest {
         this.paafyldning = new Paafyldning(datoForPaafyldning,"Snævar", this.fad, this.destillater);
     }
 
+
+
+
     @Test
+    @Order(1)
     void TC1AtDerOprettesEtFad() {
         Fad fad1 = new Fad("Sherry", 10, lager, "Spanien");
         assertEquals(2, fad1.getNummer());
@@ -43,37 +45,44 @@ class FadTest {
     }
 
     @Test
+    @Order(2)
     void TC1AtDerReturneresNummer() {
-        assertEquals(1, fad.getNummer());
+        assertEquals(3, fad.getNummer());
     }
 
     @Test
+    @Order(3)
     void TC1AtDerReturneresType() {
         assertEquals("Sherry", fad.getType());
     }
 
     @Test
+    @Order(4)
     void TC1AtDerReturneresLiterKapacitet() {
         assertEquals(10, fad.getLiterKapacitet());
     }
 
     @Test
+    @Order(5)
     void TC1AtDerReturneresLager() {
         assertEquals(lager, fad.getLager());
     }
 
     @Test
+    @Order(5)
     void TC1AtDerReturneresAntalLiterPaafyldt() {
         fad.paafyld(5, this.paafyldning);
         assertEquals(5, fad.getAntalLiterPaafyldt());
     }
 
     @Test
+    @Order(6)
     void TC1AtDerReturneresLeverandoer() {
         assertEquals("Spanien", fad.getLeverandoer());
     }
 
     @Test
+    @Order(7)
     void TC1AtDerReturneresPaafyldninger() {
         fad.paafyld(10, paafyldning);
         assertEquals(paafyldning, fad.getPaafyldninger().get(0));
@@ -81,6 +90,7 @@ class FadTest {
 
 
     @Test
+    @Order(8)
     void TC1AtDerTilknyttesEnPaafyldningTilFadet() {
         assertEquals(0, fad.getPaafyldninger().size());
         assertEquals(0, fad.getAntalLiterPaafyldt());
@@ -96,6 +106,7 @@ class FadTest {
 
 
     @Test
+    @Order(9)
     void TC2AtDerTilknyttesEnPaafyldningTilFadet() {
         assertEquals(0, fad.getPaafyldninger().size());
         assertEquals(0, fad.getAntalLiterPaafyldt());
@@ -110,6 +121,7 @@ class FadTest {
     }
 
     @Test
+    @Order(10)
     void TC3AtDerTilknyttesEnPaafyldningTilFadet() {
         assertEquals(0, fad.getPaafyldninger().size());
         assertEquals(0, fad.getAntalLiterPaafyldt());
@@ -124,6 +136,7 @@ class FadTest {
     }
 
     @Test
+    @Order(11)
     void TC4AtPaafyldningKasterException() {
         assertEquals(0, fad.getPaafyldninger().size());
         assertEquals(0, fad.getAntalLiterPaafyldt());
@@ -131,6 +144,7 @@ class FadTest {
     }
 
     @Test
+    @Order(12)
     void TC5AtPaafyldningKasterException() {
         assertEquals(0, fad.getPaafyldninger().size());
         assertEquals(0, fad.getAntalLiterPaafyldt());
@@ -139,6 +153,7 @@ class FadTest {
 
 
     @Test
+    @Order(13)
     void TC1AtDerTilknyttesEnTapningTilFadet() {
         fad.paafyld(5, paafyldning);
         assertEquals(0, fad.getTapninger().size());
@@ -151,6 +166,7 @@ class FadTest {
     }
 
     @Test
+    @Order(14)
     void TC2AtTapningKasterException() {
         fad.paafyld(5, paafyldning);
         assertEquals(0, fad.getTapninger().size());
@@ -162,6 +178,7 @@ class FadTest {
     }
 
     @Test
+    @Order(15)
     void TC3AtTapningKasterException() {
         fad.paafyld(5, paafyldning);
         assertEquals(0, fad.getTapninger().size());
@@ -173,6 +190,7 @@ class FadTest {
     }
 
     @Test
+    @Order(16)
     void TC1AtDerReturneresTapninger() {
         fad.paafyld(5, paafyldning);
         assertEquals(0, fad.getTapninger().size());
@@ -183,6 +201,7 @@ class FadTest {
     }
 
     @Test
+    @Order(17)
     void TC1AtTapningTilføjes() {
         Tapning tapning = new Tapning(LocalDate.of(2027,01,14), "Snævar");
         assertEquals(0, fad.getTapninger().size());
@@ -195,6 +214,7 @@ class FadTest {
     }
 
     @Test
+    @Order(18)
     void TC1AtTapningFjernes() {
         Tapning tapning = new Tapning(LocalDate.of(2027,01,14), "Snævar");
         assertEquals(0, fad.getTapninger().size());
@@ -210,6 +230,7 @@ class FadTest {
     }
 
     @Test
+    @Order(19)
     void TC1AtPaafyldningTilføjes() {
         assertEquals(0, fad.getPaafyldninger().size());
         fad.addPaafyldning(paafyldning);
@@ -219,6 +240,7 @@ class FadTest {
     }
 
     @Test
+    @Order(20)
     void TC1AtPaafyldningFlyttes() {
         fad.paafyld(5, paafyldning);
         assertEquals(1, fad.getPaafyldninger().size());
@@ -233,6 +255,7 @@ class FadTest {
     }
 
     @Test
+    @Order(21)
     void TC1AtSætteAntalLiterPaafyldt() {
         assertEquals(0, fad.getAntalLiterPaafyldt());
         fad.setAntalLiterPaafyldt(2);
@@ -240,42 +263,44 @@ class FadTest {
     }
 
     @Test
+    @Order(22)
     void TC1AtReturnereSidstePaafyldning() {
         assertEquals(0, fad.getPaafyldninger().size());
         fad.paafyld(5, paafyldning);
         assertEquals(paafyldning, fad.sidstePaafyldning());
     }
     @Test
+    @Order(23)
     void testAtTomtFadPrinterHistorik(){
-        String expected = "Nr.: 1\n" +
+        String expected = "Nr.: 26\n" +
                 "Type: Sherry\n" +
                 "Literkapacitet: 10\n" +
                 "Leverandør: Spanien\n" +
                 "Lagerlokation: Container\n" +
-                "\n\t\tTIDLIGERE PÅFYLDNINGER\n" +
+                "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. 26\n" +
                 "Ingen tidligere påfyldninger";
         assertEquals(expected, fad.historik());
     }
 
     @Test
+    @Order(24)
     void testAtFyldtFadPrinterHistorik(){
-        String expected = "Nr.: 1\n" +
+        String expected = "Nr.: 27\n" +
                 "Type: Sherry\n" +
                 "Literkapacitet: 10\n" +
                 "Leverandør: Spanien\n" +
                 "Lagerlokation: Container\n" +
-                "\n\t\tTIDLIGERE PÅFYLDNINGER\n" +
+                "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. 27\n" +
                 "Påfyldningsdato: 2024-01-14\n" +
                 "Medarbejder: Snævar\n" +
-                "Destillat info: \n" +
+                "Destillat info:\n" +
                 "\tNavn: Destillat\n" +
                 "\tKornsort: Byg\n" +
                 "\tMaltdestillat: Maltdestillat\n" +
                 "\tAlkoholprocent: 50.0\n" +
                 "\tStartdato: 2024-01-01\n" +
                 "\tSlutdato: 2024-01-14\n" +
-                "\tMedarbejder: Snævar\n" +
-                "--------------------------------\n";
+                "\tMedarbejder: Snævar\n\n";
 
         fad.paafyld(5,paafyldning);
         assertEquals(expected, fad.historik());

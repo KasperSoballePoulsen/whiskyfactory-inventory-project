@@ -113,14 +113,14 @@ public class Fad implements Serializable {
         res += "Literkapacitet: " + literKapacitet + "\n";
         res += "Leverandør: " + leverandoer + "\n";
         res += "Lagerlokation: " + lager.getNavn() + "\n";
-        res += "\n\t\tTIDLIGERE PÅFYLDNINGER\n";
+        res += "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. " + nummer + "\n";
 
         if (paafyldninger.size() != 0) {
             for (Paafyldning paafyldning : this.paafyldninger) {
                 res += "Påfyldningsdato: " + paafyldning.getDato() + "\n";
                 res += "Medarbejder: " + paafyldning.getMedarbejder() + "\n";
                 for (Destillat destilat : paafyldning.getDestillater()) {
-                    res += "Destillat info: \n";
+                    res += "Destillat info:\n";
                     res += "\tNavn: " + destilat.getNavn() + "\n";
                     res += "\tKornsort: " + destilat.getKornsort() + "\n";
                     res += "\tMaltdestillat: " + destilat.getMaltdestillat() + "\n";
@@ -129,7 +129,7 @@ public class Fad implements Serializable {
                     res += "\tSlutdato: " + destilat.getSlutdato() + "\n";
                     res += "\tMedarbejder: " + destilat.getMedarbejder() + "\n";
                 }
-                res += "--------------------------------\n";
+                res += "\n";
             }
         } else {
             res += "Ingen tidligere påfyldninger";
