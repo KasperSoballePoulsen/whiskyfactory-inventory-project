@@ -112,6 +112,7 @@ public class Fad implements Serializable {
         res += "Literkapacitet: " + literKapacitet + "\n";
         res += "Leverandør: " + leverandoer + "\n";
         res += "Lagerlokation: " + lager.getNavn() + "\n";
+        res += "Liter påfyldt: " + antalLiterPaafyldt + "\n";
         res += "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. " + nummer + "\n";
 
         if (paafyldninger.size() != 0) {
@@ -165,11 +166,7 @@ public class Fad implements Serializable {
 
 
     public String toString() {
-        if (antalLiterPaafyldt == 0) {
-            return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter";
-        } else {
-            return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter. Liter påfyldt: " + antalLiterPaafyldt;
-        }
+        return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter";
     }
 
 }

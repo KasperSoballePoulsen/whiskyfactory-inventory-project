@@ -69,6 +69,7 @@ public class ControllerTest {
                 "Literkapacitet: 10\n" +
                 "Leverandør: Spanien\n" +
                 "Lagerlokation: Container\n" +
+                "Liter påfyldt: 0\n" +
                 "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. 1\n" +
                 "Påfyldningsdato: 2024-01-14\n" +
                 "Tapningsdato: 2027-02-20\n" +
@@ -94,7 +95,6 @@ public class ControllerTest {
         LocalDate dato = LocalDate.of(2027, 02, 20);
 
         Controller.aftapFad(fadList,literlist,dato,medarbejder,5,"Whisky",45);
-        System.out.println(Controller.getTapninger().get(0).getFlasker().get(0).historik());
         assertEquals(res,Controller.getTapninger().get(0).getFlasker().get(0).historik());
 
     }
