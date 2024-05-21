@@ -131,36 +131,9 @@ public class Fad implements Serializable {
                 }
                 res += "--------------------------------\n";
             }
-
-            /*
-            Paafyldning paafyldning = sidstePaafyldning();
-            for (Destillat destilat : paafyldning.getDestillater()) {
-                res += "Destilat: " + destilat.getNavn() + "\n";
-                res += "\tKorn sort: " + destilat.getKornsort() + "\n";
-                res += "\tMalt destilat: " + destilat.getMaltdestillat() + "\n";
-                res += "\tAlkoholprocent: " + destilat.getAlkoholprocent() + "\n";
-                res += "\tStartdato: " + destilat.getStartdato() + "\n";
-                res += "\tSlutdato: " + destilat.getSlutdato() + "\n";
-                res += "\tMedarbejder: " + destilat.getMedarbejder() + "\n";
-                res += "------------------------------\n";
-            }
-            res += "blev fyldt: " + paafyldning.getDato() + "\n";
-            for (Fad fad : paafyldning.getGamleFad()) {
-                res += "fad: " + fad.getNummer() + "\n";
-                res += "type: " + fad.getType() + "\n";
-                res += "leverandør: " + fad.getLeverandoer() + "\n";
-                res += "lå på lager: " + fad.getLager().getNavn() + "\n";
-                res += "--------------------------\n";
-            }
-
-             */
-
         } else {
             res += "Ingen tidligere påfyldninger";
         }
-
-
-
         return res;
     }
     public void addPaafyldning(Paafyldning paafyldning){
