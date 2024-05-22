@@ -13,7 +13,6 @@ public class StartWindow extends Application {
         stage.setTitle("System");
         BorderPane pane = new BorderPane();
         this.initContent(pane);
-
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setHeight(500);

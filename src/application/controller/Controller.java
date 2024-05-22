@@ -143,12 +143,18 @@ public abstract class  Controller {
         return flaske.historik();
     }
 
-    public static List<Fad> soegteFade(String string, Lager lager){
+    /**
+     * Pre: soegeord er skal matche en leverandoer eller en type præcist.
+     * @param soegeOrd != null
+     * @param lager !=null
+     * @return en List med fade
+     */
+    public static List<Fad> soegteFade(String soegeOrd, Lager lager){
         List<Fad> soegteFade = new ArrayList<>();
         for (Fad fade : lager.fadePaaLager()){
-            if (fade.getLeverandoer().equals(string)){
+            if (fade.getLeverandoer().equals(soegeOrd)){
                 soegteFade.add(fade);
-            } else if (fade.getType().equals(string)){
+            } else if (fade.getType().equals(soegeOrd)){
                 soegteFade.add(fade);
             }
         }

@@ -17,7 +17,7 @@ public class FadPane extends GridPane {
 
 
     public FadPane() {
-        this.setGridLinesVisible(true);
+        this.setGridLinesVisible(false);
         this.setPadding(new Insets(30));
         this.setHgap(30);
         this.setVgap(30);
