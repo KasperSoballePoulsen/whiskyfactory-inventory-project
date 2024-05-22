@@ -16,6 +16,7 @@ public class FlaskePane extends GridPane {
 
     private ListView<Flaske> lvwFlasker;
     private TextField txfAntal;
+    private TextArea txaHistorik;
 
     public FlaskePane() {
         this.setGridLinesVisible(false);
@@ -25,7 +26,7 @@ public class FlaskePane extends GridPane {
 
         lvwFlasker = new ListView<>();
         lvwFlasker.getItems().setAll(flaskeList());
-        lvwFlasker.setPrefHeight(200);
+        lvwFlasker.setPrefHeight(400);
         add(lvwFlasker, 0, 0, 1, 20);
         ChangeListener<Flaske> flaskeChangeListener = (ov, oldFlaske, newFlaske) -> flaskeSelectedChanged();
         lvwFlasker.getSelectionModel().selectedItemProperty().addListener(flaskeChangeListener);
@@ -39,13 +40,26 @@ public class FlaskePane extends GridPane {
         txfAntal = new TextField();
         txfAntal.setEditable(false);
         add(txfAntal, 1, 1);
+        txfAntal.setPrefWidth(50);
+
+        Label lblHistorik = new Label("Historik");
+        add(lblHistorik,2,0);
+        txaHistorik = new TextArea();
+        add(txaHistorik,2,1,1,19);
+        txaHistorik.setPrefWidth(350);
+        txaHistorik.setPrefHeight(400);
+        txaHistorik.setEditable(false);
 
 
     }
 
     public void historikAction() {
         Flaske flaske = lvwFlasker.getSelectionModel().getSelectedItem();
-        alertPopUp("Flaske info", flaske.toString(), flaske.historik());
+        if (flaske != null) {
+            txaHistorik.setText(flaske.historik());
+        } else {
+            alertPopUp("Fejl", "Ingen flaske valgt", "Vælg en flaske fra listen");
+        }
     }
 
     public List<Flaske> flaskeList() {

@@ -10,49 +10,56 @@ import javafx.scene.layout.VBox;
 public class FadPane extends GridPane {
     private final ListView<Fad> lvwTommeFade = new ListView<>();
     private final ListView<Fad> lvwPaafyldteFade = new ListView<>();
+    private TextArea txaHistorik;
+
 
 
 
 
     public FadPane() {
-        this.setGridLinesVisible(false);
+        this.setGridLinesVisible(true);
         this.setPadding(new Insets(30));
         this.setHgap(30);
         this.setVgap(30);
 
         VBox vbxTommeFade = new VBox(10);
-        this.add(vbxTommeFade, 0, 0, 2, 5);
+        this.add(vbxTommeFade, 0, 0, 3, 10);
         Label lblTommeFade = new Label("Tomme fade");
         vbxTommeFade.getChildren().add(lblTommeFade);
-        lvwTommeFade.setPrefHeight(150);
         lvwTommeFade.getItems().setAll(Controller.getTommeFade());
         vbxTommeFade.getChildren().add(lvwTommeFade);
         lvwTommeFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        lvwTommeFade.setPrefWidth(185);
 
         VBox vbxFyldteFade = new VBox(10);
-        this.add(vbxFyldteFade, 2, 0, 2, 5);
+        vbxFyldteFade.setPrefWidth(185);
+        this.add(vbxFyldteFade, 3, 0, 2, 10);
         Label lblFyldteFade = new Label("Påfyldte fade");
         vbxFyldteFade.getChildren().add(lblFyldteFade);
-        lvwPaafyldteFade.setPrefHeight(150);
         lvwPaafyldteFade.getItems().setAll(Controller.getFyldteFade());
         vbxFyldteFade.getChildren().add(lvwPaafyldteFade);
         lvwPaafyldteFade.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+        VBox vbxHistorik = new VBox(10);
+        this.add(vbxHistorik, 5,0,2,10);
+        Label lblHistorik = new Label("Fad info");
+        vbxHistorik.getChildren().add(lblHistorik);
+        txaHistorik = new TextArea();
+        txaHistorik.setPrefHeight(400);
+        vbxHistorik.getChildren().add(txaHistorik);
+
+
         Button btnOpretFad = new Button("Opret fad");
-        this.add(btnOpretFad, 0, 5);
+        this.add(btnOpretFad, 0, 10);
         btnOpretFad.setOnAction(event -> opretFad());
 
 
         Button btnFadInfo = new Button("Fad info");
-        this.add(btnFadInfo, 2, 5);
+        this.add(btnFadInfo, 5, 10);
         btnFadInfo.setOnAction(event -> infoAction());
 
-
-
-
-
         Button btnOmhaeld = new Button("Omhæld");
-        add(btnOmhaeld,1,5);
+        add(btnOmhaeld,3,10);
         btnOmhaeld.setOnAction(event -> omhaeld());
 
     }
@@ -83,12 +90,12 @@ public class FadPane extends GridPane {
 
     private void infoFyldt() {
         Fad fad = lvwPaafyldteFade.getSelectionModel().getSelectedItem();
-        alertPopUp("Fad info", fad.toString(), fad.historik());
+        txaHistorik.setText(fad.historik());
     }
 
     private void infotomt() {
         Fad fad = lvwTommeFade.getSelectionModel().getSelectedItem();
-        alertPopUp("Fad info", fad.toString(), fad.historik());
+        txaHistorik.setText(fad.historik());
     }
     public void omhaeld(){
         Fad nytFad = lvwTommeFade.getSelectionModel().getSelectedItem();

@@ -77,9 +77,7 @@ public class Tapning implements Serializable {
         List<Flaske> flasker = new ArrayList<>();
         int vaeske = vand;
         for (int i = 0; i < fade.size(); i++) {
-            Fad fad = fade.get(i);
             int liter = literTappet.get(i);
-            fad.aftap(liter, this);
             vaeske += liter;
         }
 

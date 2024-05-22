@@ -75,8 +75,7 @@ public class Fad implements Serializable {
         }
         if (literTappet <= antalLiterPaafyldt) {
             antalLiterPaafyldt -= literTappet;
-            tapninger.add(tapning);
-
+            this.addTapning(tapning);
         } else {
             throw new IllegalArgumentException("Der er ikke liter nok på fadet");
         }
@@ -113,15 +112,18 @@ public class Fad implements Serializable {
         res += "Literkapacitet: " + literKapacitet + "\n";
         res += "Leverandør: " + leverandoer + "\n";
         res += "Lagerlokation: " + lager.getNavn() + "\n";
+        res += "Liter påfyldt: " + antalLiterPaafyldt + "\n";
         res += "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. " + nummer + "\n";
 
         if (paafyldninger.size() != 0) {
             for (int i = 0; i < paafyldninger.size(); i++) {
                 Paafyldning paafyldning = paafyldninger.get(i);
                 res += "Påfyldningsdato: " + paafyldning.getDato() + "\n";
-                /*if (tapninger.size() != 0) {
+                if (tapninger.size() > i) {
                     res += "Tapningsdato: " + tapninger.get(i).getDato() + "\n";
-                }*/
+                } else {
+                    res += "Tapningsdato: Endnu ikke tappet\n";
+                }
                 res += "Medarbejder: " + paafyldning.getMedarbejder() + "\n";
                 for (Destillat destilat : paafyldning.getDestillater()) {
                     res += "Destillat info:\n";
@@ -164,11 +166,7 @@ public class Fad implements Serializable {
 
 
     public String toString() {
-        if (antalLiterPaafyldt == 0) {
-            return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter";
-        } else {
-            return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter. Liter påfyldt: " + antalLiterPaafyldt;
-        }
+        return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter";
     }
 
 }

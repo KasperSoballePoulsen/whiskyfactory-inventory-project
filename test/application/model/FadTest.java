@@ -278,6 +278,7 @@ class FadTest {
                 "Literkapacitet: 10\n" +
                 "Leverandør: Spanien\n" +
                 "Lagerlokation: Container\n" +
+                "Liter påfyldt: 0\n" +
                 "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. 26\n" +
                 "Ingen tidligere påfyldninger";
         assertEquals(expected, fad.historik());
@@ -291,8 +292,10 @@ class FadTest {
                 "Literkapacitet: 10\n" +
                 "Leverandør: Spanien\n" +
                 "Lagerlokation: Container\n" +
+                "Liter påfyldt: 5\n" +
                 "\n\t\tTIDLIGERE PÅFYLDNINGER PÅ FAD nr. 27\n" +
                 "Påfyldningsdato: 2024-01-14\n" +
+                "Tapningsdato: Endnu ikke tappet\n" +
                 "Medarbejder: Snævar\n" +
                 "Destillat info:\n" +
                 "\tNavn: Destillat\n" +
