@@ -164,6 +164,13 @@ public class Fad implements Serializable {
         return paafyldninger.get(paafyldninger.size() - 1);
     }
 
+    public static int getNummerCount() {
+        return nummerCount;
+    }
+
+    public static void setNummerCount(int nummerCount) {
+        Fad.nummerCount = nummerCount;
+    }
 
     public String toString() {
         return "nr. " + nummer + ": " + type + ", " + literKapacitet + " liter";

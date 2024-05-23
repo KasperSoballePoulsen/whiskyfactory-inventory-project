@@ -14,6 +14,8 @@ public class Storage implements Serializable {
     private List<Tapning> tapninger = new ArrayList<>();
     private List<Paafyldning> paafyldninger = new ArrayList<>();
 
+    private int antalFade;
+
 
     public void addLager(Lager lager) {
         lagerer.add(lager);
@@ -58,6 +60,7 @@ public class Storage implements Serializable {
             Object obj = objIn.readObject();
             Storage storage = (Storage) obj;
             System.out.println("Storage loaded from file " + fileName);
+            Fad.setNummerCount(storage.getAntalFade());
             return storage;
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println("Error deserializing storage");
@@ -71,6 +74,7 @@ public class Storage implements Serializable {
         try (FileOutputStream fileOut = new FileOutputStream(fileName);
              ObjectOutputStream objOut = new ObjectOutputStream(fileOut)
         ) {
+            storage.setAntalFade(Fad.getNummerCount());
             objOut.writeObject(storage);
             System.out.println("Storage saved in file " + fileName);
         } catch (IOException ex) {
@@ -78,6 +82,14 @@ public class Storage implements Serializable {
             System.out.println(ex);
             throw new RuntimeException();
         }
+    }
+
+    public int getAntalFade() {
+        return antalFade;
+    }
+
+    public void setAntalFade(int antalFade) {
+        this.antalFade = antalFade;
     }
 }
 
