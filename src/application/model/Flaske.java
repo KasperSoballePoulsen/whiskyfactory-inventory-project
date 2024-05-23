@@ -46,6 +46,11 @@ public class Flaske implements Serializable {
         return tapning;
     }
 
+    /**
+     *
+     * @param filnavn != null
+     * ´metoden printer historikken ud i en tekst fil
+     */
     public void historikPaaFil(String filnavn) {
         try {
             PrintWriter printWriter = new PrintWriter(filnavn);
