@@ -46,6 +46,7 @@ public class FadPane extends GridPane {
         vbxHistorik.getChildren().add(lblHistorik);
         txaHistorik = new TextArea();
         txaHistorik.setPrefHeight(400);
+        txaHistorik.setEditable(false);
         vbxHistorik.getChildren().add(txaHistorik);
 
 

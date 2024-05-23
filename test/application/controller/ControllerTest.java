@@ -37,7 +37,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testAtAftapningLaverFlaskerRigtigt() {
+        void testAtAftapningLaverFlaskerRigtigt() {
         List<Destillat> destillatList = new ArrayList<>();
         destillatList.add(destillat);
         List<Integer> literlist = new ArrayList<>();

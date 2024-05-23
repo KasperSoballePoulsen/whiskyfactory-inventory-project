@@ -91,6 +91,11 @@ public class Lager implements Serializable {
         return fade;
     }
 
+    /**
+     * metoden løber alle fade på lageret igennem og tjekker hvilke der har lageret i mindst 3 år
+     *
+     * @return alle fade der er klar til at tappes
+     */
     public List<Fad> faerdigeFade(){
         List<Fad> faerdige = new ArrayList<>();
         LocalDate today = LocalDate.now();
