@@ -88,6 +88,31 @@ public abstract class  Controller {
 
     }
 
+
+    /**
+     * pre: fade.size() == litertappet.size()
+     * pre: datoen skal være 3 år efter paafyldnings datoen
+     *
+     * @param fade != null
+     * @param literTapet != null
+     * @param dato != null
+     * @param medarbejder != null
+     * @param vand
+     * @param flaskeNavn != null
+     * @param alkoholprocent != null
+     * tager væske fra fade og opretter flasker med
+     */
+    public static void aftapFad(List<Fad> fade, List<Integer> literTapet, LocalDate dato, String medarbejder, int vand, String flaskeNavn, double alkoholprocent, String vandkilde) {
+        Tapning tapning = new Tapning(dato, medarbejder);
+        tapning.setVandkilde(vandkilde);
+        for (int i = 0; i < fade.size(); i++) {
+            fade.get(i).aftap(literTapet.get(i), tapning);
+        }
+        tapning.fyldPaaFlasker(literTapet, vand, medarbejder, flaskeNavn, alkoholprocent);
+        storage.addTapning(tapning);
+
+    }
+
     /**
      * vi henter fadene fra storage og sortere de fyldte fade fra
      *
