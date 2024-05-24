@@ -39,7 +39,7 @@ public class TapningWindow extends Stage {
         literTappet = new ArrayList<>();
         for (int i = 0; i < fade.size(); i++) {
             int literPaaFad =  fade.get(i).getAntalLiterPaafyldt();
-            Label lblLiter = new Label("mængde (L): " + literPaaFad + " L på fadet");
+            Label lblLiter = new Label("mængde (L): " + literPaaFad + " L påfyldt");
             TextField txfLiterFad = new TextField();
             literTappet.add(txfLiterFad);
             pane.add(lblLiter, 2, i + 1);
