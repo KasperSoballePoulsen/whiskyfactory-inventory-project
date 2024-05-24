@@ -33,20 +33,20 @@ public class App {
         Lager lagerLade = Controller.opretLager("Lade", 14);
 
         Fad fad1 = Controller.opretFad("Sherryfad",30, lagerContainer, "Spanien");
-        Fad fad2 = Controller.opretFad("Sherryfad", 30, lagerContainer, "USA");
+        Fad fad2 = Controller.opretFad("Sherryfad", 30, lagerContainer, "Spanien");
         Fad fad3 = Controller.opretFad("Sherryfad",30, lagerContainer,"Spanien");
-        Controller.opretFad("Bourbonfad",50, lagerContainer, "Spanien");
-        Controller.opretFad("Bourbonfad", 50, lagerContainer, "Spanien");
+        Controller.opretFad("Bourbonfad",50, lagerContainer, "USA");
+        Controller.opretFad("Bourbonfad", 50, lagerContainer, "USA");
 
         Controller.opretFad("Sherryfad", 100, lagerLade, "Spanien");
         Controller.opretFad("Sherryfad", 100, lagerLade, "Spanien");
         Controller.opretFad("Sherryfad", 100, lagerLade, "Spanien");
         Controller.opretFad("Sherryfad", 250, lagerLade, "Spanien");
         Controller.opretFad("Sherryfad", 190, lagerLade, "Spanien");
-        Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
-        Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
-        Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
-        Controller.opretFad("Bourbonfad",50, lagerLade, "Spanien");
+        Controller.opretFad("Bourbonfad",50, lagerLade, "USA");
+        Controller.opretFad("Bourbonfad",50, lagerLade, "USA");
+        Controller.opretFad("Bourbonfad",50, lagerLade, "USA");
+        Controller.opretFad("Bourbonfad",50, lagerLade, "USA");
 
 
 
