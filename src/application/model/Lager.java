@@ -100,7 +100,7 @@ public class Lager implements Serializable {
         List<Fad> faerdige = new ArrayList<>();
         LocalDate today = LocalDate.now();
         for (Fad fad : pladser){
-            if (fad != null && fad.getPaafyldninger().size() != 0){
+            if (fad != null && fad.getPaafyldninger().size() != 0 && fad.getPaafyldninger().size() != fad.getTapninger().size()){
                 if (fad.sidstePaafyldning().getDato().isBefore(today.minusYears(3))){
                     faerdige.add(fad);
                 }

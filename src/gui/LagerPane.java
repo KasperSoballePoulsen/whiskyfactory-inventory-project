@@ -113,7 +113,7 @@ public class LagerPane extends GridPane {
         if (lvwFadePaaLager.getSelectionModel().getSelectedItems().size() != 0) {
             TapningWindow dia = new TapningWindow("Tapning", lvwFadePaaLager.getSelectionModel().getSelectedItems());
             dia.showAndWait();
-            lvwFadePaaLager.getItems().setAll(Controller.getFyldteFade());
+            lagerSelectedChanged();
         } else {
             lblTapErr.setText("Vælg fyldt fad");
         }
