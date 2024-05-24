@@ -32,7 +32,7 @@ public class OpretFadWindow extends Stage {
         txfType = new TextField();
         pane.add(txfType, 0, 1);
 
-        Label lblSize = new Label("Størrelse");
+        Label lblSize = new Label("Literkapacitet");
         pane.add(lblSize, 0, 2);
 
         txfStoerrelse = new TextField();
