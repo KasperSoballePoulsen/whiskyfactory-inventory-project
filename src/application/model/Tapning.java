@@ -12,6 +12,8 @@ public class Tapning implements Serializable {
     private String medarbejder;
     private LocalDate dato;
 
+    private String vandkilde;
+
     public Tapning(LocalDate dato, String medarbejder) {
         this.dato = dato;
         this.medarbejder = medarbejder;
@@ -87,5 +89,9 @@ public class Tapning implements Serializable {
             flasker.add(flaske);
         }
         return flasker;
+    }
+
+    public void setVandkilde(String vandkilde) {
+        this.vandkilde = vandkilde;
     }
 }

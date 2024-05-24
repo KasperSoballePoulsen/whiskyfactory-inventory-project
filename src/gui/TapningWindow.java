@@ -82,21 +82,39 @@ public class TapningWindow extends Stage {
     }
 
     public void fyldFlasker(List<Fad> fadList) {
-        List<Integer> literTappes = new ArrayList<>();
-        for (int i = 0; i < literTappet.size(); i++) {
-            int liter = Integer.parseInt(literTappet.get(i).getText());
-            literTappes.add(liter);
+        try {
+            List<Integer> literTappes = new ArrayList<>();
+            for (int i = 0; i < literTappet.size(); i++) {
+                int liter = Integer.parseInt(literTappet.get(i).getText());
+                literTappes.add(liter);
+            }
+            LocalDate dato = dpDato.getValue();
+            String medarbejder = txfMedarbejder.getText();
+            int vand = Integer.parseInt(txfVand.getText());
+            double alkoholprocent = Double.parseDouble(txfAlkoholprocent.getText());
+            String flaskeNavn = txfFlaskeNavn.getText();
+            if (txfVandkilde.getText().isEmpty()) {
+                for (int i = 0; i < fadList.size(); i++) {
+                    Controller.aftapFad(fadList, literTappes, dato, medarbejder, vand, flaskeNavn, alkoholprocent);
+                }
+            } else {
+                String vandkilde = txfVandkilde.getText();
+                for (int i = 0; i < fadList.size(); i++) {
+                    Controller.aftapFad(fadList, literTappes, dato, medarbejder, vand, flaskeNavn, alkoholprocent, vandkilde);
+                }
+            }
+            this.hide();
+        } catch (Exception e) {
+            alertPopUp("Fejl", "Flasker ikke fyldt", "Prøv igen");
         }
-        LocalDate dato = dpDato.getValue();
-        String medarbejder = txfMedarbejder.getText();
-        int vand = Integer.parseInt(txfVand.getText());
-        double alkoholprocent = Double.parseDouble(txfAlkoholprocent.getText());
-        String flaskeNavn = txfFlaskeNavn.getText();
-        for (int i = 0; i < fadList.size(); i++) {
-            Controller.aftapFad(fadList, literTappes, dato, medarbejder, vand, flaskeNavn, alkoholprocent);
-        }
-        this.hide();
+    }
 
+    private void alertPopUp(String titel, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titel);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
     }
 
 
