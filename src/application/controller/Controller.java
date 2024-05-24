@@ -76,6 +76,7 @@ public abstract class  Controller {
      * @param vand
      * @param flaskeNavn != null
      * @param alkoholprocent != null
+     * @param vandkilde  != null
      * tager væske fra fade og opretter flasker med
      */
     public static void aftapFad(List<Fad> fade, List<Integer> literTapet, LocalDate dato, String medarbejder, int vand, String flaskeNavn, double alkoholprocent) {
