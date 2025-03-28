@@ -1,4 +1,26 @@
 ### IntelliJ IDEA ###
-out/
 .idea/
+*.iml
+out/
+*.ipr
+*.iws
+
+### Java ###
+*.class
+*.jar
+*.war
+*.ear
+
+### Logs ###
+*.log
+
+### System ###
+.DS_Store
+Thumbs.db
+
+### Maven / Gradle ###
+target/
+build/
+
+### XML files  ###
 *.xml
