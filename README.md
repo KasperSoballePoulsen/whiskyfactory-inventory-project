@@ -35,3 +35,7 @@ The project simulates an inventory management system for a fictional whisky comp
 - JUnit 5
 - IntelliJ IDEA (project generated via IntelliJ)
 
+---
+
+## Youtube Project Demo
+Link: https://youtu.be/rzrNmmtTkc8
